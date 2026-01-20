@@ -1,2 +1,1 @@
-# jenkinsmichpa.com
-Personal Website
+# Personal Website
