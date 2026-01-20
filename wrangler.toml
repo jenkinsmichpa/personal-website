@@ -1,0 +1,6 @@
+name = "personal-website"
+compatibility_date = "2025-04-01"
+
+[assets]
+directory = "./dist/client/"
+not_found_handling = "404-page"
