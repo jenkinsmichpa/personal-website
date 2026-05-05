@@ -3,7 +3,7 @@ html {
 }
 
 * {
-  font-family: 'Roboto', sans-serif;
+  font-family: "IBM Plex Sans", sans-serif;
 }
 
 .card,
@@ -53,12 +53,12 @@ html {
   .bi {
     width: 1em;
     height: 1em;
-    vertical-align: -.125em;
+    vertical-align: -0.125em;
     fill: currentColor;
   }
 
   .dropdown-menu .active .bi {
-    display: block !important
+    display: block !important;
   }
 }
 
@@ -148,7 +148,7 @@ a.anchor {
 .home {
   height: 100vh;
   background-color: #1c320a;
-  background-image: url('../Images/small/old/triliumPoisonIvyMultiplied.jpg');
+  background-image: url("../Images/small/old/triliumPoisonIvyMultiplied.jpg");
   background-position: center;
 }
 
@@ -171,7 +171,7 @@ a.anchor {
 }
 
 .purdue {
-  color: #98700D;
+  color: #98700d;
   font-weight: bold;
 }
 
@@ -183,12 +183,18 @@ a.anchor {
 }
 
 .spacer {
-  background-image: url('../Images/small/jpg/poisonIvyMultiplied.jpg');
+  background-image: url("../Images/small/jpg/poisonIvyMultiplied.jpg");
 }
 
-@supports (background-image: -webkit-image-set(url('../Images/small/webp/poisonIvyMultiplied.webp') 1x)) {
+@supports (
+  background-image: -webkit-image-set(
+      url("../Images/small/webp/poisonIvyMultiplied.webp") 1x
+    )
+) {
   .spacer {
-    background-image: -webkit-image-set(url('../Images/small/webp/poisonIvyMultiplied.webp') 1x)
+    background-image: -webkit-image-set(
+      url("../Images/small/webp/poisonIvyMultiplied.webp") 1x
+    );
   }
 }
 
@@ -207,12 +213,12 @@ a.anchor {
 }
 
 .nav-pills .nav-link {
-  transition: background-color .5s;
+  transition: background-color 0.5s;
   font-weight: bold;
 }
 
 .portfolio img {
-  transition: transform .2s;
+  transition: transform 0.2s;
   height: auto;
 }
 
@@ -221,7 +227,9 @@ a.anchor {
 }
 
 .hard-shadow {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow:
+    0 4px 8px 0 rgba(0, 0, 0, 0.2),
+    0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .contact h1 {
