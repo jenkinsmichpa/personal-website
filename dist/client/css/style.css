@@ -2,7 +2,7 @@ html {
   scroll-behavior: smooth;
 }
 
-* {
+body {
   font-family: "IBM Plex Sans", sans-serif;
 }
 
@@ -14,60 +14,35 @@ html {
 .card-img-top {
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
-  margin-left: calc(var(--bs-card-spacer-x) * -1);
-  margin-right: calc(var(--bs-card-spacer-x) * -1);
-  width: calc(100% + (var(--bs-card-spacer-x) * 2));
-  margin-top: calc(var(--bs-card-spacer-y) * -1);
+  margin: calc(var(--bs-card-spacer-y) * -1) calc(var(--bs-card-spacer-x) * -1)
+    0;
+  width: calc(100% + var(--bs-card-spacer-x) * 2);
 }
 
 .accordion {
-  border-radius: 1.25rem !important;
-}
-
-.accordion-item:first-child {
-  border-top-left-radius: 1.25rem !important;
-  border-top-right-radius: 1.25rem !important;
-}
-
-.accordion-item:last-child {
-  border-bottom-left-radius: 1.25rem !important;
-  border-bottom-right-radius: 1.25rem !important;
-}
-.accordion-item:first-child .accordion-button {
-  border-top-left-radius: 1.25rem !important;
-  border-top-right-radius: 1.25rem !important;
-  border-bottom-left-radius: 0 !important;
-  border-bottom-right-radius: 0 !important;
-}
-
-.accordion-item:last-child .accordion-button.collapsed {
-  border-bottom-left-radius: 1.25rem !important;
-  border-bottom-right-radius: 1.25rem !important;
-  border-top-left-radius: 0 !important;
-  border-top-right-radius: 0 !important;
+  --bs-accordion-border-radius: 1.25rem;
+  --bs-accordion-inner-border-radius: 1.25rem;
 }
 
 .bd-mode-toggle {
   z-index: 1500;
-
-  .bi {
-    width: 1em;
-    height: 1em;
-    vertical-align: -0.125em;
-    fill: currentColor;
-  }
-
-  .dropdown-menu .active .bi {
-    display: block !important;
-  }
 }
 
-.navbar.bg-transparent {
-  transition: background-color 0.3s linear;
+.bd-mode-toggle .bi {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.125em;
+  fill: currentColor;
 }
 
-.navbar.bg-body {
-  transition: background-color 0.3s linear;
+.bd-mode-toggle .dropdown-menu .active .bi {
+  display: block !important;
+}
+
+.navbar {
+  transition:
+    background-color 0.3s linear,
+    box-shadow 0.3s linear;
 }
 
 .navbar-toggler {
@@ -76,26 +51,25 @@ html {
 
 .logo {
   fill-opacity: 0;
-  stroke-dasharray: 360.8721923828125;
-  stroke-dashoffset: 360.8721923828125;
+  stroke-dasharray: var(--draw-length, 360.872);
+  stroke-dashoffset: var(--draw-length, 360.872);
   animation: draw 2.5s ease-in-out 1s forwards;
 }
 
 .navbar-brand svg {
+  display: block;
   margin-top: -12px;
   margin-bottom: -12px;
 }
 
 @keyframes draw {
   0% {
-    stroke-dashoffset: 360.8721923828125;
+    stroke-dashoffset: var(--draw-length, 360.872);
   }
-
   80% {
     stroke-dashoffset: 0;
     fill-opacity: 0;
   }
-
   100% {
     stroke-dashoffset: 0;
     fill-opacity: 1;
@@ -110,17 +84,18 @@ html {
   content: "";
   position: absolute;
   bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
+  right: 0;
   height: 2px;
-  width: 0;
   background-color: currentColor;
-  transition: width 0.3s ease;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s ease;
 }
 
 .navbar .navbar-nav .nav-link:hover::after,
 .navbar .navbar-nav .nav-link.active::after {
-  width: 100%;
+  transform: scaleX(1);
 }
 
 @media (max-width: 767.98px) {
@@ -129,24 +104,15 @@ html {
   }
 }
 
-a.anchor {
-  display: block;
-  position: relative;
-  top: -64px;
-  visibility: hidden;
-}
-
-#home {
-  top: 0px;
-}
-
 .parallax {
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .home {
+  position: relative;
   height: 100vh;
+  height: 100dvh;
   background-color: #1c320a;
   background-image: url("../Images/small/old/triliumPoisonIvyMultiplied.jpg");
   background-position: center;
@@ -155,19 +121,15 @@ a.anchor {
 .absolute-center {
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
-  margin-left: 0px !important;
-  margin-right: 0px !important;
   left: 0;
   right: 0;
-}
-
-.border-3 {
-  border-width: 3px !important;
+  transform: translateY(-50%);
 }
 
 .home img {
   height: 200px;
+  width: 200px;
+  object-fit: cover;
 }
 
 .purdue {
@@ -177,25 +139,15 @@ a.anchor {
 
 .spacer {
   height: 10vh;
+  height: 10dvh;
   background-color: #22370e;
   background-position: center;
-  padding: 0px;
-}
-
-.spacer {
+  padding: 0;
   background-image: url("../Images/small/jpg/poisonIvyMultiplied.jpg");
-}
-
-@supports (
-  background-image: -webkit-image-set(
-      url("../Images/small/webp/poisonIvyMultiplied.webp") 1x
-    )
-) {
-  .spacer {
-    background-image: -webkit-image-set(
-      url("../Images/small/webp/poisonIvyMultiplied.webp") 1x
-    );
-  }
+  background-image: image-set(
+    url("../Images/small/webp/poisonIvyMultiplied.webp") type("image/webp"),
+    url("../Images/small/jpg/poisonIvyMultiplied.jpg") type("image/jpeg")
+  );
 }
 
 .spacer-blur {
@@ -204,12 +156,9 @@ a.anchor {
   width: 100%;
 }
 
-.portfolio h1 {
+.portfolio h1,
+.contact h1 {
   text-align: center;
-}
-
-.portfolio .jumbotron .row {
-  margin: 0px;
 }
 
 .nav-pills .nav-link {
@@ -219,7 +168,6 @@ a.anchor {
 
 .portfolio img {
   transition: transform 0.2s;
-  height: auto;
 }
 
 .portfolio img:hover {
@@ -228,16 +176,8 @@ a.anchor {
 
 .hard-shadow {
   box-shadow:
-    0 4px 8px 0 rgba(0, 0, 0, 0.2),
-    0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-.contact h1 {
-  text-align: center;
-}
-
-.obfuscate span {
-  display: none;
+    0 4px 8px rgba(0, 0, 0, 0.2),
+    0 6px 20px rgba(0, 0, 0, 0.19);
 }
 
 .obfuscate {
@@ -245,11 +185,27 @@ a.anchor {
   direction: rtl;
 }
 
-.contact .big-icon {
-  font-size: 2.5em;
-  margin-right: 9px;
-}
-
 footer a {
   display: inline-block;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .logo {
+    animation: none;
+    fill-opacity: 1;
+    stroke-dashoffset: 0;
+  }
+
+  .portfolio img,
+  .nav-pills .nav-link {
+    transition: none;
+  }
+
+  .portfolio img:hover {
+    transform: none;
+  }
 }

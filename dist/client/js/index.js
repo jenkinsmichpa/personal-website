@@ -84,11 +84,10 @@ function setupParallax(parallaxes) {
 
 function setupLightbox(lightBox) {
   lightBox.addEventListener("show.bs.modal", (event) => {
-    const fullImageSrc = event.relatedTarget.src.replace(
-      /small\/(?:old|webp)\//,
-      "",
-    );
+    const img = event.relatedTarget.querySelector("img");
+    const fullImageSrc = img.src.replace(/small\/(?:old|webp)\//, "");
     document.getElementById("lightBoxImage").src = fullImageSrc;
+    document.getElementById("lightBoxImage").alt = img.alt + " - Full Size";
   });
 }
 
