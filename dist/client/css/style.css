@@ -180,6 +180,10 @@ body {
     0 6px 20px rgba(0, 0, 0, 0.19);
 }
 
+.obfuscate span {
+  display: none;
+}
+
 .obfuscate {
   unicode-bidi: bidi-override;
   direction: rtl;
