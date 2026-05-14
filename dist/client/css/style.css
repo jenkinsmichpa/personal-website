@@ -4,6 +4,7 @@ html {
 
 body {
   font-family: "IBM Plex Sans", sans-serif;
+  overflow-x: hidden;
 }
 
 .card,
@@ -112,7 +113,7 @@ body {
 .home {
   position: relative;
   height: 100vh;
-  height: 100dvh;
+  height: 100svh;
   background-color: #1c320a;
   background-image: url("../Images/small/old/triliumPoisonIvyMultiplied.jpg");
   background-position: center;
@@ -124,6 +125,8 @@ body {
   left: 0;
   right: 0;
   transform: translateY(-50%);
+  margin-left: 0 !important;
+  margin-right: 0 !important;
 }
 
 .home img {
@@ -139,7 +142,7 @@ body {
 
 .spacer {
   height: 10vh;
-  height: 10dvh;
+  height: 10svh;
   background-color: #22370e;
   background-position: center;
   padding: 0;
