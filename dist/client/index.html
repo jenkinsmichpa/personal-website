@@ -162,8 +162,8 @@
 
     <section class="container-fluid py-5 about" id="about">
       <div class="container">
-        <div class="row g-4">
-          <div class="col-lg-4">
+        <div class="row" data-masonry='{"percentPosition": true }'>
+          <div class="col-lg-6 mb-4">
             <div class="card p-3 shadow">
               <picture>
                 <source type="image/webp" srcset="Images/small/webp/michaelJenkinsPortrait.webp">
@@ -196,32 +196,43 @@
             </div>
           </div>
 
-          <div class="col-lg-4">
-            <div class="row row-cols-1 g-4">
-
-              <div class="col">
-                <div class="card p-3 shadow">
-                  <div class="card-body">
-                    <h2 class="card-title fs-2 mb-3">Education</h2>
-                      <ul class="list-unstyled">
-                        <li><i class="bi bi-hammer me-2 purdue"></i><span class="purdue">Purdue University</span> - Class of 2022
-                          <ul class="list-unstyled ps-4">
-                            <li><i class="bi bi-arrow-right-short me-1 purdue"></i>Bachelor of Science: Cybersecurity and Network Engineering Technology</li>
-                            <li><i class="bi bi-arrow-right-short me-1 purdue"></i>Additional Studies: Art and Design Studio</li>
-                          </ul>
-                        </li>
-                      </ul>
-                      <ul class="list-unstyled mb-0">
-                        <li><i class="bi bi-pin-map-fill me-2 text-muted"></i><strong>Czech Technical University in Prague</strong> - Study Abroad Spring 2020</li>
-                      </ul>
-                  </div>
-                </div>
+          <div class="col-lg-6 mb-4">
+            <div class="card p-3 shadow">
+              <div class="card-body">
+                <h2 class="card-title fs-2 mb-3">Education</h2>
+                  <ul class="list-unstyled mb-0">
+                    <li class="mb-0"><div class="d-flex flex-column flex-lg-row justify-content-lg-between"><span><h3 class="fs-5 mb-1 d-inline purdue">Purdue University</h3></span><em class="text-muted">GPA 4.0/4.0</em></div></li>
+                    <li><i class="bi bi-arrow-right-short me-1 purdue"></i><span>Bachelor of Science: Cybersecurity and Network Engineering Technology</span><br><em class="text-muted">2018 - 2022</em></li>
+                    <li><i class="bi bi-arrow-right-short me-1 purdue"></i><span>Master of Science: Computer and Information Technology</span><br><em class="text-muted">2025 - 2027</em></li>
+                    <li><i class="bi bi-arrow-right-short me-1 purdue"></i>Additional Studies: Art and Design Studio</li>
+                    <li><div class="d-flex flex-column flex-lg-row justify-content-lg-between"><strong>Czech Technical University, Prague, CZ</strong><em class="text-muted">Study Abroad Spring 2020</em></div></li>
+                  </ul>
               </div>
+            </div>
+          </div>
 
-              <div class="col">
-                <div class="card p-3 shadow">
-                  <div class="card-body">
-                    <h2 class="card-title fs-2 mb-3">Work Experience</h2>
+          <div class="col-lg-6 mb-4">
+            <div class="card p-3 shadow">
+              <div class="card-body">
+                <h2 class="card-title fs-2 mb-3">Activities</h2>
+                  <ul class="list-unstyled mb-0">
+                    <li class="mb-0"><h3 class="fs-5 mb-1">Purdue Cyber Forensics</h3>
+                      <div class="d-flex flex-column flex-lg-row justify-content-lg-between"><strong>Member</strong><em class="text-muted">August 2018 - December 2022</em></div>
+                      <div class="d-flex flex-column flex-lg-row justify-content-lg-between"><strong>Vice-President/Treasurer</strong><em class="text-muted">August 2021 - May 2022</em></div>
+                      <ul class="list-unstyled mt-1 mb-0">
+                        <li><i class="bi bi-arrow-right-short me-1 text-primary"></i>Presented and demonstrated offensive security tools and practices to complement course material.</li>
+                        <li><i class="bi bi-arrow-right-short me-1 text-primary"></i>Collaborated with other board members to design and administer Capture the Flag competitions.</li>
+                      </ul>
+                    </li>
+                  </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 mb-4">
+            <div class="card p-3 shadow">
+              <div class="card-body">
+                <h2 class="card-title fs-2 mb-3">Work Experience</h2>
                       <div class="accordion" id="experienceAccordion">
                         <div class="accordion-item">
                           <h2 class="accordion-header fs-2" id="experienceAccordion-heading-1">
@@ -231,32 +242,34 @@
                           </h2>
                           <div id="experienceAccordion-collapse-1" class="accordion-collapse collapse show" aria-labelledby="experienceAccordion-heading-1" data-bs-parent="#experienceAccordion">
                             <div class="accordion-body">
-                              <strong>Cyber Security Consulting Senior Staff</strong>
+                              <div class="d-flex flex-column flex-lg-row justify-content-lg-between"><strong>Cyber Security Consulting Staff</strong><em class="text-muted">January 2023 - August 2025</em></div>
+                              <div class="d-flex flex-column flex-lg-row justify-content-lg-between"><strong>Cyber Security Consulting Senior Staff</strong><em class="text-muted">August 2025</em></div>
+                              <div class="d-flex flex-column flex-lg-row justify-content-lg-between"><strong>Cyber Security Consulting Intern</strong><em class="text-muted">Summer 2021, 2022</em></div>
                               <ul class="list-unstyled">
-                                <li><i class="bi bi-arrow-right-short me-1 text-primary"></i>Performed Internal, External, and Web Application Penetration Testing for clients in the Public Sector, Financial Services, Healthcare, Manufacturing, and Life Sciences industries.</li>
-                                <li><i class="bi bi-arrow-right-short me-1 text-primary"></i>Conducted cyber security gap and maturity assessments against industry frameworks and regulations including NIST CSF, NIST SP 800-53, ISO 27000, NYCRR, and HIPAA.</li>
+                                <li><i class="bi bi-arrow-right-short me-1 text-primary"></i>Led and performed Internal, External, and Web Application Penetration Testing for clients in the Public Sector, Financial Services, Healthcare, Manufacturing, and Life Sciences industries.</li>
+                                <li><i class="bi bi-arrow-right-short me-1 text-primary"></i>Conducted cybersecurity gap and maturity assessments against industry frameworks and regulations including NIST CSF, NIST SP 800-53, ISO 27000, NYCRR, CUI, and HIPAA.</li>
                                 <li><i class="bi bi-arrow-right-short me-1 text-primary"></i>Performed technical audits against hardened baselines of diverse systems, services, and network configurations, including Linux, Windows, Entra ID, and Active Directory.</li>
                                 <li><i class="bi bi-arrow-right-short me-1 text-primary"></i>Developed methodology, scripts, and integrated control frameworks to support new forms of assessment.</li>
-                                <li><i class="bi bi-arrow-right-short me-1 text-primary"></i>Assessed vendor diverse server, client, domain, database, network device, and application configurations against industry baselines using OpenScap, CCAT, and custom scripting.</li>
-                                <li><i class="bi bi-arrow-right-short me-1 text-primary"></i>Provided virtual security officer services to a manufacturing organization including policy drafting, risk management activities, and acquisition transition planning.</li>
-                                <li><i class="bi bi-arrow-right-short me-1 text-primary"></i>Spearheadede IaC project to modernize and automate Azure and vSphere engagement resource management using Terraform, Ansible, Packer, and GitLab CI/CD pipelines.</li>
+                                <li><i class="bi bi-arrow-right-short me-1 text-primary"></i>Provided virtual security officer services to a manufacturing organization including policy drafting, risk management activities, and acquisition transition.</li>
+                                <li><i class="bi bi-arrow-right-short me-1 text-primary"></i>Spearheaded IaC project to modernize and automate Azure and vSphere engagement resource management using Terraform, Ansible, Packer, and GitLab CI/CD pipelines.</li>
                               </ul>
-                              <strong>Cyber Security Consulting Intern</strong>
                             </div>
                           </div>
                         </div>
                         <div class="accordion-item">
                           <h2 class="accordion-header fs-2" id="experienceAccordion-heading-2">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#experienceAccordion-collapse-2" aria-expanded="false" aria-controls="experienceAccordion-collapse-2">
-                              <strong>CircleCityCon</strong>
+                              <strong>Raytheon Technologies</strong>
                             </button>
                           </h2>
                           <div id="experienceAccordion-collapse-2" class="accordion-collapse collapse" aria-labelledby="experienceAccordion-heading-2" data-bs-parent="#experienceAccordion">
                             <div class="accordion-body">
-                              <strong>Volunteer Administrative Assistant</strong>
+                              <div class="d-flex flex-column flex-lg-row justify-content-lg-between"><strong>Student Tech Intern</strong><em class="text-muted">Summer 2020</em></div>
                               <ul class="list-unstyled">
-                                <li><i class="bi bi-arrow-right-short me-1 text-primary"></i>Scheduled, documented, and summarized meetings within GSuite.</li>
-                                <li><i class="bi bi-arrow-right-short me-1 text-primary"></i>Organized and tracked leadership tasks day of convention.</li>
+                                <li><i class="bi bi-arrow-right-short me-1 text-primary"></i>Enforced and audited AWS instance compliance against hardened Windows and Linux baselines on approximately thirty machines, with planned expanded deployment, utilizing Chef and Chef InSpec.</li>
+                                <li><i class="bi bi-arrow-right-short me-1 text-primary"></i>Produced user acceptance tests for a Perl program to streamline Terraform provisioning.</li>
+                                <li><i class="bi bi-arrow-right-short me-1 text-primary"></i>Performed manual and supervised automated patching to ensure rapid vulnerability remediation.</li>
+                                <li><i class="bi bi-arrow-right-short me-1 text-primary"></i>Participated in daily stand-up and weekly planning meetings as part of an Agile workflow.</li>
                               </ul>
                             </div>
                           </div>
@@ -269,16 +282,13 @@
                           </h2>
                           <div id="experienceAccordion-collapse-3" class="accordion-collapse collapse" aria-labelledby="experienceAccordion-heading-3" data-bs-parent="#experienceAccordion">
                             <div class="accordion-body">
-                              <strong>Undergraduate Teaching Assistant</strong>
+                              <div class="d-flex flex-column flex-lg-row justify-content-lg-between"><strong>Undergraduate Teaching Assistant</strong><em class="text-muted">January 2021 - December 2022</em></div>
+                              <div class="d-flex flex-column flex-lg-row justify-content-lg-between"><strong>Graduate Teaching Assistant</strong><em class="text-muted">January 2025 - Present</em></div>
                               <ul class="list-unstyled">
-                                <li><i class="bi bi-arrow-right-short me-1 text-primary"></i>Led one CNIT 470 Incident Response Management lab section covering policy writing, environment monitoring and analysis using IDS and SIEM, and incident response approaches and standards.</li>
-                                <li><i class="bi bi-arrow-right-short me-1 text-primary"></i>Provided feedback and guidance to students performing incident response in a simulated environment.</li>
-                                <li><i class="bi bi-arrow-right-short me-1 text-primary"></i>Wrote a ransomware simulation in Rust designed to demonstrate malware evasion and cryptographic flaws.</li>
-                                <hr>
-                                <li><i class="bi bi-arrow-right-short me-1 text-primary"></i>Led two CNIT 270 Cybersecurity Fundamentals lab section covering security policy and controls, attack methods, access control, authentication, cryptography, and network security.</li>
-                                <hr>
-                                <li><i class="bi bi-arrow-right-short me-1 text-primary"></i>Led one CNIT 176 Information Technology Architectures lab section covering logic gates, basic OS components, installation, and hardening, network topologies, and introductory Linux.</li>
-                                <li><i class="bi bi-arrow-right-short me-1 text-primary"></i>Provided feedback and guidance to students regarding semester long, final Raspberry Pi project.</li>
+                                <li><i class="bi bi-arrow-right-short me-1 text-primary"></i>Led one CNIT 470 Incident Response Management, two CNIT 270 Cybersecurity Fundamentals, four CNIT 255 OOP Intro, and one CNIT 176 IT Architectures lab sections.</li>
+                                <li><i class="bi bi-arrow-right-short me-1 text-primary"></i>Provided feedback and guidance to students regarding extended incident response in a simulated environment, core security concepts, OOP best practices, and a semester long Raspberry Pi project.</li>
+                                <li><i class="bi bi-arrow-right-short me-1 text-primary"></i>Wrote ransomware and Active Directory relay attack simulations in Rust to demonstrate malware evasion, cryptographic flaws, and provide realistic incident response artifacts.</li>
+                                <li><i class="bi bi-arrow-right-short me-1 text-primary"></i>Wrote a Gradescope autograder in Rust to enforce code standards and rubrics, standardized Typst lab manuals, and queue system in Typescript to streamline lab checkoff.</li>
                               </ul>
                             </div>
                           </div>
@@ -286,17 +296,15 @@
                         <div class="accordion-item">
                           <h2 class="accordion-header fs-2" id="experienceAccordion-heading-4">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#experienceAccordion-collapse-4" aria-expanded="false" aria-controls="experienceAccordion-collapse-4">
-                              <strong>Raytheon Technologies</strong>
+                              <strong>CircleCityCon</strong>
                             </button>
                           </h2>
                           <div id="experienceAccordion-collapse-4" class="accordion-collapse collapse" aria-labelledby="experienceAccordion-heading-4" data-bs-parent="#experienceAccordion">
                             <div class="accordion-body">
-                              <strong>Student Tech Intern</strong>
+                              <div class="d-flex flex-column flex-lg-row justify-content-lg-between"><strong>Volunteer Administrative Assistant</strong><em class="text-muted">2021 - 2023</em></div>
                               <ul class="list-unstyled">
-                                <li><i class="bi bi-arrow-right-short me-1 text-primary"></i>Enforced and audited AWS instance compliance against hardened Windows and Linux baselines on approximately thirty machines, with planned expanded deployment, utilizing Chef and Chef InSpec.</li>
-                                <li><i class="bi bi-arrow-right-short me-1 text-primary"></i>Produced user acceptance tests for a Perl program to streamline Terraform provisioning.</li>
-                                <li><i class="bi bi-arrow-right-short me-1 text-primary"></i>Performed manual and supervised automated patching to ensure rapid vulnerability remediation.</li>
-                                <li><i class="bi bi-arrow-right-short me-1 text-primary"></i>Participated in daily stand-up and weekly planning meetings as part of an Agile workflow.</li>
+                                <li><i class="bi bi-arrow-right-short me-1 text-primary"></i>Scheduled, documented, and summarized meetings within GSuite.</li>
+                                <li><i class="bi bi-arrow-right-short me-1 text-primary"></i>Organized and tracked leadership tasks day of convention.</li>
                               </ul>
                             </div>
                           </div>
@@ -309,12 +317,12 @@
                           </h2>
                           <div id="experienceAccordion-collapse-5" class="accordion-collapse collapse" aria-labelledby="experienceAccordion-heading-5" data-bs-parent="#experienceAccordion">
                             <div class="accordion-body">
-                              <strong>Summer Camp Counselor</strong>
+                              <div class="d-flex flex-column flex-lg-row justify-content-lg-between"><strong>Summer Camp Counselor</strong><em class="text-muted">June 2017, 2018</em></div>
                               <ul class="list-unstyled">
                                 <li><i class="bi bi-arrow-right-short me-1 text-primary"></i>Guided groups of 20+ children around center grounds to ensure safety.</li>
                                 <li><i class="bi bi-arrow-right-short me-1 text-primary"></i>Documented behavior and incidents and conducted verbal roll calls.</li>
                               </ul>
-                              <strong>Volunteer Art Teaching Assistant</strong>
+                              <div class="d-flex flex-column flex-lg-row justify-content-lg-between"><strong>Volunteer Art Teaching Assistant</strong><em class="text-muted">May 2017 - August 2018</em></div>
                               <ul class="list-unstyled">
                                 <li><i class="bi bi-arrow-right-short me-1 text-primary"></i>Encouraged creative expression through positive feedback and guided brainstorming.</li>
                                 <li><i class="bi bi-arrow-right-short me-1 text-primary"></i>Maintained the classroom setup and supplies to facilitate instruction.</li>
@@ -327,45 +335,32 @@
                 </div>
               </div>
 
+          <div class="col-lg-6 mb-4">
+            <div class="card p-3 shadow">
+              <div class="card-body">
+                <h2 class="card-title fs-2 mb-3">Awards</h2>
+                  <ul class="list-unstyled mb-0">
+                    <li class="mb-0"><h3 class="fs-5 mb-1">Competitions</h3></li>
+                    <li><i class="bi bi-award-fill me-2 text-warning"></i>Ranked 1st in BSides Fort Wayne CTF 2025</li>
+                    <li><i class="bi bi-award-fill me-2 text-warning"></i>Ranked 1st in BSides Chicago CTF 2025</li>
+                    <li><i class="bi bi-award-fill me-2 text-warning"></i>Ranked 1st in Hack The Box Blue Team CTF 2025</li>
+                    <li><i class="bi bi-award-fill me-2 text-warning"></i>Ranked 4th in Last Minute Blue Team CTF 2025</li>
+                    <li><i class="bi bi-award-fill me-2 text-warning"></i>Ranked 18th of 3658 Teams NCL 2022</li>
+                    <li><i class="bi bi-award-fill me-2 text-warning"></i>Purdue AITP Computing Challenge Day Systems Analysis and Design 3rd Place</li>
+                    <li class="mt-3 mb-0"><h3 class="fs-5 mb-1">Academics</h3></li>
+                    <li><i class="bi bi-award-fill me-2 text-warning"></i>Purdue Marquis Scholarship</li>
+                    <li><i class="bi bi-award-fill me-2 text-warning"></i>Purdue AITP Scholarship</li>
+                    <li><i class="bi bi-award-fill me-2 text-warning"></i>Purdue Polytechnic Dean's List</li>
+                  </ul>
+              </div>
             </div>
           </div>
 
-          <div class="col-lg-4">
-            <div class="row row-cols-1 g-4">
-
-              <div class="col">
-                <div class="card p-3 shadow">
-                  <div class="card-body">
-                    <h2 class="card-title fs-2 mb-3">Activities</h2>
-                      <ul class="list-unstyled mb-0">
-                        <li><i class="bi bi-people-fill me-2 text-primary"></i>Purdue Association of Information Technology Professionals</li>
-                        <li><i class="bi bi-people-fill me-2 text-primary"></i>Purdue Cyber Forensics</li>
-                      </ul>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col">
-                <div class="card p-3 shadow">
-                  <div class="card-body">
-                    <h2 class="card-title fs-2 mb-3">Awards</h2>
-                      <ul class="list-unstyled mb-0">
-                        <li><i class="bi bi-award-fill me-2 text-warning"></i>Purdue Marquis Scholarship</li>
-                        <li><i class="bi bi-award-fill me-2 text-warning"></i>Purdue Polytechnic Dean's List</li>
-                        <li><i class="bi bi-award-fill me-2 text-warning"></i>Ranked 1st in BSides Fort Wayne CTF 2025</li>
-                        <li><i class="bi bi-award-fill me-2 text-warning"></i>Ranked 18th of 3658 in Teams NCL 2022</li>
-                        <li><i class="bi bi-award-fill me-2 text-warning"></i>Purdue AITP Computing Challenge Day Systems Analysis and Design 3rd Place</li>
-                        <li><i class="bi bi-award-fill me-2 text-warning"></i>Purdue AITP Scholarship</li>
-                      </ul>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col">
-                <div class="card p-3 shadow">
-                  <div class="card-body">
-                    <h2 class="card-title fs-2 mb-3">Knowledge</h2>
-                      <div class="accordion" id="knowledgeAccordion">
+          <div class="col-lg-6 mb-4">
+            <div class="card p-3 shadow">
+              <div class="card-body">
+                <h2 class="card-title fs-2 mb-3">Knowledge</h2>
+                  <div class="accordion" id="knowledgeAccordion">
                         <div class="accordion-item">
                           <h2 class="accordion-header fs-2" id="knowledgeAccordion-heading-1">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#knowledgeAccordion-collapse-1" aria-expanded="true" aria-controls="knowledgeAccordion-collapse-1">
@@ -507,14 +502,11 @@
                           </div>
                         </div>
                       </div>
+                    </div>
                   </div>
                 </div>
-              </div>
 
-            </div>
-          </div>
-        </div>
-    </section>
+      </section>
 
     <div class="container-fluid parallax spacer">
       <div class="spacer-blur"></div>
@@ -749,6 +741,7 @@
 </body>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous"></script>
 <script defer src="js/color-modes.js"></script>
 <script defer src="js/index.js"></script>
 
