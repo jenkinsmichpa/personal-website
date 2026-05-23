@@ -91,14 +91,27 @@ function setupLightbox(lightBox) {
   });
 }
 
-function setupScrollSpyRefresh() {
-  document.addEventListener("click", (e) => {
-    if (e.target.closest(".nav-link")) {
-      setTimeout(() => {
-        bootstrap.ScrollSpy.getInstance(document.body)?.refresh();
-      }, 300);
+/* ScrollSpy */
+function setupScrollSpy() {
+  const links = document.querySelectorAll(
+    '#navbar [href^="#"]:not([href="#"])'
+  );
+  let active = null;
+  const onScroll = () => {
+    const scrollY = window.scrollY + 110;
+    let next = links[0];
+    for (const a of links) {
+      const el = document.getElementById(a.getAttribute("href").slice(1));
+      if (el && el.offsetTop <= scrollY + 1) next = a;
     }
-  });
+    if (next !== active) {
+      links.forEach((a) => a.classList.remove("active"));
+      next.classList.add("active");
+      active = next;
+    }
+  };
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
 }
 
 /* Main */
@@ -113,5 +126,23 @@ document.addEventListener("DOMContentLoaded", () => {
   setupNavbar(navbar);
   setupParallax(parallaxes);
   setupLightbox(lightBox);
-  setupScrollSpyRefresh();
+  setupScrollSpy();
+
+  const reflow = () => {
+    const c = document.querySelector('#about [data-masonry]');
+    if (c && typeof Masonry !== "undefined") {
+      Masonry.data(c)?.layout();
+      c.offsetHeight;
+    }
+  };
+
+  document.querySelectorAll("#about .accordion").forEach((el) => {
+    el.addEventListener("shown.bs.collapse", reflow);
+    el.addEventListener("hidden.bs.collapse", reflow);
+  });
+});
+
+window.addEventListener("load", () => {
+  const c = document.querySelector('#about [data-masonry]');
+  if (c) requestAnimationFrame(() => c.classList.add("masonry-ready"));
 });
