@@ -11,6 +11,18 @@ html {
   scroll-padding-top: 4rem;
 }
 
+#navbar[data-part='root'] {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+@media (max-width: 767.98px) {
+  #navbar[data-part='root'] {
+    padding-top: 6px;
+    padding-bottom: 6px;
+  }
+}
+
 body {
   overflow-x: hidden;
 }
