@@ -121,9 +121,9 @@
 <svelte:window onscroll={onScroll} />
 
 <nav
-  class="fixed bottom-0 left-0 right-0 z-50 md:hidden navbar-glass border-t border-surface-200-800 pb-[env(safe-area-inset-bottom,0px)] {dark
-    ? 'text-white/70'
-    : 'text-surface-800'}"
+  class="fixed bottom-0 left-0 right-0 z-50 md:hidden transition-all duration-500 pb-[env(safe-area-inset-bottom,0px)] {navTextClass} {scrolled
+    ? 'navbar-glass border-t border-surface-200-800'
+    : 'bg-transparent border-t border-transparent'}"
 >
   <div class="flex justify-around py-2">
     <a href="#home" class="flex flex-col items-center text-xs"><House class="size-5" />Home</a>
