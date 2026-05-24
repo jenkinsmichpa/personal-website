@@ -153,7 +153,7 @@
   ];
 </script>
 
-<section class="container-fluid py-16 border-t border-surface-200-800" id="about">
+<section class="container-fluid py-16 border-t border-b border-surface-200-800" id="about">
   <div class="max-w-6xl mx-auto px-4">
     <div class="columns-1 md:columns-2 gap-4 space-y-4">
       <div class="card p-4 preset-filled-surface-100-900 border border-surface-200-800 break-inside-avoid">

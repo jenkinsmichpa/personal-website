@@ -29,7 +29,7 @@
   });
 </script>
 
-<section class="py-16 border-t border-surface-200-800" id="contact">
+<section class="py-16 border-t border-b border-surface-200-800" id="contact">
   <div class="max-w-6xl mx-auto px-4">
     <h2 class="h1 text-center mb-6">Contact</h2>
     <div class="flex justify-center">

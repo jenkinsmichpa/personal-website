@@ -16,7 +16,7 @@
   }
 </script>
 
-<section class="py-16 border-t border-surface-200-800" id="portfolio">
+<section class="py-16 border-t border-b border-surface-200-800" id="portfolio">
   <div class="max-w-6xl mx-auto px-4">
     <h2 class="h1 text-center mb-6">Art Portfolio</h2>
 
