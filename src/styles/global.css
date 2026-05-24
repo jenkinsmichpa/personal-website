@@ -1,0 +1,150 @@
+@import 'tailwindcss';
+
+@import '@skeletonlabs/skeleton';
+@import '@skeletonlabs/skeleton/themes/fennec';
+@import '@skeletonlabs/skeleton-svelte';
+
+@custom-variant dark (&:where([data-color-scheme="dark"], [data-color-scheme="dark"] *));
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.navbar-glass {
+  background: color-mix(in oklab, rgb(0 0 0) 30%, transparent);
+  box-shadow: 0 0px 30px color-mix(in oklab, rgb(0 0 0) 30%, transparent) inset;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+html[data-color-scheme="light"] .navbar-glass {
+  background: color-mix(in oklab, var(--color-surface-50) 50%, transparent);
+  box-shadow: 0 0px 30px color-mix(in oklab, var(--color-surface-50) 30%, transparent) inset;
+}
+
+.home-section {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  overflow: hidden;
+  background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), var(--bg-home) center 0 / cover no-repeat;
+}
+
+.spacer-section {
+  height: 10vh;
+  height: 10svh;
+  min-height: 60px;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), var(--bg-spacer) center 0 / cover no-repeat;
+}
+
+.spacer-blur {
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  height: 100%;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.logo-stroke {
+  fill-opacity: 0;
+  stroke-dasharray: 360.872;
+  stroke-dashoffset: 360.872;
+  animation: draw 2.5s ease-in-out 1s forwards;
+}
+
+.logo-fill {
+  fill-opacity: 0;
+  animation: fillIn 2.5s ease-in-out 1s forwards;
+}
+
+@keyframes draw {
+  0% { stroke-dashoffset: 360.872; }
+  80% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: 0; }
+}
+
+@keyframes fillIn {
+  0% { fill-opacity: 0; }
+  80% { fill-opacity: 0; }
+  100% { fill-opacity: 1; }
+}
+
+.portfolio-img {
+  transition: transform 0.2s;
+}
+
+.portfolio-img:hover {
+  transform: scale(1.05);
+}
+
+.purdue-gold {
+  color: #98700d;
+  font-weight: bold;
+}
+
+#navbar .nav-link {
+  position: relative;
+}
+
+#navbar .nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s ease;
+}
+
+#navbar .nav-link:hover::after,
+#navbar .nav-link.active::after {
+  transform: scaleX(1);
+}
+
+@media (max-width: 767.98px) {
+  #navbar .nav-link::after {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .logo-stroke {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+  .logo-fill {
+    animation: none;
+    fill-opacity: 1;
+  }
+  .portfolio-img {
+    transition: none;
+  }
+  .portfolio-img:hover {
+    transform: none;
+  }
+}
+
+/* Hide obfuscation spans in email */
+#email-target span {
+  display: none;
+}
+
+/* Prevent brightness changes on image buttons */
+.btn.p-0:not(:disabled):hover,
+.btn-icon.p-0:not(:disabled):hover {
+  filter: none !important;
+}

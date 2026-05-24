@@ -1,3 +1,3 @@
 # Personal Website
 
-See <https://jenkinsmichpa.com>
+See https://jenkinsmichpa.com

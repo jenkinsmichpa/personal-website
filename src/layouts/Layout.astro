@@ -1,0 +1,104 @@
+---
+import '../styles/global.css';
+import { AstroSeo } from '@astrolib/seo';
+import { getImage } from 'astro:assets';
+import portrait from '@assets/images/michaelJenkinsPortrait.jpg';
+import homeBg from '@assets/images/triliumPoisonIvyMultiplied.jpg';
+import spacerBg from '@assets/images/poisonIvyMultiplied.jpg';
+const optimizedHomeBg = await getImage({ src: homeBg, format: 'webp', width: 2560 });
+const optimizedSpacerBg = await getImage({ src: spacerBg, format: 'webp', width: 2560 });
+const bgStyle = `--bg-home: url(${optimizedHomeBg.src}); --bg-spacer: url(${optimizedSpacerBg.src})`;
+const {
+  title = 'Michael Jenkins',
+  description = 'Michael Jenkins is a graduate student at Purdue University, pursuing a Masters degree in Computer and Information Technology with a focus on Cybersecurity.'
+} = Astro.props;
+const image = new URL(portrait.src, Astro.url).href;
+const url = Astro.url.href;
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Michael Jenkins',
+  url: 'https://jenkinsmichpa.com',
+  image,
+  jobTitle: 'Cyber Security Consulting Senior Staff',
+  alumniOf: { '@type': 'EducationalOrganization', name: 'Purdue University' },
+  sameAs: [
+    'https://www.linkedin.com/in/jenkinsmichpa',
+    'https://github.com/jenkinsmichpa',
+    'https://infosec.exchange/@jenkinsmichpa',
+    'https://bsky.app/profile/jenkinsmichpa.bsky.social',
+    'https://x.com/jenkinsmichpa',
+    'https://www.instagram.com/jenkinsmichpa/'
+  ]
+};
+---
+
+<!doctype html>
+<html lang="en" data-theme="fennec" style={bgStyle}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <AstroSeo
+      title={title}
+      description={description}
+      canonical={url === 'https://jenkinsmichpa.com/' ? 'https://jenkinsmichpa.com' : url}
+      nofollow={false}
+      additionalMetaTags={[
+        { name: 'author', content: 'Michael Jenkins' },
+        {
+          name: 'keywords',
+          content: 'Michael Jenkins, Cybersecurity, Purdue, Portfolio, Resume, Penetration Testing, InfoSec'
+        }
+      ]}
+      openGraph={{
+        url,
+        type: 'website',
+        title,
+        description,
+        images: [{ url: image, width: portrait.width, height: portrait.height, alt: 'Michael Jenkins Portrait' }],
+        site_name: 'Michael Jenkins'
+      }}
+      twitter={{
+        cardType: 'summary_large_image'
+      }}
+    />
+    <link rel="preload" href={optimizedHomeBg.src} as="image" type="image/webp" />
+    <script is:inline>
+      (function () {
+        var stored = localStorage.getItem('theme');
+        if (stored !== 'dark' && stored !== 'light') {
+          stored = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.dataset.colorScheme = stored;
+        document.documentElement.style.colorScheme = stored;
+      })();
+    </script>
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+  </head>
+  <body class="bg-surface-50-950 text-surface-900-100">
+    <main><slot /></main>
+    <script>
+      const els = document.querySelectorAll<HTMLElement>('.parallax-section');
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (els.length && !prefersReducedMotion) {
+        let ticking = false;
+        const items = Array.from(els).map((el) => ({ el, offsetTop: el.offsetTop }));
+        const update = () => {
+          const scrollY = window.scrollY;
+          for (const item of items) {
+            item.el.style.backgroundPosition = 'center ' + (scrollY - item.offsetTop) / 3 + 'px';
+          }
+          ticking = false;
+        };
+        const onScroll = () => {
+          if (!ticking) {
+            requestAnimationFrame(update);
+            ticking = true;
+          }
+        };
+        update();
+        window.addEventListener('scroll', onScroll, { passive: true });
+      }
+    </script>
+  </body>
+</html>

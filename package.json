@@ -1,0 +1,52 @@
+{
+  "name": "personal-website-new",
+  "type": "module",
+  "private": true,
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "lint": "prettier --check . && eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "check": "astro check && svelte-check",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.2",
+    "@astrojs/svelte": "^8.1.1",
+    "@astrolib/seo": "^1.0.0-beta.8",
+    "@lucide/svelte": "^1.16.0",
+    "@skeletonlabs/skeleton": "^4.15.2",
+    "@skeletonlabs/skeleton-svelte": "^4.15.2",
+    "@tailwindcss/vite": "^4.3.0",
+    "astro": "^6.3.7",
+    "astro-favicons": "^3.1.6",
+    "simple-icons": "^16.20.0",
+    "svelte": "^5.55.9",
+    "tailwindcss": "^4.3.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.9",
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.4.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-astro": "^1.7.0",
+    "eslint-plugin-svelte": "^3.17.1",
+    "globals": "^17.6.0",
+    "prettier": "^3.8.3",
+    "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-svelte": "^4.0.1",
+    "prettier-plugin-tailwindcss": "^0.8.0",
+    "svelte-check": "^4.4.8",
+    "svelte-eslint-parser": "^1.2.0",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.59.4"
+  },
+  "engines": {
+    "bun": ">=1.3.0"
+  }
+}
