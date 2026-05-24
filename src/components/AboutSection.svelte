@@ -30,8 +30,8 @@
       id: '1',
       company: 'Crowe LLP',
       roles: [
-        { title: 'Cyber Security Consulting Staff', period: 'January 2023 - August 2025' },
         { title: 'Cyber Security Consulting Senior Staff', period: 'August 2025' },
+        { title: 'Cyber Security Consulting Staff', period: 'January 2023 - August 2025' },
         { title: 'Cyber Security Consulting Intern', period: 'Summer 2021, 2022' }
       ],
       details: [
@@ -58,8 +58,8 @@
       id: '3',
       company: 'Purdue University',
       roles: [
-        { title: 'Undergraduate Teaching Assistant', period: 'January 2021 - December 2022' },
-        { title: 'Graduate Teaching Assistant', period: 'January 2025 - Present' }
+        { title: 'Graduate Teaching Assistant', period: 'January 2025 - Present' },
+        { title: 'Undergraduate Teaching Assistant', period: 'January 2021 - December 2022' }
       ],
       details: [
         'Led one CNIT 470 Incident Response Management, two CNIT 270 Cybersecurity Fundamentals, four CNIT 255 OOP Intro, and one CNIT 176 IT Architectures lab sections.',
@@ -113,7 +113,7 @@
       title: 'Security Assessment',
       icon: ShieldCheck,
       iconClass: 'text-primary-500',
-      items: ['NIST CSF', 'ISO 27000', 'HIPAA', 'OpenScap']
+      items: ['NIST CSF', 'NIST SP 800-53', 'ISO 27000', 'HIPAA', 'OpenScap']
     },
     {
       id: '4',
@@ -169,13 +169,13 @@
           <div class="space-y-3 text-sm">
             <p>
               Michael Jenkins is a graduate student at Purdue University, pursuing a Masters degree in Computer and
-              Information Technology with a focus on Cybersecurity. He previously earned his bachelor's degree in
+              Information Technology with a focus on Cybersecurity. He previously earned his Bachelors degree in
               Cybersecurity and Network Engineering Technology from Purdue, graduating with highest distinction.
             </p>
             <p>
-              Michael formerly worked as a senior consultant in the Cyber Security unit of Crowe LLP's Consulting
-              practice, where he delivered a range of information security services including security assessments,
-              penetration testing, and virtual security officer support to clients across multiple industries.
+              Michael worked as a senior consultant in the Cyber Security unit of Crowe LLP's Consulting practice, where
+              he delivered a range of information security services including security assessments, penetration testing,
+              and virtual security officer support to clients across multiple industries.
             </p>
             <p>
               Passionate about lifelong learning, Michael spends his free time expanding his HomeLab and smart home
@@ -216,14 +216,14 @@
           </li>
           <li>
             <div class="flex flex-col text-sm">
-              <span>Bachelor of Science: Cybersecurity and Network Engineering Technology</span>
-              <em class="opacity-60">2018 - 2022</em>
+              <span>Master of Science: Computer and Information Technology</span>
+              <em class="opacity-60">2025 - 2027</em>
             </div>
           </li>
           <li>
             <div class="flex flex-col text-sm">
-              <span>Master of Science: Computer and Information Technology</span>
-              <em class="opacity-60">2025 - 2027</em>
+              <span>Bachelor of Science: Cybersecurity and Network Engineering Technology</span>
+              <em class="opacity-60">2018 - 2022</em>
             </div>
           </li>
           <li>
@@ -247,12 +247,12 @@
             <Shield class="size-4 text-primary-500" /> Purdue Cyber Forensics
           </h3>
           <div class="flex flex-col sm:flex-row sm:justify-between text-sm">
-            <span>Member</span>
-            <em class="opacity-60">August 2018 - December 2022</em>
-          </div>
-          <div class="flex flex-col sm:flex-row sm:justify-between text-sm">
             <span>Vice-President/Treasurer</span>
             <em class="opacity-60">August 2021 - May 2022</em>
+          </div>
+          <div class="flex flex-col sm:flex-row sm:justify-between text-sm">
+            <span>Member</span>
+            <em class="opacity-60">August 2018 - Present</em>
           </div>
           <ul class="mt-2 space-y-1">
             <li class="text-sm">
