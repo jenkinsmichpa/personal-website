@@ -20,7 +20,11 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
     ssr: {
-      noExternal: ['@skeletonlabs/skeleton-svelte', 'simple-icons']
+      noExternal: [
+        '@skeletonlabs/skeleton-svelte',
+        '@fortawesome/fontawesome-svg-core',
+        '@fortawesome/free-brands-svg-icons'
+      ]
     },
     optimizeDeps: {
       include: ['@skeletonlabs/skeleton-svelte']

@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Accordion } from '@skeletonlabs/skeleton-svelte';
   import { slide } from 'svelte/transition';
-  import { linkedinPath } from '@lib/linkedin';
+  import { faSquareLinkedin } from '@fortawesome/free-brands-svg-icons';
   let { portraitSrc }: { portraitSrc: string } = $props();
   import {
     ChevronDown,
@@ -196,8 +196,12 @@
               target="_blank"
               class="btn btn-base preset-filled-primary-500"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"
-                ><path d={linkedinPath} /></svg
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 {faSquareLinkedin.icon[0]} {faSquareLinkedin.icon[1]}"
+                fill="currentColor"><path d={String(faSquareLinkedin.icon[4])} /></svg
               >
               <span>LinkedIn</span>
             </a>

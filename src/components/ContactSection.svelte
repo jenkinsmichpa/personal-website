@@ -1,7 +1,13 @@
 <script lang="ts">
   import { Mail } from '@lucide/svelte';
-  import { siGithub, siInstagram, siX, siMastodon, siBluesky } from 'simple-icons';
-  import { linkedinPath } from '@lib/linkedin';
+  import {
+    faGithub,
+    faInstagram,
+    faTwitter,
+    faMastodon,
+    faBluesky,
+    faSquareLinkedin
+  } from '@fortawesome/free-brands-svg-icons';
 
   function rot13(s: string) {
     return s.replace(/[a-zA-Z]/g, (c) =>
@@ -52,9 +58,9 @@
               xmlns="http://www.w3.org/2000/svg"
               width="20"
               height="20"
-              viewBox="0 0 24 24"
+              viewBox="0 0 {faSquareLinkedin.icon[0]} {faSquareLinkedin.icon[1]}"
               fill="currentColor"
-              class="shrink-0 text-primary-500"><path d={linkedinPath} /></svg
+              class="shrink-0 text-primary-500"><path d={String(faSquareLinkedin.icon[4])} /></svg
             >
             <a
               href="https://www.linkedin.com/in/jenkinsmichpa"
@@ -68,9 +74,9 @@
               xmlns="http://www.w3.org/2000/svg"
               width="20"
               height="20"
-              viewBox="0 0 24 24"
+              viewBox="0 0 {faGithub.icon[0]} {faGithub.icon[1]}"
               fill="currentColor"
-              class="shrink-0 text-primary-500"><path d={siGithub.path} /></svg
+              class="shrink-0 text-primary-500"><path d={String(faGithub.icon[4])} /></svg
             >
             <a
               href="https://github.com/jenkinsmichpa"
@@ -84,9 +90,9 @@
               xmlns="http://www.w3.org/2000/svg"
               width="20"
               height="20"
-              viewBox="0 0 24 24"
+              viewBox="0 0 {faMastodon.icon[0]} {faMastodon.icon[1]}"
               fill="currentColor"
-              class="shrink-0 text-primary-500"><path d={siMastodon.path} /></svg
+              class="shrink-0 text-primary-500"><path d={String(faMastodon.icon[4])} /></svg
             >
             <a
               rel="me noopener noreferrer"
@@ -100,9 +106,9 @@
               xmlns="http://www.w3.org/2000/svg"
               width="20"
               height="20"
-              viewBox="0 0 24 24"
+              viewBox="0 0 {faBluesky.icon[0]} {faBluesky.icon[1]}"
               fill="currentColor"
-              class="shrink-0 text-primary-500"><path d={siBluesky.path} /></svg
+              class="shrink-0 text-primary-500"><path d={String(faBluesky.icon[4])} /></svg
             >
             <a
               href="https://bsky.app/profile/jenkinsmichpa.bsky.social"
@@ -116,9 +122,9 @@
               xmlns="http://www.w3.org/2000/svg"
               width="20"
               height="20"
-              viewBox="0 0 24 24"
+              viewBox="0 0 {faTwitter.icon[0]} {faTwitter.icon[1]}"
               fill="currentColor"
-              class="shrink-0 text-primary-500"><path d={siX.path} /></svg
+              class="shrink-0 text-primary-500"><path d={String(faTwitter.icon[4])} /></svg
             >
             <a href="https://x.com/jenkinsmichpa" target="_blank" rel="noopener noreferrer" class="text-sm no-underline"
               >x.com/jenkinsmichpa</a
@@ -129,9 +135,9 @@
               xmlns="http://www.w3.org/2000/svg"
               width="20"
               height="20"
-              viewBox="0 0 24 24"
+              viewBox="0 0 {faInstagram.icon[0]} {faInstagram.icon[1]}"
               fill="currentColor"
-              class="shrink-0 text-primary-500"><path d={siInstagram.path} /></svg
+              class="shrink-0 text-primary-500"><path d={String(faInstagram.icon[4])} /></svg
             >
             <a
               href="https://www.instagram.com/jenkinsmichpa/"
