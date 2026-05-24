@@ -32,17 +32,17 @@
     const links = document.querySelectorAll('#navbar .nav-link');
     let cleanupScrollspy = () => {};
     if (sections.length && links.length) {
+      const OFFSET = 110;
       function updateActive() {
-        const scrollY = window.scrollY + 110;
         let current = links[0];
         for (const a of links) {
           const id = a.getAttribute('href')?.slice(1);
-          if (id) {
-            const el = document.getElementById(id);
-            if (el && el.offsetTop <= scrollY + 1) current = a;
-          }
+          if (!id) continue;
+          const el = document.getElementById(id);
+          if (!el) continue;
+          if (el.getBoundingClientRect().top <= OFFSET) current = a;
         }
-        if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 5) {
+        if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2) {
           current = links[links.length - 1];
         }
         links.forEach((a) => a.classList.remove('active'));
