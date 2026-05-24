@@ -59,7 +59,7 @@
 </script>
 
 <AppBar
-  class="fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 border-b {navTextClass} {scrolled
+  class="fixed top-0 left-0 right-0 z-50 w-full transition-all duration-500 border-b {navTextClass} {scrolled
     ? 'navbar-glass border-surface-200-800'
     : 'bg-transparent border-transparent'}"
   id="navbar"
