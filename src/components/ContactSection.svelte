@@ -22,7 +22,6 @@
     const el = document.getElementById('email-target');
     if (el) {
       el.innerHTML = raw;
-      // Strip spans + content for mailto href
       const clean = raw.replace(/<span[^>]*>.*?<\/span>/g, '');
       const correct = decodeEntities(clean).trim().split('').reverse().join('');
       el.setAttribute('href', `mailto:${correct}`);

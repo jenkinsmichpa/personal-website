@@ -74,31 +74,21 @@ const structuredData = {
       })();
     </script>
     <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+    <style is:inline>
+      @keyframes parallax-bg {
+        from { background-position: center 0; }
+        to { background-position: center 33.3svh; }
+      }
+      @media (prefers-reduced-motion: no-preference) {
+        .home-section::before {
+          animation: parallax-bg linear;
+          animation-timeline: scroll(root);
+          animation-range: 0svh 100svh;
+        }
+      }
+    </style>
   </head>
   <body class="bg-surface-50-950 text-surface-900-100">
     <main><slot /></main>
-    <script>
-      const els = document.querySelectorAll<HTMLElement>('.parallax-section');
-      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (els.length && !prefersReducedMotion) {
-        let ticking = false;
-        const items = Array.from(els).map((el) => ({ el, offsetTop: el.offsetTop }));
-        const update = () => {
-          const scrollY = window.scrollY;
-          for (const item of items) {
-            item.el.style.backgroundPosition = 'center ' + (scrollY - item.offsetTop) / 3 + 'px';
-          }
-          ticking = false;
-        };
-        const onScroll = () => {
-          if (!ticking) {
-            requestAnimationFrame(update);
-            ticking = true;
-          }
-        };
-        update();
-        window.addEventListener('scroll', onScroll, { passive: true });
-      }
-    </script>
   </body>
 </html>
