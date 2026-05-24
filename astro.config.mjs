@@ -8,7 +8,11 @@ export default defineConfig({
   site: 'https://jenkinsmichpa.com',
   output: 'static',
   integrations: [
-    svelte(),
+    svelte({
+      compilerOptions: {
+        discloseVersion: false
+      }
+    }),
     favicons({
       name: 'Michael Jenkins',
       short_name: 'MJ',
