@@ -27,7 +27,6 @@
     const scheme = document.documentElement.dataset.colorScheme;
     dark = scheme === 'dark';
     scrolled = window.scrollY > 80;
-    window.addEventListener('scroll', onScroll, { passive: true });
 
     const sections = document.querySelectorAll('section[id]');
     const links = document.querySelectorAll('#navbar .nav-link');
@@ -54,7 +53,6 @@
       cleanupScrollspy = () => window.removeEventListener('scroll', updateActive);
     }
     return () => {
-      window.removeEventListener('scroll', onScroll);
       cleanupScrollspy();
     };
   });
@@ -119,6 +117,8 @@
     </AppBar.Trail>
   </AppBar.Toolbar>
 </AppBar>
+
+<svelte:window onscroll={onScroll} />
 
 <nav
   class="fixed bottom-0 left-0 right-0 z-50 md:hidden navbar-glass border-t border-surface-200-800 {dark
