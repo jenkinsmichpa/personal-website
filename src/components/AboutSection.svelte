@@ -156,7 +156,6 @@
 <section class="container-fluid py-16 border-t border-surface-200-800" id="about">
   <div class="max-w-6xl mx-auto px-4">
     <div class="columns-1 md:columns-2 gap-4 space-y-4">
-      <!-- Profile Card -->
       <div class="card p-4 preset-filled-surface-100-900 border border-surface-200-800 break-inside-avoid">
         <img
           src={portraitSrc}
@@ -206,7 +205,6 @@
         </div>
       </div>
 
-      <!-- Education -->
       <div class="card p-4 preset-filled-surface-100-900 border border-surface-200-800 break-inside-avoid">
         <h2 class="h3 mb-3">Education</h2>
         <ul class="space-y-1">
@@ -242,7 +240,6 @@
         </ul>
       </div>
 
-      <!-- Activities -->
       <div class="card p-4 preset-filled-surface-100-900 border border-surface-200-800 break-inside-avoid">
         <h2 class="h3 mb-3">Activities</h2>
         <div>
@@ -270,7 +267,6 @@
         </div>
       </div>
 
-      <!-- Work Experience -->
       <div class="card p-4 preset-filled-surface-100-900 border border-surface-200-800 break-inside-avoid">
         <h2 class="h3 mb-3">Work Experience</h2>
         <Accordion value={experienceValue} onValueChange={(e) => (experienceValue = e.value)}>
@@ -310,7 +306,6 @@
         </Accordion>
       </div>
 
-      <!-- Awards -->
       <div class="card p-4 preset-filled-surface-100-900 border border-surface-200-800 break-inside-avoid">
         <h2 class="h3 mb-3">Awards</h2>
         <h3 class="font-bold text-sm mb-1 flex items-center gap-1">
@@ -351,7 +346,6 @@
         </ul>
       </div>
 
-      <!-- Knowledge / Skills -->
       <div class="card p-4 preset-filled-surface-100-900 border border-surface-200-800 break-inside-avoid">
         <h2 class="h3 mb-3">Knowledge</h2>
         <Accordion value={knowledgeValue} onValueChange={(e) => (knowledgeValue = e.value)}>

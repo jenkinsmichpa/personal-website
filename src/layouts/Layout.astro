@@ -76,8 +76,12 @@ const structuredData = {
     <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
     <style is:inline>
       @keyframes parallax-bg {
-        from { background-position: center 0; }
-        to { background-position: center 33.3svh; }
+        from {
+          background-position: center 0;
+        }
+        to {
+          background-position: center 33.3svh;
+        }
       }
       @media (prefers-reduced-motion: no-preference) {
         .home-section::before {

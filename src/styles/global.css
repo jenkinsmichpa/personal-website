@@ -155,12 +155,10 @@ body {
   }
 }
 
-/* Hide obfuscation spans in email */
 #email-target span {
   display: none;
 }
 
-/* Prevent brightness changes on image buttons */
 .btn.p-0:not(:disabled):hover,
 .btn-icon.p-0:not(:disabled):hover {
   filter: none !important;
