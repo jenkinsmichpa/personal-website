@@ -52,6 +52,19 @@ body {
   pointer-events: none;
 }
 
+@keyframes parallax-bg {
+  from { background-position: center 0; }
+  to { background-position: center 33.3svh; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .home-section::before {
+    animation: parallax-bg linear;
+    animation-timeline: scroll(root);
+    animation-range: 0svh 100svh;
+  }
+}
+
 .spacer-section {
   height: 10vh;
   height: 10svh;
