@@ -2,7 +2,6 @@
   import { Accordion } from '@skeletonlabs/skeleton-svelte';
   import { slide } from 'svelte/transition';
   import { faSquareLinkedin } from '@fortawesome/free-brands-svg-icons';
-  let { portraitSrc }: { portraitSrc: string } = $props();
   import {
     ChevronDown,
     ChevronRight,
@@ -21,6 +20,8 @@
     Map,
     Shield
   } from '@lucide/svelte';
+
+  let { portraitSrc }: { portraitSrc: string } = $props();
 
   let experienceValue = $state(['1']);
   let knowledgeValue = $state(['1']);
