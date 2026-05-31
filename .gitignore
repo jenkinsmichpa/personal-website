@@ -29,8 +29,8 @@ report.[0-9]_.[0-9]_.[0-9]_.[0-9]_.json
 .astro
 .wrangler
 
-# IntelliJ based IDEs
-.idea
-
-# Finder folder config
+# OS / IDEs
 .DS_Store
+.idea
+.vscode
+.pi-lens
