@@ -1,7 +1,16 @@
+# Build output
 dist/
 .astro/
 .wrangler/
+
+# Dependencies
 node_modules/
+
+# Package managers
 *.lock
+
+# Logs
 *.log
+
+# Stylesheets (prettier-plugin-tailwindcss handles)
 *.css

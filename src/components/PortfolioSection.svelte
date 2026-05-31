@@ -1,17 +1,17 @@
 <script lang="ts">
-  import { SegmentedControl } from '@skeletonlabs/skeleton-svelte';
-  import LightboxDialog from './LightboxDialog.svelte';
+  import { SegmentedControl } from "@skeletonlabs/skeleton-svelte";
+  import LightboxDialog from "./LightboxDialog.svelte";
 
   let { data }: { data: Array<Array<{ fullSrc: string; alt: string; thumb: { src: string } }>> } = $props();
 
-  let page = $state<string | null>('1');
-  let lightboxSrc = $state('');
-  let lightboxAlt = $state('');
+  let page = $state<string | null>("1");
+  let lightboxSrc = $state("");
+  let lightboxAlt = $state("");
   let lightboxOpen = $state(false);
 
   function openLightbox(fullSrc: string, alt: string) {
     lightboxSrc = fullSrc;
-    lightboxAlt = alt + ' - Full Size';
+    lightboxAlt = alt + " - Full Size";
     lightboxOpen = true;
   }
 </script>

@@ -1,10 +1,10 @@
 <script lang="ts">
-  import { AppBar } from '@skeletonlabs/skeleton-svelte';
-  import { Sun, Moon, House, User, LayoutGrid, Mail } from '@lucide/svelte';
+  import { AppBar } from "@skeletonlabs/skeleton-svelte";
+  import { Sun, Moon, House, User, LayoutGrid, Mail } from "@lucide/svelte";
 
   let scrolled = $state(false);
   let dark = $state(false);
-  let navTextClass = $derived(scrolled && !dark ? 'text-surface-900' : 'text-white');
+  let navTextClass = $derived(scrolled && !dark ? "text-surface-900" : "text-white");
 
   function onScroll() {
     scrolled = window.scrollY > 80;
@@ -13,44 +13,46 @@
   function toggleTheme() {
     dark = !dark;
     if (dark) {
-      document.documentElement.dataset.colorScheme = 'dark';
-      document.documentElement.style.colorScheme = 'dark';
-      localStorage.setItem('theme', 'dark');
+      document.documentElement.dataset.colorScheme = "dark";
+      document.documentElement.style.colorScheme = "dark";
+      localStorage.setItem("theme", "dark");
     } else {
-      document.documentElement.dataset.colorScheme = 'light';
-      document.documentElement.style.colorScheme = 'light';
-      localStorage.setItem('theme', 'light');
+      document.documentElement.dataset.colorScheme = "light";
+      document.documentElement.style.colorScheme = "light";
+      localStorage.setItem("theme", "light");
     }
   }
 
   $effect(() => {
     const scheme = document.documentElement.dataset.colorScheme;
-    dark = scheme === 'dark';
+    dark = scheme === "dark";
     scrolled = window.scrollY > 80;
 
-    const sections = document.querySelectorAll('section[id]');
-    const links = document.querySelectorAll('#navbar .nav-link');
+    const sections = document.querySelectorAll("section[id]");
+    const links = document.querySelectorAll("#navbar .nav-link");
     let cleanupScrollspy = () => {};
     if (sections.length && links.length) {
       const OFFSET = 110;
       function updateActive() {
         let current = links[0];
+        if (!current) return;
         for (const a of links) {
-          const id = a.getAttribute('href')?.slice(1);
+          const id = a.getAttribute("href")?.slice(1);
           if (!id) continue;
           const el = document.getElementById(id);
           if (!el) continue;
           if (el.getBoundingClientRect().top <= OFFSET) current = a;
         }
         if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2) {
-          current = links[links.length - 1];
+          const last = links[links.length - 1];
+          if (last) current = last;
         }
-        links.forEach((a) => a.classList.remove('active'));
-        current.classList.add('active');
+        links.forEach((a) => a.classList.remove("active"));
+        current.classList.add("active");
       }
       updateActive();
-      window.addEventListener('scroll', updateActive, { passive: true });
-      cleanupScrollspy = () => window.removeEventListener('scroll', updateActive);
+      window.addEventListener("scroll", updateActive, { passive: true });
+      cleanupScrollspy = () => window.removeEventListener("scroll", updateActive);
     }
     return () => {
       cleanupScrollspy();

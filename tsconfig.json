@@ -1,18 +1,13 @@
 {
-  "extends": "astro/tsconfigs/strict",
+  "extends": "astro/tsconfigs/strictest",
   "compilerOptions": {
-    "jsx": "react-jsx",
-    "verbatimModuleSyntax": true,
     "paths": {
       "@components/*": ["./src/components/*"],
       "@layouts/*": ["./src/layouts/*"],
       "@lib/*": ["./src/lib/*"],
       "@assets/*": ["./src/assets/*"]
-    },
-    "noFallthroughCasesInSwitch": true,
-    "noImplicitOverride": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true
+    }
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.astro", "src/**/*.svelte", "src/**/*.d.ts"]
+  "include": [".astro/types.d.ts", "src/**/*.ts", "src/**/*.astro", "src/**/*.svelte"],
+  "exclude": ["dist"]
 }

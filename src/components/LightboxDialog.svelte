@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Dialog, Portal } from '@skeletonlabs/skeleton-svelte';
+  import { Dialog, Portal } from "@skeletonlabs/skeleton-svelte";
 
   let { src, alt, open, onClose }: { src: string; alt: string; open: boolean; onClose: () => void } = $props();
 </script>

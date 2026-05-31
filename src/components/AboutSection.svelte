@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { Accordion } from '@skeletonlabs/skeleton-svelte';
-  import { slide } from 'svelte/transition';
-  import { faSquareLinkedin } from '@fortawesome/free-brands-svg-icons';
+  import { Accordion } from "@skeletonlabs/skeleton-svelte";
+  import { slide } from "svelte/transition";
+  import { faSquareLinkedin } from "@fortawesome/free-brands-svg-icons";
   import {
     ChevronDown,
     ChevronRight,
@@ -19,137 +19,137 @@
     Hammer,
     Map,
     Shield
-  } from '@lucide/svelte';
+  } from "@lucide/svelte";
 
   let { portraitSrc }: { portraitSrc: string } = $props();
 
-  let experienceValue = $state(['1']);
-  let knowledgeValue = $state(['1']);
+  let experienceValue = $state(["1"]);
+  let knowledgeValue = $state(["1"]);
 
   const experienceItems = [
     {
-      id: '1',
-      company: 'Crowe LLP',
+      id: "1",
+      company: "Crowe LLP",
       roles: [
-        { title: 'Cyber Security Consulting Senior Staff', period: 'August 2025' },
-        { title: 'Cyber Security Consulting Staff', period: 'January 2023 - August 2025' },
-        { title: 'Cyber Security Consulting Intern', period: 'Summer 2021, 2022' }
+        { title: "Cyber Security Consulting Senior Staff", period: "August 2025" },
+        { title: "Cyber Security Consulting Staff", period: "January 2023 - August 2025" },
+        { title: "Cyber Security Consulting Intern", period: "Summer 2021, 2022" }
       ],
       details: [
-        'Led and performed Internal, External, and Web Application Penetration Testing for clients in the Public Sector, Financial Services, Healthcare, Manufacturing, and Life Sciences industries.',
-        'Conducted cybersecurity gap and maturity assessments against industry frameworks and regulations including NIST CSF, NIST SP 800-53, ISO 27000, NYCRR, CUI, and HIPAA.',
-        'Performed technical audits against hardened baselines of diverse systems, services, and network configurations, including Linux, Windows, Entra ID, and Active Directory.',
-        'Developed methodology, scripts, and integrated control frameworks to support new forms of assessment.',
-        'Provided virtual security officer services to a manufacturing organization including policy drafting, risk management activities, and acquisition transition.',
-        'Spearheaded IaC project to modernize and automate Azure and vSphere engagement resource management using Terraform, Ansible, Packer, and GitLab CI/CD pipelines.'
+        "Led and performed Internal, External, and Web Application Penetration Testing for clients in the Public Sector, Financial Services, Healthcare, Manufacturing, and Life Sciences industries.",
+        "Conducted cybersecurity gap and maturity assessments against industry frameworks and regulations including NIST CSF, NIST SP 800-53, ISO 27000, NYCRR, CUI, and HIPAA.",
+        "Performed technical audits against hardened baselines of diverse systems, services, and network configurations, including Linux, Windows, Entra ID, and Active Directory.",
+        "Developed methodology, scripts, and integrated control frameworks to support new forms of assessment.",
+        "Provided virtual security officer services to a manufacturing organization including policy drafting, risk management activities, and acquisition transition.",
+        "Spearheaded IaC project to modernize and automate Azure and vSphere engagement resource management using Terraform, Ansible, Packer, and GitLab CI/CD pipelines."
       ]
     },
     {
-      id: '2',
-      company: 'Raytheon Technologies',
-      roles: [{ title: 'Student Tech Intern', period: 'Summer 2020' }],
+      id: "2",
+      company: "Raytheon Technologies",
+      roles: [{ title: "Student Tech Intern", period: "Summer 2020" }],
       details: [
-        'Enforced and audited AWS instance compliance against hardened Windows and Linux baselines on approximately thirty machines, with planned expanded deployment, utilizing Chef and Chef InSpec.',
-        'Produced user acceptance tests for a Perl program to streamline Terraform provisioning.',
-        'Performed manual and supervised automated patching to ensure rapid vulnerability remediation.',
-        'Participated in daily stand-up and weekly planning meetings as part of an Agile workflow.'
+        "Enforced and audited AWS instance compliance against hardened Windows and Linux baselines on approximately thirty machines, with planned expanded deployment, utilizing Chef and Chef InSpec.",
+        "Produced user acceptance tests for a Perl program to streamline Terraform provisioning.",
+        "Performed manual and supervised automated patching to ensure rapid vulnerability remediation.",
+        "Participated in daily stand-up and weekly planning meetings as part of an Agile workflow."
       ]
     },
     {
-      id: '3',
-      company: 'Purdue University',
+      id: "3",
+      company: "Purdue University",
       roles: [
-        { title: 'Graduate Teaching Assistant', period: 'January 2025 - Present' },
-        { title: 'Undergraduate Teaching Assistant', period: 'January 2021 - December 2022' }
+        { title: "Graduate Teaching Assistant", period: "January 2025 - Present" },
+        { title: "Undergraduate Teaching Assistant", period: "January 2021 - December 2022" }
       ],
       details: [
-        'Led one CNIT 470 Incident Response Management, two CNIT 270 Cybersecurity Fundamentals, four CNIT 255 OOP Intro, and one CNIT 176 IT Architectures lab sections.',
-        'Provided feedback and guidance to students regarding extended incident response in a simulated environment, core security concepts, OOP best practices, and a semester long Raspberry Pi project.',
-        'Wrote ransomware and Active Directory relay attack simulations in Rust to demonstrate malware evasion, cryptographic flaws, and provide realistic incident response artifacts.',
-        'Wrote a Gradescope autograder in Rust to enforce code standards and rubrics, standardized Typst lab manuals, and queue system in Typescript to streamline lab checkoff.'
+        "Led one CNIT 470 Incident Response Management, two CNIT 270 Cybersecurity Fundamentals, four CNIT 255 OOP Intro, and one CNIT 176 IT Architectures lab sections.",
+        "Provided feedback and guidance to students regarding extended incident response in a simulated environment, core security concepts, OOP best practices, and a semester long Raspberry Pi project.",
+        "Wrote ransomware and Active Directory relay attack simulations in Rust to demonstrate malware evasion, cryptographic flaws, and provide realistic incident response artifacts.",
+        "Wrote a Gradescope autograder in Rust to enforce code standards and rubrics, standardized Typst lab manuals, and queue system in Typescript to streamline lab checkoff."
       ]
     },
     {
-      id: '4',
-      company: 'CircleCityCon',
-      roles: [{ title: 'Volunteer Administrative Assistant', period: '2021 - 2023' }],
+      id: "4",
+      company: "CircleCityCon",
+      roles: [{ title: "Volunteer Administrative Assistant", period: "2021 - 2023" }],
       details: [
-        'Scheduled, documented, and summarized meetings within GSuite.',
-        'Organized and tracked leadership tasks day of convention.'
+        "Scheduled, documented, and summarized meetings within GSuite.",
+        "Organized and tracked leadership tasks day of convention."
       ]
     },
     {
-      id: '5',
-      company: 'Morton Community Center',
+      id: "5",
+      company: "Morton Community Center",
       roles: [
-        { title: 'Summer Camp Counselor', period: 'June 2017, 2018' },
-        { title: 'Volunteer Art Teaching Assistant', period: 'May 2017 - August 2018' }
+        { title: "Summer Camp Counselor", period: "June 2017, 2018" },
+        { title: "Volunteer Art Teaching Assistant", period: "May 2017 - August 2018" }
       ],
       details: [
-        'Guided groups of 20+ children around center grounds to ensure safety.',
-        'Documented behavior and incidents and conducted verbal roll calls.',
-        'Encouraged creative expression through positive feedback and guided brainstorming.',
-        'Maintained the classroom setup and supplies to facilitate instruction.'
+        "Guided groups of 20+ children around center grounds to ensure safety.",
+        "Documented behavior and incidents and conducted verbal roll calls.",
+        "Encouraged creative expression through positive feedback and guided brainstorming.",
+        "Maintained the classroom setup and supplies to facilitate instruction."
       ]
     }
   ];
 
   const knowledgeGroups = [
     {
-      id: '1',
-      title: 'Certifications',
+      id: "1",
+      title: "Certifications",
       icon: BadgeCheck,
-      iconClass: 'text-primary-500',
-      items: ['CompTIA Pentest+', 'CompTIA Security+', 'CompTIA Network+', 'Purdue Entry-Level Programming in Python']
+      iconClass: "text-primary-500",
+      items: ["CompTIA Pentest+", "CompTIA Security+", "CompTIA Network+", "Purdue Entry-Level Programming in Python"]
     },
     {
-      id: '2',
-      title: 'Pentesting',
+      id: "2",
+      title: "Pentesting",
       icon: Crosshair,
-      iconClass: 'text-primary-500',
-      items: ['Nmap', 'Nessus', 'OpenVAS', 'Metasploit', 'Burp Suite', 'Invicti']
+      iconClass: "text-primary-500",
+      items: ["Nmap", "Nessus", "OpenVAS", "Metasploit", "Burp Suite", "Invicti"]
     },
     {
-      id: '3',
-      title: 'Security Assessment',
+      id: "3",
+      title: "Security Assessment",
       icon: ShieldCheck,
-      iconClass: 'text-primary-500',
-      items: ['NIST CSF', 'NIST SP 800-53', 'ISO 27000', 'HIPAA', 'OpenScap']
+      iconClass: "text-primary-500",
+      items: ["NIST CSF", "NIST SP 800-53", "ISO 27000", "HIPAA", "OpenScap"]
     },
     {
-      id: '4',
-      title: 'Networking',
+      id: "4",
+      title: "Networking",
       icon: Network,
-      iconClass: 'text-primary-500',
-      items: ['Cisco IOS', 'Ubiquiti', 'pfSense', 'VyOS']
+      iconClass: "text-primary-500",
+      items: ["Cisco IOS", "Ubiquiti", "pfSense", "VyOS"]
     },
     {
-      id: '5',
-      title: 'Programming',
+      id: "5",
+      title: "Programming",
       icon: FileCode,
-      iconClass: 'text-primary-500',
-      items: ['Python', 'Bash', 'C', 'Chef', 'Java', 'Rust']
+      iconClass: "text-primary-500",
+      items: ["Python", "Bash", "C", "Chef", "Java", "Rust"]
     },
     {
-      id: '6',
-      title: 'Administration',
+      id: "6",
+      title: "Administration",
       icon: Server,
-      iconClass: 'text-primary-500',
-      items: ['RHEL', 'Ubuntu', 'Windows Server', 'VMware', 'Proxmox']
+      iconClass: "text-primary-500",
+      items: ["RHEL", "Ubuntu", "Windows Server", "VMware", "Proxmox"]
     },
     {
-      id: '7',
-      title: 'Project Management',
+      id: "7",
+      title: "Project Management",
       icon: ChartBarBig,
-      iconClass: 'text-primary-500',
-      items: ['Note Taking', 'Microsoft Project', 'Visual Paradigm', 'Agile']
+      iconClass: "text-primary-500",
+      items: ["Note Taking", "Microsoft Project", "Visual Paradigm", "Agile"]
     },
     {
-      id: '8',
-      title: 'Art',
+      id: "8",
+      title: "Art",
       icon: Palette,
-      iconClass: 'text-primary-500',
-      items: ['Painting', 'Adobe Photoshop', 'Adobe Illustrator']
+      iconClass: "text-primary-500",
+      items: ["Painting", "Adobe Photoshop", "Adobe Illustrator"]
     }
   ];
 </script>

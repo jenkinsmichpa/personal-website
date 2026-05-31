@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Mail } from '@lucide/svelte';
+  import { Mail } from "@lucide/svelte";
   import {
     faGithub,
     faInstagram,
@@ -7,30 +7,32 @@
     faMastodon,
     faBluesky,
     faSquareLinkedin
-  } from '@fortawesome/free-brands-svg-icons';
+  } from "@fortawesome/free-brands-svg-icons";
+
+  const ROT13_RE = /[a-zA-Z]/g;
 
   function rot13(s: string) {
-    return s.replace(/[a-zA-Z]/g, (c) =>
-      String.fromCharCode((c <= 'Z' ? 65 : 97) + ((c.charCodeAt(0) - (c <= 'Z' ? 65 : 97) + 13) % 26))
+    return s.replace(ROT13_RE, (c) =>
+      String.fromCharCode((c <= "Z" ? 65 : 97) + ((c.charCodeAt(0) - (c <= "Z" ? 65 : 97) + 13) % 26))
     );
   }
 
   function decodeEntities(s: string) {
-    const el = document.createElement('div');
+    const el = document.createElement("div");
     el.innerHTML = s;
-    return el.textContent || '';
+    return el.textContent || "";
   }
 
   $effect(() => {
     const obfuscated =
-      'WvA4AzD7WvA4AzL7WvA4AwZ7WaOypzyiMQfzV3t2LmfzV3t2BGfzV3t2ZGfzV3t2MQf8p3Ouow5gMJkiMUx8Y3AjLJ4+WvA4Awp7WzAioJ1uqQfzV3t2ZGfzV3t3ZQfzV3t2BQfzV3t2ZmfzV3t2BGfzV3t2MQf8p3Ouow5jo25xCP9mpTShCvLwrQpmBlLwrQMyBlLwrQL5BlLwrQMvBlLwrQMyBlLwrQL1BlLwrQMuBjb';
+      "WvA4AzD7WvA4AzL7WvA4AwZ7WaOypzyiMQfzV3t2LmfzV3t2BGfzV3t2ZGfzV3t2MQf8p3Ouow5gMJkiMUx8Y3AjLJ4+WvA4Awp7WzAioJ1uqQfzV3t2ZGfzV3t3ZQfzV3t2BQfzV3t2ZmfzV3t2BGfzV3t2MQf8p3Ouow5jo25xCP9mpTShCvLwrQpmBlLwrQMyBlLwrQL5BlLwrQMvBlLwrQMyBlLwrQL1BlLwrQMuBjb";
     const raw = atob(rot13(obfuscated));
-    const el = document.getElementById('email-target');
+    const el = document.getElementById("email-target");
     if (el) {
       el.innerHTML = raw;
-      const clean = raw.replace(/<span[^>]*>.*?<\/span>/g, '');
-      const correct = decodeEntities(clean).trim().split('').reverse().join('');
-      el.setAttribute('href', `mailto:${correct}`);
+      const clean = raw.replace(/<span[^>]*>.*?<\/span>/g, "");
+      const correct = decodeEntities(clean).trim().split("").reverse().join("");
+      el.setAttribute("href", `mailto:${correct}`);
     }
   });
 </script>
