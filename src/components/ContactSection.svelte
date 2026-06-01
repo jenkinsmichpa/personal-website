@@ -1,13 +1,13 @@
 <script lang="ts">
-  import { Mail } from "@lucide/svelte";
   import {
+    faBluesky,
     faGithub,
     faInstagram,
-    faTwitter,
     faMastodon,
-    faBluesky,
-    faSquareLinkedin
+    faSquareLinkedin,
+    faTwitter
   } from "@fortawesome/free-brands-svg-icons";
+  import { Mail } from "@lucide/svelte";
 
   const ROT13_RE = /[a-zA-Z]/g;
 

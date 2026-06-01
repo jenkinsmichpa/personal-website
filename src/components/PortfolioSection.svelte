@@ -1,8 +1,9 @@
 <script lang="ts">
   import { SegmentedControl } from "@skeletonlabs/skeleton-svelte";
+
   import LightboxDialog from "./LightboxDialog.svelte";
 
-  let { data }: { data: Array<Array<{ fullSrc: string; alt: string; thumb: { src: string } }>> } = $props();
+  let { data }: { data: { fullSrc: string; alt: string; thumb: { src: string } }[][] } = $props();
 
   let page = $state<string | null>("1");
   let lightboxSrc = $state("");

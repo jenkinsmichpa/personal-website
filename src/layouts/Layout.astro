@@ -1,10 +1,11 @@
 ---
 import "../styles/global.css";
+
+import portrait from "@assets/images/michaelJenkinsPortrait.jpg";
+import spacerBg from "@assets/images/poisonIvyMultiplied.jpg";
+import homeBg from "@assets/images/triliumPoisonIvyMultiplied.jpg";
 import { AstroSeo } from "@astrolib/seo";
 import { getImage } from "astro:assets";
-import portrait from "@assets/images/michaelJenkinsPortrait.jpg";
-import homeBg from "@assets/images/triliumPoisonIvyMultiplied.jpg";
-import spacerBg from "@assets/images/poisonIvyMultiplied.jpg";
 const optimizedHomeBg = await getImage({ src: homeBg, format: "webp", width: 2560 });
 const optimizedSpacerBg = await getImage({ src: spacerBg, format: "webp", width: 2560 });
 const bgStyle = `--bg-home: url(${optimizedHomeBg.src}); --bg-spacer: url(${optimizedSpacerBg.src})`;

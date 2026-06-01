@@ -1,25 +1,25 @@
 <script lang="ts">
-  import { Accordion } from "@skeletonlabs/skeleton-svelte";
-  import { slide } from "svelte/transition";
   import { faSquareLinkedin } from "@fortawesome/free-brands-svg-icons";
   import {
+    Award,
+    BadgeCheck,
+    ChartBarBig,
     ChevronDown,
     ChevronRight,
-    Award,
-    GraduationCap,
-    BadgeCheck,
     Crosshair,
-    ShieldCheck,
-    Network,
     FileCode,
-    Server,
-    ChartBarBig,
-    Palette,
     FileUser,
+    GraduationCap,
     Hammer,
     Map,
-    Shield
+    Network,
+    Palette,
+    Server,
+    Shield,
+    ShieldCheck
   } from "@lucide/svelte";
+  import { Accordion } from "@skeletonlabs/skeleton-svelte";
+  import { slide } from "svelte/transition";
 
   let { portraitSrc }: { portraitSrc: string } = $props();
 

@@ -1,6 +1,6 @@
 <script lang="ts">
+  import { House, LayoutGrid, Mail, Moon, Sun, User } from "@lucide/svelte";
   import { AppBar } from "@skeletonlabs/skeleton-svelte";
-  import { Sun, Moon, House, User, LayoutGrid, Mail } from "@lucide/svelte";
 
   let scrolled = $state(false);
   let dark = $state(false);
@@ -30,7 +30,9 @@
 
     const sections = document.querySelectorAll("section[id]");
     const links = document.querySelectorAll("#navbar .nav-link");
-    let cleanupScrollspy = () => {};
+    let cleanupScrollspy = () => {
+      /* noop */
+    };
     if (sections.length && links.length) {
       const OFFSET = 110;
       function updateActive() {

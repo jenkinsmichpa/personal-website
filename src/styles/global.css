@@ -1,8 +1,8 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
-@import '@skeletonlabs/skeleton';
-@import '@skeletonlabs/skeleton/themes/fennec';
-@import '@skeletonlabs/skeleton-svelte';
+@import "@skeletonlabs/skeleton";
+@import "@skeletonlabs/skeleton/themes/fennec";
+@import "@skeletonlabs/skeleton-svelte";
 
 @custom-variant dark (&:where([data-color-scheme="dark"], [data-color-scheme="dark"] *));
 
@@ -11,13 +11,13 @@ html {
   scroll-padding-top: 56px;
 }
 
-#navbar[data-part='root'] {
+#navbar[data-part="root"] {
   padding-top: 8px;
   padding-bottom: 8px;
 }
 
 @media (max-width: 767.98px) {
-  #navbar[data-part='root'] {
+  #navbar[data-part="root"] {
     padding-top: 6px;
     padding-bottom: 6px;
   }
@@ -48,7 +48,7 @@ body {
 }
 
 .home-section::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   background: var(--bg-home) center / cover no-repeat;
@@ -56,17 +56,21 @@ body {
 }
 
 .home-section::after {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1));
+  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1));
   z-index: -1;
   pointer-events: none;
 }
 
 @keyframes parallax-bg {
-  from { background-position: center 0; }
-  to { background-position: center 33.3svh; }
+  from {
+    background-position: center 0;
+  }
+  to {
+    background-position: center 33.3svh;
+  }
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -87,17 +91,21 @@ body {
 }
 
 .spacer-section::after {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35));
+  background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35));
   z-index: 1;
   pointer-events: none;
 }
 
 @keyframes spacer-parallax {
-  from { background-position: center 25%; }
-  to { background-position: center 35%; }
+  from {
+    background-position: center 25%;
+  }
+  to {
+    background-position: center 35%;
+  }
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -128,15 +136,27 @@ body {
 }
 
 @keyframes draw {
-  0% { stroke-dashoffset: 360.872; }
-  80% { stroke-dashoffset: 0; }
-  100% { stroke-dashoffset: 0; }
+  0% {
+    stroke-dashoffset: 360.872;
+  }
+  80% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
 }
 
 @keyframes fillIn {
-  0% { fill-opacity: 0; }
-  80% { fill-opacity: 0; }
-  100% { fill-opacity: 1; }
+  0% {
+    fill-opacity: 0;
+  }
+  80% {
+    fill-opacity: 0;
+  }
+  100% {
+    fill-opacity: 1;
+  }
 }
 
 .portfolio-img {
@@ -157,7 +177,7 @@ body {
 }
 
 #navbar .nav-link::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -2px;
   left: 0;
