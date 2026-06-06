@@ -17,10 +17,10 @@ export default defineConfig({
         "img-src 'self' data: blob:",
         "form-action 'self'",
         "base-uri 'self'",
-        "connect-src 'self'"
+        "connect-src 'self' cloudflareinsights.com"
       ],
       scriptDirective: {
-        resources: ["'self'", "https://static.cloudflareinsights.com"]
+        resources: ["'self'", "static.cloudflareinsights.com"]
       }
     }
   },
