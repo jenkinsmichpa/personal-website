@@ -7,23 +7,24 @@ import favicons from "astro-favicons";
 export default defineConfig({
   site: "https://jenkinsmichpa.com",
   output: "static",
-  markdown: {
-    syntaxHighlight: false
-  },
-  security: {
-    csp: {
-      directives: [
-        "default-src 'self'",
-        "img-src 'self' data: blob:",
-        "form-action 'self'",
-        "base-uri 'self'",
-        "connect-src 'self' cloudflareinsights.com"
-      ],
-      scriptDirective: {
-        resources: ["'self'", "'unsafe-inline'", "static.cloudflareinsights.com"]
-      }
-    }
-  },
+  // Cloudflare is a CSP nightmare
+  // markdown: {
+  //   syntaxHighlight: false
+  // },
+  // security: {
+  //   csp: {
+  //     directives: [
+  //       "default-src 'self'",
+  //       "img-src 'self' data: blob:",
+  //       "form-action 'self'",
+  //       "base-uri 'self'",
+  //       "connect-src 'self' cloudflareinsights.com"
+  //     ],
+  //     scriptDirective: {
+  //       resources: ["'self'", "static.cloudflareinsights.com"]
+  //     }
+  //   }
+  // },
   integrations: [
     svelte({
       compilerOptions: {

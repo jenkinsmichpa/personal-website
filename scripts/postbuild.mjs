@@ -1,5 +1,7 @@
 import { relative, resolve } from "node:path";
 
+// Cloudflare is a CSP nightmare so this is currently unused
+
 const distDir = resolve(import.meta.dir, "..", "dist");
 
 const CSP_META_RE = /<meta\s+http-equiv\s*=\s*"content-security-policy"\s+content\s*=\s*"([^"]+)"\s*\/?>/i;
