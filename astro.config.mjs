@@ -20,7 +20,7 @@ export default defineConfig({
         "connect-src 'self' cloudflareinsights.com"
       ],
       scriptDirective: {
-        resources: ["'self'", "static.cloudflareinsights.com"]
+        resources: ["'self'", "'unsafe-inline'", "static.cloudflareinsights.com"]
       }
     }
   },
