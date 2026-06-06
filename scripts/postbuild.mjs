@@ -1,7 +1,6 @@
-import { createHash } from "node:crypto";
 import { relative, resolve } from "node:path";
 
-const distDir = resolve(import.meta.dirname, "..", "dist");
+const distDir = resolve(import.meta.dir, "..", "dist");
 
 const CSP_META_RE = /<meta\s+http-equiv="content-security-policy"\s+content="([^"]+)"\s*\/?>/i;
 
@@ -22,7 +21,9 @@ function computeStyleAttrHashes(html) {
   for (const match of html.matchAll(STYLE_ATTR_RE)) {
     const value = match[1] ?? match[2];
     if (value.trim().length === 0) continue;
-    const hash = createHash("sha256").update(value).digest("base64");
+    const hasher = new Bun.CryptoHasher("sha256");
+    hasher.update(value);
+    const hash = hasher.digest("base64");
     hashes.add(`'sha256-${hash}'`);
   }
   return hashes;
@@ -89,6 +90,6 @@ async function main() {
 }
 
 main().catch((err) => {
-  console.error(`${import.meta.filename}:`, err.message);
+  console.error(`${import.meta.path}:`, err.message);
   process.exitCode = 1;
 });
