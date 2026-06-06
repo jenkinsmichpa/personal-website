@@ -7,6 +7,14 @@ import favicons from "astro-favicons";
 export default defineConfig({
   site: "https://jenkinsmichpa.com",
   output: "static",
+  markdown: {
+    syntaxHighlight: false
+  },
+  security: {
+    csp: {
+      directives: ["default-src 'self'", "img-src 'self' data: blob:", "form-action 'self'", "base-uri 'self'"]
+    }
+  },
   integrations: [
     svelte({
       compilerOptions: {

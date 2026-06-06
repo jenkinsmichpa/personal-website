@@ -1,6 +1,8 @@
 ---
 import "../styles/global.css";
 
+import { createHash } from "node:crypto";
+
 import portrait from "@assets/images/michaelJenkinsPortrait.jpg";
 import spacerBg from "@assets/images/poisonIvyMultiplied.jpg";
 import homeBg from "@assets/images/triliumPoisonIvyMultiplied.jpg";
@@ -8,7 +10,6 @@ import { AstroSeo } from "@astrolib/seo";
 import { getImage } from "astro:assets";
 const optimizedHomeBg = await getImage({ src: homeBg, format: "webp", width: 2560 });
 const optimizedSpacerBg = await getImage({ src: spacerBg, format: "webp", width: 2560 });
-const bgStyle = `--bg-home: url(${optimizedHomeBg.src}); --bg-spacer: url(${optimizedSpacerBg.src})`;
 const {
   title = "Michael Jenkins",
   description = "Michael Jenkins is a graduate student at Purdue University, pursuing a Masters degree in Computer and Information Technology with a focus on Cybersecurity."
@@ -32,10 +33,16 @@ const structuredData = {
     "https://www.instagram.com/jenkinsmichpa/"
   ]
 };
+const bgCss = `:root{--bg-home:url(${optimizedHomeBg.src});--bg-spacer:url(${optimizedSpacerBg.src})}`;
+const bgHash = "sha256-" + createHash("sha256").update(bgCss).digest("base64");
+const ldJson = JSON.stringify(structuredData);
+const ldHash = "sha256-" + createHash("sha256").update(ldJson).digest("base64");
+Astro.csp?.insertStyleHash(bgHash as `sha256-${string}`);
+Astro.csp?.insertScriptHash(ldHash as `sha256-${string}`);
 ---
 
 <!doctype html>
-<html lang="en" data-theme="fennec" style={bgStyle}>
+<html lang="en" data-theme="fennec">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -63,18 +70,10 @@ const structuredData = {
         cardType: "summary_large_image"
       }}
     />
+    <style set:html={bgCss}></style>
+    <script is:inline src="/theme.js"></script>
+    <script is:inline type="application/ld+json" set:html={ldJson} />
     <link rel="preload" href={optimizedHomeBg.src} as="image" type="image/webp" />
-    <script is:inline>
-      (function () {
-        const stored = localStorage.getItem("theme");
-        if (stored !== "dark" && stored !== "light") {
-          stored = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-        }
-        document.documentElement.dataset.colorScheme = stored;
-        document.documentElement.style.colorScheme = stored;
-      })();
-    </script>
-    <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
   </head>
   <body class="bg-surface-50-950 text-surface-900-100">
     <main><slot /></main>

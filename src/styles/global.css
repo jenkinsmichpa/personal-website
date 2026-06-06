@@ -228,3 +228,8 @@ body {
 .btn-icon.p-0:not(:disabled):hover {
   filter: none !important;
 }
+
+.email-link {
+  unicode-bidi: bidi-override;
+  direction: rtl !important;
+}

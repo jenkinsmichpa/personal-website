@@ -46,12 +46,7 @@
           <li class="flex items-center gap-3">
             <Mail class="size-5 shrink-0 text-primary-500" />
             <!-- svelte-ignore a11y_invalid_attribute -->
-            <a
-              id="email-target"
-              style="unicode-bidi: bidi-override; direction: rtl !important;"
-              class="cursor-pointer text-sm text-inherit no-underline"
-              href=""
-            >
+            <a id="email-target" class="email-link cursor-pointer text-sm text-inherit no-underline" href="">
               sserdda on = tpircSavaJ on
             </a>
           </li>
