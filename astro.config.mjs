@@ -12,7 +12,16 @@ export default defineConfig({
   },
   security: {
     csp: {
-      directives: ["default-src 'self'", "img-src 'self' data: blob:", "form-action 'self'", "base-uri 'self'"]
+      directives: [
+        "default-src 'self'",
+        "img-src 'self' data: blob:",
+        "form-action 'self'",
+        "base-uri 'self'",
+        "connect-src 'self'"
+      ],
+      scriptDirective: {
+        resources: ["'self'", "https://static.cloudflareinsights.com"]
+      }
     }
   },
   integrations: [
