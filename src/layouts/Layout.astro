@@ -1,21 +1,19 @@
 ---
 import "../styles/global.css";
 
-import { createHash } from "node:crypto";
-
+// import { createHash } from "node:crypto";
 import portrait from "@assets/images/michaelJenkinsPortrait.jpg";
 import spacerBg from "@assets/images/poisonIvyMultiplied.jpg";
 import homeBg from "@assets/images/triliumPoisonIvyMultiplied.jpg";
-import { AstroSeo } from "@astrolib/seo";
 import { getImage } from "astro:assets";
+import { SEO } from "astro-seo";
 const optimizedHomeBg = await getImage({ src: homeBg, format: "webp", width: 2560 });
 const optimizedSpacerBg = await getImage({ src: spacerBg, format: "webp", width: 2560 });
 const {
-  title = "Michael Jenkins",
+  title,
   description = "Michael Jenkins is a graduate student at Purdue University, pursuing a Masters degree in Computer and Information Technology with a focus on Cybersecurity."
 } = Astro.props;
 const image = new URL(portrait.src, Astro.url).href;
-const url = Astro.url.href;
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "Person",
@@ -34,11 +32,11 @@ const structuredData = {
   ]
 };
 const bgCss = `:root{--bg-home:url(${optimizedHomeBg.src});--bg-spacer:url(${optimizedSpacerBg.src})}`;
-const bgHash = "sha256-" + createHash("sha256").update(bgCss).digest("base64");
+// const bgHash = "sha256-" + createHash("sha256").update(bgCss).digest("base64");
 const ldJson = JSON.stringify(structuredData);
-const ldHash = "sha256-" + createHash("sha256").update(ldJson).digest("base64");
-Astro.csp?.insertStyleHash(bgHash as `sha256-${string}`);
-Astro.csp?.insertScriptHash(ldHash as `sha256-${string}`);
+// const ldHash = "sha256-" + createHash("sha256").update(ldJson).digest("base64");
+// Astro.csp?.insertStyleHash(bgHash as `sha256-${string}`);
+// Astro.csp?.insertScriptHash(ldHash as `sha256-${string}`);
 ---
 
 <!doctype html>
@@ -46,28 +44,41 @@ Astro.csp?.insertScriptHash(ldHash as `sha256-${string}`);
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <AstroSeo
+    <SEO
       title={title}
+      titleTemplate="%s | Michael Jenkins"
+      titleDefault="Michael Jenkins"
       description={description}
-      canonical={url === "https://jenkinsmichpa.com/" ? "https://jenkinsmichpa.com" : url}
-      nofollow={false}
-      additionalMetaTags={[
-        { name: "author", content: "Michael Jenkins" },
-        {
-          name: "keywords",
-          content: "Michael Jenkins, Cybersecurity, Purdue, Portfolio, Resume, Penetration Testing, InfoSec"
-        }
-      ]}
+      removeTrailingSlashForRoot
       openGraph={{
-        url,
-        type: "website",
-        title,
-        description,
-        images: [{ url: image, width: portrait.width, height: portrait.height, alt: "Michael Jenkins Portrait" }],
-        site_name: "Michael Jenkins"
+        basic: {
+          title: title ?? "Michael Jenkins",
+          type: "website",
+          image
+        },
+        optional: {
+          description,
+          siteName: "Michael Jenkins"
+        },
+        image: {
+          width: portrait.width,
+          height: portrait.height,
+          alt: "Michael Jenkins Portrait"
+        }
       }}
       twitter={{
-        cardType: "summary_large_image"
+        card: "summary_large_image",
+        creator: "@jenkinsmichpa",
+        site: "@jenkinsmichpa"
+      }}
+      extend={{
+        meta: [
+          { name: "author", content: "Michael Jenkins" },
+          {
+            name: "keywords",
+            content: "Michael Jenkins, Cybersecurity, Purdue, Portfolio, Resume, Penetration Testing, InfoSec"
+          }
+        ]
       }}
     />
     <style set:html={bgCss}></style>

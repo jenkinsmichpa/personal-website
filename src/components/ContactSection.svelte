@@ -1,12 +1,5 @@
 <script lang="ts">
-  import {
-    faBluesky,
-    faGithub,
-    faInstagram,
-    faMastodon,
-    faSquareLinkedin,
-    faTwitter
-  } from "@fortawesome/free-brands-svg-icons";
+  import Icon from "@iconify/svelte";
   import { Mail } from "@lucide/svelte";
 
   const ROT13_RE = /[a-zA-Z]/g;
@@ -51,14 +44,7 @@
             </a>
           </li>
           <li class="flex items-center gap-3">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 {faSquareLinkedin.icon[0]} {faSquareLinkedin.icon[1]}"
-              fill="currentColor"
-              class="shrink-0 text-primary-500"><path d={String(faSquareLinkedin.icon[4])} /></svg
-            >
+            <Icon icon="fa6-brands:linkedin" class="size-5 shrink-0 text-primary-500" />
             <a
               href="https://www.linkedin.com/in/jenkinsmichpa"
               target="_blank"
@@ -67,14 +53,7 @@
             >
           </li>
           <li class="flex items-center gap-3">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 {faGithub.icon[0]} {faGithub.icon[1]}"
-              fill="currentColor"
-              class="shrink-0 text-primary-500"><path d={String(faGithub.icon[4])} /></svg
-            >
+            <Icon icon="fa6-brands:github" class="size-5 shrink-0 text-primary-500" />
             <a
               href="https://github.com/jenkinsmichpa"
               target="_blank"
@@ -83,14 +62,7 @@
             >
           </li>
           <li class="flex items-center gap-3">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 {faMastodon.icon[0]} {faMastodon.icon[1]}"
-              fill="currentColor"
-              class="shrink-0 text-primary-500"><path d={String(faMastodon.icon[4])} /></svg
-            >
+            <Icon icon="fa6-brands:mastodon" class="size-5 shrink-0 text-primary-500" />
             <a
               rel="me noopener noreferrer"
               href="https://infosec.exchange/@jenkinsmichpa"
@@ -99,14 +71,7 @@
             >
           </li>
           <li class="flex items-center gap-3">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 {faBluesky.icon[0]} {faBluesky.icon[1]}"
-              fill="currentColor"
-              class="shrink-0 text-primary-500"><path d={String(faBluesky.icon[4])} /></svg
-            >
+            <Icon icon="fa6-brands:bluesky" class="size-5 shrink-0 text-primary-500" />
             <a
               href="https://bsky.app/profile/jenkinsmichpa.bsky.social"
               target="_blank"
@@ -115,27 +80,13 @@
             >
           </li>
           <li class="flex items-center gap-3">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 {faTwitter.icon[0]} {faTwitter.icon[1]}"
-              fill="currentColor"
-              class="shrink-0 text-primary-500"><path d={String(faTwitter.icon[4])} /></svg
-            >
+            <Icon icon="fa6-brands:twitter" class="size-5 shrink-0 text-primary-500" />
             <a href="https://x.com/jenkinsmichpa" target="_blank" rel="noopener noreferrer" class="text-sm no-underline"
               >x.com/jenkinsmichpa</a
             >
           </li>
           <li class="flex items-center gap-3">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 {faInstagram.icon[0]} {faInstagram.icon[1]}"
-              fill="currentColor"
-              class="shrink-0 text-primary-500"><path d={String(faInstagram.icon[4])} /></svg
-            >
+            <Icon icon="fa6-brands:instagram" class="size-5 shrink-0 text-primary-500" />
             <a
               href="https://www.instagram.com/jenkinsmichpa/"
               target="_blank"

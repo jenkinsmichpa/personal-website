@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { faSquareLinkedin } from "@fortawesome/free-brands-svg-icons";
+  import Icon from "@iconify/svelte";
   import {
     Award,
     BadgeCheck,
@@ -197,13 +197,7 @@
               target="_blank"
               class="btn btn-base preset-filled-primary-500"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                viewBox="0 0 {faSquareLinkedin.icon[0]} {faSquareLinkedin.icon[1]}"
-                fill="currentColor"><path d={String(faSquareLinkedin.icon[4])} /></svg
-              >
+              <Icon icon="fa6-brands:linkedin" class="size-4" />
               <span>LinkedIn</span>
             </a>
           </div>

@@ -54,20 +54,7 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
     ssr: {
-      noExternal: [
-        "@skeletonlabs/skeleton-svelte",
-        "@fortawesome/fontawesome-svg-core",
-        "@fortawesome/free-brands-svg-icons",
-        "@lucide/svelte"
-      ]
-    },
-    optimizeDeps: {
-      include: [
-        "@skeletonlabs/skeleton-svelte",
-        "@fortawesome/fontawesome-svg-core",
-        "@fortawesome/free-brands-svg-icons",
-        "@lucide/svelte"
-      ]
+      noExternal: ["@skeletonlabs/skeleton-svelte", "@iconify/svelte", "@lucide/svelte"]
     }
   }
 });
