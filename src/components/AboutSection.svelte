@@ -1,5 +1,4 @@
 <script lang="ts">
-  import Icon from "@iconify/svelte";
   import {
     Award,
     BadgeCheck,
@@ -20,6 +19,8 @@
   } from "@lucide/svelte";
   import { Accordion } from "@skeletonlabs/skeleton-svelte";
   import { slide } from "svelte/transition";
+
+  import IconLinkedin from "~icons/fa6-brands/linkedin";
 
   let { portraitSrc }: { portraitSrc: string } = $props();
 
@@ -197,7 +198,7 @@
               target="_blank"
               class="btn btn-base preset-filled-primary-500"
             >
-              <Icon icon="fa6-brands:linkedin" class="size-4" />
+              <IconLinkedin class="size-4" />
               <span>LinkedIn</span>
             </a>
           </div>

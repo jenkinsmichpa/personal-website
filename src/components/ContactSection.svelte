@@ -1,6 +1,12 @@
 <script lang="ts">
-  import Icon from "@iconify/svelte";
   import { Mail } from "@lucide/svelte";
+
+  import IconBluesky from "~icons/fa6-brands/bluesky";
+  import IconGithub from "~icons/fa6-brands/github";
+  import IconInstagram from "~icons/fa6-brands/instagram";
+  import IconLinkedin from "~icons/fa6-brands/linkedin";
+  import IconMastodon from "~icons/fa6-brands/mastodon";
+  import IconTwitter from "~icons/fa6-brands/twitter";
 
   const ROT13_RE = /[a-zA-Z]/g;
 
@@ -44,7 +50,7 @@
             </a>
           </li>
           <li class="flex items-center gap-3">
-            <Icon icon="fa6-brands:linkedin" class="size-5 shrink-0 text-primary-500" />
+            <IconLinkedin class="size-5 shrink-0 text-primary-500" />
             <a
               href="https://www.linkedin.com/in/jenkinsmichpa"
               target="_blank"
@@ -53,7 +59,7 @@
             >
           </li>
           <li class="flex items-center gap-3">
-            <Icon icon="fa6-brands:github" class="size-5 shrink-0 text-primary-500" />
+            <IconGithub class="size-5 shrink-0 text-primary-500" />
             <a
               href="https://github.com/jenkinsmichpa"
               target="_blank"
@@ -62,7 +68,7 @@
             >
           </li>
           <li class="flex items-center gap-3">
-            <Icon icon="fa6-brands:mastodon" class="size-5 shrink-0 text-primary-500" />
+            <IconMastodon class="size-5 shrink-0 text-primary-500" />
             <a
               rel="me noopener noreferrer"
               href="https://infosec.exchange/@jenkinsmichpa"
@@ -71,7 +77,7 @@
             >
           </li>
           <li class="flex items-center gap-3">
-            <Icon icon="fa6-brands:bluesky" class="size-5 shrink-0 text-primary-500" />
+            <IconBluesky class="size-5 shrink-0 text-primary-500" />
             <a
               href="https://bsky.app/profile/jenkinsmichpa.bsky.social"
               target="_blank"
@@ -80,13 +86,13 @@
             >
           </li>
           <li class="flex items-center gap-3">
-            <Icon icon="fa6-brands:twitter" class="size-5 shrink-0 text-primary-500" />
+            <IconTwitter class="size-5 shrink-0 text-primary-500" />
             <a href="https://x.com/jenkinsmichpa" target="_blank" rel="noopener noreferrer" class="text-sm no-underline"
               >x.com/jenkinsmichpa</a
             >
           </li>
           <li class="flex items-center gap-3">
-            <Icon icon="fa6-brands:instagram" class="size-5 shrink-0 text-primary-500" />
+            <IconInstagram class="size-5 shrink-0 text-primary-500" />
             <a
               href="https://www.instagram.com/jenkinsmichpa/"
               target="_blank"

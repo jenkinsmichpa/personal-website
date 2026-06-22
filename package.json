@@ -19,7 +19,6 @@
     "@astrojs/sitemap": "^3.7.3",
     "@astrojs/svelte": "^9.0.0",
     "@iconify-json/fa6-brands": "^1.2.6",
-    "@iconify/svelte": "^5.2.2",
     "@lucide/svelte": "^1.21.0",
     "@skeletonlabs/skeleton": "^4.15.2",
     "@skeletonlabs/skeleton-svelte": "^4.15.2",
@@ -46,7 +45,8 @@
     "svelte-check": "^4.6.0",
     "svelte-eslint-parser": "^1.8.0",
     "typescript": "^6.0.3",
-    "typescript-eslint": "^8.62.0"
+    "typescript-eslint": "^8.62.0",
+    "unplugin-icons": "^23.0.1"
   },
   "engines": {
     "bun": ">=1.3.0"

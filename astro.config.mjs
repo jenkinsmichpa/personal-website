@@ -3,6 +3,7 @@ import svelte from "@astrojs/svelte";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "astro/config";
 import favicons from "astro-favicons";
+import Icons from "unplugin-icons/vite";
 
 export default defineConfig({
   site: "https://jenkinsmichpa.com",
@@ -52,13 +53,18 @@ export default defineConfig({
     sitemap()
   ],
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [
+      tailwindcss(),
+      Icons({
+        compiler: "svelte"
+      })
+    ],
     build: {
       // Use esbuild instead of Lightning CSS. Lightning CSS is optimizing idiotically and creating broken Chrome CSS for parallax: https://caniuse.com/mdn-css_properties_animation_animation-timeline_included
       cssMinify: "esbuild"
     },
     ssr: {
-      noExternal: ["@skeletonlabs/skeleton-svelte", "@iconify/svelte", "@lucide/svelte"]
+      noExternal: ["@skeletonlabs/skeleton-svelte", "@lucide/svelte"]
     }
   }
 });

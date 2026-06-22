@@ -33,3 +33,5 @@ declare module "*.svg" {
   const meta: ImageMetadata;
   export default meta;
 }
+
+import "unplugin-icons/types/svelte";
