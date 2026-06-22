@@ -53,6 +53,10 @@ export default defineConfig({
   ],
   vite: {
     plugins: [tailwindcss()],
+    build: {
+      // Use esbuild instead of Lightning CSS. Lightning CSS is optimizing idiotically and creating broken Chrome CSS for parallax: https://caniuse.com/mdn-css_properties_animation_animation-timeline_included
+      cssMinify: "esbuild"
+    },
     ssr: {
       noExternal: ["@skeletonlabs/skeleton-svelte", "@iconify/svelte", "@lucide/svelte"]
     }
