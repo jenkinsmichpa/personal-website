@@ -12,10 +12,10 @@
 >
   <Portal>
     <Dialog.Backdrop class="fixed inset-0 z-50 bg-surface-50-950/50" />
-    <Dialog.Positioner class="fixed inset-0 z-50 flex justify-center items-center p-4">
-      <Dialog.Content class="card bg-surface-100-900 p-3 shadow-xl max-w-4xl max-h-[90dvh]">
+    <Dialog.Positioner class="fixed inset-0 z-50 flex items-center justify-center p-4">
+      <Dialog.Content class="max-h-[90dvh] max-w-4xl card bg-surface-100-900 p-3 shadow-xl">
         <Dialog.Title class="sr-only">{alt}</Dialog.Title>
-        <img {src} {alt} class="max-w-full max-h-[calc(90dvh-1.5rem)] w-auto h-auto mx-auto rounded-container" />
+        <img {src} {alt} class="mx-auto h-auto max-h-[calc(90dvh-1.5rem)] w-auto max-w-full rounded-container" />
       </Dialog.Content>
     </Dialog.Positioner>
   </Portal>

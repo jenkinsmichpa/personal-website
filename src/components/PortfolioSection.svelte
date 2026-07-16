@@ -17,31 +17,31 @@
   }
 </script>
 
-<section class="py-16 border-t border-b border-surface-200-800" id="portfolio">
-  <div class="max-w-6xl mx-auto px-4">
-    <h2 class="h1 text-center mb-6">Art Portfolio</h2>
+<section class="border-t border-b border-surface-200-800 py-16" id="portfolio">
+  <div class="mx-auto max-w-6xl px-4">
+    <h2 class="mb-6 text-center h1">Art Portfolio</h2>
 
-    <div class="card p-4 preset-filled-surface-100-900 border border-surface-200-800">
+    <div class="card border border-surface-200-800 preset-filled-surface-100-900 p-4">
       <div class="grid grid-rows-[1fr] *:[grid-area:1/1]">
         {#each data as pageItems, i (i)}
           {@const p = String(i + 1)}
           <div
-            class="grid grid-cols-2 md:grid-cols-3 gap-4 transition-opacity {page === p
+            class="grid grid-cols-2 gap-4 transition-opacity md:grid-cols-3 {page === p
               ? 'opacity-100'
-              : 'opacity-0 pointer-events-none'}"
+              : 'pointer-events-none opacity-0'}"
           >
             {#each pageItems as item (item.fullSrc)}
               <button
                 type="button"
                 onclick={() => openLightbox(item.fullSrc, item.alt)}
-                class="btn p-0 border-0 w-full"
+                class="btn w-full border-0 p-0"
               >
                 <img
                   src={item.thumb.src}
                   alt={item.alt}
                   loading="lazy"
                   decoding="async"
-                  class="w-full rounded-container portfolio-img"
+                  class="portfolio-img w-full rounded-container"
                 />
               </button>
             {/each}
@@ -50,7 +50,7 @@
       </div>
     </div>
 
-    <div class="flex justify-center mt-4">
+    <div class="mt-4 flex justify-center">
       <SegmentedControl value={page} onValueChange={(d) => (page = d.value)}>
         <SegmentedControl.Label class="sr-only">Page</SegmentedControl.Label>
         <SegmentedControl.Control>

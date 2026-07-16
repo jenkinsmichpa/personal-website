@@ -63,12 +63,12 @@
 </script>
 
 <AppBar
-  class="fixed top-0 left-0 right-0 z-50 w-full transition-all duration-500 border-b {navTextClass} {scrolled
+  class="fixed top-0 right-0 left-0 z-50 w-full border-b transition-all duration-500 {navTextClass} {scrolled
     ? 'navbar-glass border-surface-200-800'
-    : 'bg-transparent border-transparent'}"
+    : 'border-transparent bg-transparent'}"
   id="navbar"
 >
-  <AppBar.Toolbar class="flex items-center justify-between w-full md:grid md:grid-cols-[auto_1fr_auto] px-4">
+  <AppBar.Toolbar class="flex w-full items-center justify-between px-4 md:grid md:grid-cols-[auto_1fr_auto]">
     <AppBar.Lead>
       <a href="#home" aria-label="Home">
         <svg
@@ -99,7 +99,7 @@
         </svg>
       </a>
     </AppBar.Lead>
-    <AppBar.Headline class="hidden md:flex justify-center gap-6">
+    <AppBar.Headline class="hidden justify-center gap-6 md:flex">
       <a href="#home" class="nav-link text-sm font-medium">Home</a>
       <a href="#about" class="nav-link text-sm font-medium">About</a>
       <a href="#portfolio" class="nav-link text-sm font-medium">Portfolio</a>
@@ -125,9 +125,9 @@
 <svelte:window onscroll={onScroll} />
 
 <nav
-  class="fixed bottom-0 left-0 right-0 z-50 md:hidden transition-all duration-500 pb-[env(safe-area-inset-bottom,0px)] {navTextClass} {scrolled
+  class="fixed right-0 bottom-0 left-0 z-50 pb-[env(safe-area-inset-bottom,0px)] transition-all duration-500 md:hidden {navTextClass} {scrolled
     ? 'navbar-glass border-t border-surface-200-800'
-    : 'bg-transparent border-t border-transparent'}"
+    : 'border-t border-transparent bg-transparent'}"
 >
   <div class="flex justify-around py-2">
     <a href="#home" class="flex flex-col items-center text-xs"><House class="size-5" />Home</a>

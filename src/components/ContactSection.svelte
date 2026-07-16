@@ -36,11 +36,11 @@
   });
 </script>
 
-<section class="py-16 border-t border-b border-surface-200-800" id="contact">
-  <div class="max-w-6xl mx-auto px-4">
-    <h2 class="h1 text-center mb-6">Contact</h2>
+<section class="border-t border-b border-surface-200-800 py-16" id="contact">
+  <div class="mx-auto max-w-6xl px-4">
+    <h2 class="mb-6 text-center h1">Contact</h2>
     <div class="flex justify-center">
-      <div class="card p-4 preset-filled-surface-100-900 border border-surface-200-800 w-full max-w-lg">
+      <div class="w-full max-w-lg card border border-surface-200-800 preset-filled-surface-100-900 p-4">
         <ul class="space-y-4">
           <li class="flex items-center gap-3">
             <Mail class="size-5 shrink-0 text-primary-500" />

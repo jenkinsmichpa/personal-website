@@ -155,10 +155,10 @@
   ];
 </script>
 
-<section class="container-fluid py-16 border-t border-b border-surface-200-800" id="about">
-  <div class="max-w-6xl mx-auto px-4">
-    <div class="columns-1 md:columns-2 gap-4 space-y-4">
-      <div class="card p-4 preset-filled-surface-100-900 border border-surface-200-800 break-inside-avoid">
+<section class="container-fluid border-t border-b border-surface-200-800 py-16" id="about">
+  <div class="mx-auto max-w-6xl px-4">
+    <div class="columns-1 gap-4 space-y-4 md:columns-2">
+      <div class="break-inside-avoid card border border-surface-200-800 preset-filled-surface-100-900 p-4">
         <img
           src={portraitSrc}
           alt="Michael Jenkins Portrait"
@@ -184,11 +184,11 @@
               setups as well as painting.
             </p>
           </div>
-          <div class="grid grid-cols-2 gap-3 mt-4">
+          <div class="mt-4 grid grid-cols-2 gap-3">
             <a
               href="/Documents/michaelJenkinsResume.pdf"
               target="_blank"
-              class="btn btn-base preset-filled-primary-500"
+              class="btn preset-filled-primary-500 btn-base"
             >
               <FileUser class="size-4" />
               <span>Resume</span>
@@ -196,7 +196,7 @@
             <a
               href="https://www.linkedin.com/in/jenkinsmichpa/"
               target="_blank"
-              class="btn btn-base preset-filled-primary-500"
+              class="btn preset-filled-primary-500 btn-base"
             >
               <IconLinkedin class="size-4" />
               <span>LinkedIn</span>
@@ -205,13 +205,13 @@
         </div>
       </div>
 
-      <div class="card p-4 preset-filled-surface-100-900 border border-surface-200-800 break-inside-avoid">
-        <h2 class="h3 mb-3">Education</h2>
+      <div class="break-inside-avoid card border border-surface-200-800 preset-filled-surface-100-900 p-4">
+        <h2 class="mb-3 h3">Education</h2>
         <ul class="space-y-1">
           <li>
             <div class="flex flex-col sm:flex-row sm:justify-between">
               <span class="purdue-gold flex items-center gap-1"><Hammer class="size-4" /> Purdue University</span>
-              <em class="opacity-60 text-sm">GPA 4.0/4.0</em>
+              <em class="text-sm opacity-60">GPA 4.0/4.0</em>
             </div>
           </li>
           <li>
@@ -230,7 +230,7 @@
             <span class="text-sm">Additional Studies: Art and Design Studio</span>
           </li>
           <li>
-            <div class="flex flex-col sm:flex-row sm:justify-between text-sm">
+            <div class="flex flex-col text-sm sm:flex-row sm:justify-between">
               <strong class="flex items-center gap-1"
                 ><Map class="size-4 text-primary-500" /> Czech Technical University</strong
               >
@@ -240,41 +240,41 @@
         </ul>
       </div>
 
-      <div class="card p-4 preset-filled-surface-100-900 border border-surface-200-800 break-inside-avoid">
-        <h2 class="h3 mb-3">Activities</h2>
+      <div class="break-inside-avoid card border border-surface-200-800 preset-filled-surface-100-900 p-4">
+        <h2 class="mb-3 h3">Activities</h2>
         <div>
-          <h3 class="font-bold flex items-center gap-1">
+          <h3 class="flex items-center gap-1 font-bold">
             <Shield class="size-4 text-primary-500" /> Purdue Cyber Forensics
           </h3>
-          <div class="flex flex-col sm:flex-row sm:justify-between text-sm">
+          <div class="flex flex-col text-sm sm:flex-row sm:justify-between">
             <span>Vice-President/Treasurer</span>
             <em class="opacity-60">August 2021 - May 2022</em>
           </div>
-          <div class="flex flex-col sm:flex-row sm:justify-between text-sm">
+          <div class="flex flex-col text-sm sm:flex-row sm:justify-between">
             <span>Member</span>
             <em class="opacity-60">August 2018 - Present</em>
           </div>
           <ul class="mt-2 space-y-1">
             <li class="text-sm">
-              <ChevronRight class="size-3 inline text-primary-500" /> Presented and demonstrated offensive security tools
+              <ChevronRight class="inline size-3 text-primary-500" /> Presented and demonstrated offensive security tools
               and practices to complement course material.
             </li>
             <li class="text-sm">
-              <ChevronRight class="size-3 inline text-primary-500" /> Collaborated with other board members to design and
+              <ChevronRight class="inline size-3 text-primary-500" /> Collaborated with other board members to design and
               administer Capture the Flag competitions.
             </li>
           </ul>
         </div>
       </div>
 
-      <div class="card p-4 preset-filled-surface-100-900 border border-surface-200-800 break-inside-avoid">
-        <h2 class="h3 mb-3">Work Experience</h2>
+      <div class="break-inside-avoid card border border-surface-200-800 preset-filled-surface-100-900 p-4">
+        <h2 class="mb-3 h3">Work Experience</h2>
         <Accordion value={experienceValue} onValueChange={(e) => (experienceValue = e.value)}>
           {#each experienceItems as item, i (item.id)}
             {#if i !== 0}<hr class="hr" />{/if}
             <Accordion.Item value={item.id}>
               <h3>
-                <Accordion.ItemTrigger class="font-bold flex items-center justify-between gap-2 w-full">
+                <Accordion.ItemTrigger class="flex w-full items-center justify-between gap-2 font-bold">
                   <span>{item.company}</span>
                   <Accordion.ItemIndicator class="group">
                     <ChevronDown class="size-4 transition group-data-[state=open]:rotate-180" />
@@ -284,7 +284,7 @@
               <Accordion.ItemContent>
                 {#snippet element(attributes)}
                   {#if !attributes.hidden}
-                    <div {...attributes} transition:slide={{ duration: 150 }} class="text-sm space-y-1 pt-2">
+                    <div {...attributes} transition:slide={{ duration: 150 }} class="space-y-1 pt-2 text-sm">
                       {#each item.roles as role (role.title)}
                         <div class="flex flex-col sm:flex-row sm:justify-between">
                           <span>{role.title}</span>
@@ -294,7 +294,7 @@
                       <hr class="hr" />
                       <ul class="space-y-1">
                         {#each item.details as detail (detail)}
-                          <li><ChevronRight class="size-3 inline text-primary-500" /> {detail}</li>
+                          <li><ChevronRight class="inline size-3 text-primary-500" /> {detail}</li>
                         {/each}
                       </ul>
                     </div>
@@ -306,55 +306,55 @@
         </Accordion>
       </div>
 
-      <div class="card p-4 preset-filled-surface-100-900 border border-surface-200-800 break-inside-avoid">
-        <h2 class="h3 mb-3">Awards</h2>
-        <h3 class="font-bold text-sm mb-1 flex items-center gap-1">
+      <div class="break-inside-avoid card border border-surface-200-800 preset-filled-surface-100-900 p-4">
+        <h2 class="mb-3 h3">Awards</h2>
+        <h3 class="mb-1 flex items-center gap-1 text-sm font-bold">
           <Award class="size-4 text-primary-500" /> Competitions
         </h3>
-        <ul class="space-y-1 mb-3">
+        <ul class="mb-3 space-y-1">
           <li class="text-sm">
-            <ChevronRight class="size-3 inline mr-1 text-primary-500" /> Ranked 1st in BSides Fort Wayne CTF 2025
+            <ChevronRight class="mr-1 inline size-3 text-primary-500" /> Ranked 1st in BSides Fort Wayne CTF 2025
           </li>
           <li class="text-sm">
-            <ChevronRight class="size-3 inline mr-1 text-primary-500" /> Ranked 1st in BSides Chicago CTF 2025
+            <ChevronRight class="mr-1 inline size-3 text-primary-500" /> Ranked 1st in BSides Chicago CTF 2025
           </li>
           <li class="text-sm">
-            <ChevronRight class="size-3 inline mr-1 text-primary-500" /> Ranked 1st in Hack The Box Blue Team CTF 2025
+            <ChevronRight class="mr-1 inline size-3 text-primary-500" /> Ranked 1st in Hack The Box Blue Team CTF 2025
           </li>
           <li class="text-sm">
-            <ChevronRight class="size-3 inline mr-1 text-primary-500" /> Ranked 4th in Last Minute Blue Team CTF 2025
+            <ChevronRight class="mr-1 inline size-3 text-primary-500" /> Ranked 4th in Last Minute Blue Team CTF 2025
           </li>
           <li class="text-sm">
-            <ChevronRight class="size-3 inline mr-1 text-primary-500" /> Ranked 18th of 3658 Teams NCL 2022
+            <ChevronRight class="mr-1 inline size-3 text-primary-500" /> Ranked 18th of 3658 Teams NCL 2022
           </li>
           <li class="text-sm">
-            <ChevronRight class="size-3 inline mr-1 text-primary-500" /> Purdue AITP Computing Challenge Day Systems Analysis
+            <ChevronRight class="mr-1 inline size-3 text-primary-500" /> Purdue AITP Computing Challenge Day Systems Analysis
             and Design 3rd Place
           </li>
         </ul>
-        <h3 class="font-bold text-sm mb-1 flex items-center gap-1">
+        <h3 class="mb-1 flex items-center gap-1 text-sm font-bold">
           <GraduationCap class="size-4 text-primary-500" /> Academics
         </h3>
         <ul class="space-y-1">
           <li class="text-sm">
-            <ChevronRight class="size-3 inline mr-1 text-primary-500" /> Purdue Marquis Scholarship
+            <ChevronRight class="mr-1 inline size-3 text-primary-500" /> Purdue Marquis Scholarship
           </li>
-          <li class="text-sm"><ChevronRight class="size-3 inline mr-1 text-primary-500" /> Purdue AITP Scholarship</li>
+          <li class="text-sm"><ChevronRight class="mr-1 inline size-3 text-primary-500" /> Purdue AITP Scholarship</li>
           <li class="text-sm">
-            <ChevronRight class="size-3 inline mr-1 text-primary-500" /> Purdue Polytechnic Dean's List
+            <ChevronRight class="mr-1 inline size-3 text-primary-500" /> Purdue Polytechnic Dean's List
           </li>
         </ul>
       </div>
 
-      <div class="card p-4 preset-filled-surface-100-900 border border-surface-200-800 break-inside-avoid">
-        <h2 class="h3 mb-3">Knowledge</h2>
+      <div class="break-inside-avoid card border border-surface-200-800 preset-filled-surface-100-900 p-4">
+        <h2 class="mb-3 h3">Knowledge</h2>
         <Accordion value={knowledgeValue} onValueChange={(e) => (knowledgeValue = e.value)}>
           {#each knowledgeGroups as group, i (group.id)}
             {#if i !== 0}<hr class="hr" />{/if}
             <Accordion.Item value={group.id}>
               <h3>
-                <Accordion.ItemTrigger class="font-bold flex items-center justify-between gap-2 w-full">
-                  <group.icon class="size-4 mr-1 {group.iconClass}" />
+                <Accordion.ItemTrigger class="flex w-full items-center justify-between gap-2 font-bold">
+                  <group.icon class="mr-1 size-4 {group.iconClass}" />
                   <span class="flex-1 text-left">{group.title}</span>
                   <Accordion.ItemIndicator class="group">
                     <ChevronDown class="size-4 transition group-data-[state=open]:rotate-180" />
@@ -367,7 +367,7 @@
                     <div {...attributes} transition:slide={{ duration: 150 }} class="pt-2">
                       <ul class="space-y-1">
                         {#each group.items as item (item)}
-                          <li class="text-sm"><ChevronRight class="size-3 inline mr-1 text-primary-500" /> {item}</li>
+                          <li class="text-sm"><ChevronRight class="mr-1 inline size-3 text-primary-500" /> {item}</li>
                         {/each}
                       </ul>
                     </div>
