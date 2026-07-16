@@ -1,7 +1,6 @@
 ---
 import "../styles/global.css";
 
-// import { createHash } from "node:crypto";
 import portrait from "@assets/images/michaelJenkinsPortrait.jpg";
 import spacerBg from "@assets/images/poisonIvyMultiplied.jpg";
 import homeBg from "@assets/images/triliumPoisonIvyMultiplied.jpg";
@@ -32,11 +31,7 @@ const structuredData = {
   ]
 };
 const bgCss = `:root{--bg-home:url(${optimizedHomeBg.src});--bg-spacer:url(${optimizedSpacerBg.src})}`;
-// const bgHash = "sha256-" + createHash("sha256").update(bgCss).digest("base64");
 const ldJson = JSON.stringify(structuredData);
-// const ldHash = "sha256-" + createHash("sha256").update(ldJson).digest("base64");
-// Astro.csp?.insertStyleHash(bgHash as `sha256-${string}`);
-// Astro.csp?.insertScriptHash(ldHash as `sha256-${string}`);
 ---
 
 <!doctype html>

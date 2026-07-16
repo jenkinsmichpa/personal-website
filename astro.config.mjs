@@ -8,24 +8,24 @@ import Icons from "unplugin-icons/vite";
 export default defineConfig({
   site: "https://jenkinsmichpa.com",
   output: "static",
-  // Cloudflare is a CSP nightmare
-  // markdown: {
-  //   syntaxHighlight: false
-  // },
-  // security: {
-  //   csp: {
-  //     directives: [
-  //       "default-src 'self'",
-  //       "img-src 'self' data: blob:",
-  //       "form-action 'self'",
-  //       "base-uri 'self'",
-  //       "connect-src 'self' cloudflareinsights.com"
-  //     ],
-  //     scriptDirective: {
-  //       resources: ["'self'", "static.cloudflareinsights.com"]
-  //     }
-  //   }
-  // },
+  security: {
+    csp: {
+      directives: [
+        "default-src 'self'",
+        "img-src 'self' data: blob:",
+        "form-action 'self'",
+        "base-uri 'self'",
+        "connect-src 'self'",
+        "frame-ancestors 'none'"
+      ],
+      scriptDirective: {
+        resources: ["'self'", "'unsafe-inline'"]
+      },
+      styleDirective: {
+        resources: ["'self'", "'unsafe-inline'"]
+      }
+    }
+  },
   integrations: [
     svelte({
       compilerOptions: {
