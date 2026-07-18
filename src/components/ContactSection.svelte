@@ -24,7 +24,7 @@
 
   $effect(() => {
     const obfuscated =
-      "WvA4AzD7WvA4AzL7WvA4AwZ7WaOypzyiMQfzV3t2LmfzV3t2BGfzV3t2ZGfzV3t2MQf8p3Ouow5gMJkiMUx8Y3AjLJ4+WvA4Awp7WzAioJ1uqQfzV3t2ZGfzV3t3ZQfzV3t2BQfzV3t2ZmfzV3t2BGfzV3t2MQf8p3Ouow5jo25xCP9mpTShCvLwrQpmBlLwrQMyBlLwrQL5BlLwrQMvBlLwrQMyBlLwrQL1BlLwrQMuBjb";
+      "WvA4AzD7WvA4AzL7WvA4AwZ7WvA4ZzH7WvA4AwR7WvA4AmN7WvA4Awt7WvA4AwZ7WvA4Awx7WvA4AzD7CUAjLJ4+oJIfo2E5CP9mpTShCvLwrQpmBlLwrQMyBlLwrQL5BlLwrQMvBlLwrQMyBmkmpTShCaOiozD8Y3AjLJ4+WvA4AwH7WvA4AzR7WvA4AQN7WvA4AwH7WvA4AzD7";
     const raw = atob(rot13(obfuscated));
     const el = document.getElementById("email-target");
     if (el) {
