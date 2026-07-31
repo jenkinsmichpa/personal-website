@@ -12,20 +12,14 @@
 
   function toggleTheme() {
     dark = !dark;
-    if (dark) {
-      document.documentElement.dataset.colorScheme = "dark";
-      document.documentElement.style.colorScheme = "dark";
-      localStorage.setItem("theme", "dark");
-    } else {
-      document.documentElement.dataset.colorScheme = "light";
-      document.documentElement.style.colorScheme = "light";
-      localStorage.setItem("theme", "light");
-    }
+    const mode = dark ? "dark" : "light";
+    document.documentElement.dataset.mode = mode;
+    localStorage.setItem("theme", mode);
   }
 
   $effect(() => {
-    const scheme = document.documentElement.dataset.colorScheme;
-    dark = scheme === "dark";
+    const mode = document.documentElement.dataset.mode;
+    dark = mode === "dark";
     scrolled = window.scrollY > 80;
 
     const sections = document.querySelectorAll("section[id]");
@@ -109,13 +103,13 @@
       <button
         type="button"
         onclick={toggleTheme}
-        class="btn-icon btn-icon-lg hover:preset-tonal"
+        class="btn-icon btn-icon-lg {scrolled ? 'hover:preset-tonal' : 'hover:bg-white/10'}"
         aria-label="Toggle theme"
       >
         {#if dark}
-          <Sun class="size-5" />
+          <Sun />
         {:else}
-          <Moon class="size-5" />
+          <Moon />
         {/if}
       </button>
     </AppBar.Trail>

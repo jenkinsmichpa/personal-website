@@ -155,7 +155,7 @@
   ];
 </script>
 
-<section class="container-fluid border-t border-b border-surface-200-800 py-16" id="about">
+<section class="border-t border-b border-surface-200-800 py-16" id="about">
   <div class="mx-auto max-w-6xl px-4">
     <div class="columns-1 gap-4 space-y-4 md:columns-2">
       <div class="break-inside-avoid card border border-surface-200-800 preset-filled-surface-100-900 p-4">
@@ -190,7 +190,7 @@
               target="_blank"
               class="btn preset-filled-primary-500 btn-base"
             >
-              <FileUser class="size-4" />
+              <FileUser />
               <span>Resume</span>
             </a>
             <a
@@ -198,7 +198,7 @@
               target="_blank"
               class="btn preset-filled-primary-500 btn-base"
             >
-              <IconLinkedin class="size-4" />
+              <IconLinkedin />
               <span>LinkedIn</span>
             </a>
           </div>
