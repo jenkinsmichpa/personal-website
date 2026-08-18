@@ -51,8 +51,7 @@ export default [
       "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_", varsIgnorePattern: "^_" }],
       "@typescript-eslint/consistent-type-definitions": ["error", "type"],
       "simple-import-sort/imports": "error",
-      "simple-import-sort/exports": "error",
-      "svelte/no-at-html-tags": "off"
+      "simple-import-sort/exports": "error"
     }
   },
   prettier
