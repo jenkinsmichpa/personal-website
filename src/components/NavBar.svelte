@@ -24,6 +24,20 @@
 
     const sections = document.querySelectorAll("section[id]");
     const links = document.querySelectorAll("#navbar .nav-link");
+
+    let cleanupNavbarHeight = () => {
+      /* noop */
+    };
+    const navbarRoot = document.getElementById("navbar");
+    if (navbarRoot) {
+      const updateNavbarHeight = () => {
+        document.documentElement.style.setProperty("--navbar-height", `${navbarRoot.offsetHeight}px`);
+      };
+      updateNavbarHeight();
+      window.addEventListener("resize", updateNavbarHeight);
+      cleanupNavbarHeight = () => window.removeEventListener("resize", updateNavbarHeight);
+    }
+
     let cleanupScrollspy = () => {
       /* noop */
     };
@@ -52,6 +66,7 @@
     }
     return () => {
       cleanupScrollspy();
+      cleanupNavbarHeight();
     };
   });
 </script>
