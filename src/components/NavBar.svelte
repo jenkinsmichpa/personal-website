@@ -142,7 +142,7 @@
       {@const Icon = item.icon}
       <a
         href={`#${item.id}`}
-        class="nav-link flex flex-col items-center text-xs aria-[current=page]:text-primary-500"
+        class="nav-link flex flex-col items-center text-xs transition-colors duration-300 aria-[current=page]:text-primary-500 motion-reduce:transition-none"
         aria-current={currentId === item.id ? "page" : undefined}><Icon class="size-5" />{item.label}</a
       >
     {/each}
