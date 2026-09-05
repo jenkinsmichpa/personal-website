@@ -28,15 +28,6 @@ export default [
     }
   },
   {
-    files: ["scripts/**/*.mjs"],
-    languageOptions: {
-      globals: {
-        ...globals.node,
-        Bun: true
-      }
-    }
-  },
-  {
     languageOptions: {
       globals: {
         ...globals.browser

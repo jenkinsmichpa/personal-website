@@ -4,34 +4,53 @@ import "../styles/global.css";
 import portrait from "@assets/images/michaelJenkinsPortrait.jpg";
 import spacerBg from "@assets/images/poisonIvyMultiplied.jpg";
 import homeBg from "@assets/images/triliumPoisonIvyMultiplied.jpg";
+import { socialLinks } from "@lib/socials";
 import { getImage } from "astro:assets";
 import { SEO } from "astro-seo";
-const optimizedHomeBg = await getImage({ src: homeBg, format: "webp", width: 2560 });
-const optimizedSpacerBg = await getImage({ src: spacerBg, format: "webp", width: 2560 });
+
+type Props = {
+  title?: string;
+  description?: string;
+  preloadHomeBg?: boolean;
+};
 const {
   title,
-  description = "Michael Jenkins is a graduate student at Purdue University, pursuing a Masters degree in Computer and Information Technology with a focus on Cybersecurity."
-} = Astro.props;
-const image = new URL(portrait.src, Astro.url).href;
+  description = "Michael Jenkins is a graduate student at Purdue University, pursuing a Masters degree in Computer and Information Technology with a focus on Cybersecurity.",
+  preloadHomeBg = false
+}: Props = Astro.props;
+const [optimizedHomeBg, optimizedSpacerBg, ogImage] = await Promise.all([
+  preloadHomeBg ? getImage({ src: homeBg, format: "webp", width: 1920 }) : null,
+  preloadHomeBg ? getImage({ src: spacerBg, format: "webp", width: 1920 }) : null,
+  getImage({
+    src: portrait,
+    width: 1200,
+    height: 630,
+    fit: "cover",
+    position: "top",
+    format: "jpg",
+    quality: 80
+  })
+]);
+const siteUrl = Astro.site ?? new URL("https://jenkinsmichpa.com/");
+const image = new URL(ogImage.src, siteUrl).href;
+const pageTitle = title ?? "Michael Jenkins";
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Michael Jenkins",
-  url: "https://jenkinsmichpa.com",
+  url: siteUrl.href,
   image,
-  jobTitle: "Cyber Security Consulting Senior Staff",
+  jobTitle: "InfoSec Graduate Student",
   alumniOf: { "@type": "EducationalOrganization", name: "Purdue University" },
-  sameAs: [
-    "https://www.linkedin.com/in/jenkinsmichpa",
-    "https://github.com/jenkinsmichpa",
-    "https://infosec.exchange/@jenkinsmichpa",
-    "https://bsky.app/profile/jenkinsmichpa.bsky.social",
-    "https://x.com/jenkinsmichpa",
-    "https://www.instagram.com/jenkinsmichpa/"
-  ]
+  sameAs: socialLinks.map((link) => link.href)
 };
-const bgCss = `:root{--bg-home:url(${optimizedHomeBg.src});--bg-spacer:url(${optimizedSpacerBg.src})}`;
-const ldJson = JSON.stringify(structuredData);
+// Home/spacer backgrounds are only used on the index page (hero + Spacer).
+// Skip them on other pages (e.g. 404) to avoid unused CSS.
+const bgCss =
+  preloadHomeBg && optimizedHomeBg && optimizedSpacerBg
+    ? `:root{--bg-home:url("${optimizedHomeBg.src}");--bg-spacer:url("${optimizedSpacerBg.src}")}`
+    : "";
+const ldJson = JSON.stringify(structuredData).replace(/</g, "\\u003c");
 ---
 
 <!doctype html>
@@ -40,14 +59,14 @@ const ldJson = JSON.stringify(structuredData);
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <SEO
-      title={title}
+      {...title === undefined ? {} : { title }}
       titleTemplate="%s | Michael Jenkins"
       titleDefault="Michael Jenkins"
       description={description}
       removeTrailingSlashForRoot
       openGraph={{
         basic: {
-          title: title ?? "Michael Jenkins",
+          title: pageTitle,
           type: "website",
           image
         },
@@ -56,8 +75,8 @@ const ldJson = JSON.stringify(structuredData);
           siteName: "Michael Jenkins"
         },
         image: {
-          width: portrait.width,
-          height: portrait.height,
+          width: 1200,
+          height: 630,
           alt: "Michael Jenkins Portrait"
         }
       }}
@@ -76,10 +95,10 @@ const ldJson = JSON.stringify(structuredData);
         ]
       }}
     />
-    <style set:html={bgCss}></style>
+    {bgCss && <style set:html={bgCss} />}
     <script is:inline src="/theme.js"></script>
     <script is:inline type="application/ld+json" set:html={ldJson} />
-    <link rel="preload" href={optimizedHomeBg.src} as="image" type="image/webp" />
+    {preloadHomeBg && optimizedHomeBg && <link rel="preload" href={optimizedHomeBg.src} as="image" type="image/webp" />}
   </head>
   <body class="bg-surface-50-950 text-surface-900-100">
     <main><slot /></main>

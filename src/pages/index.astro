@@ -1,61 +1,46 @@
 ---
-import drinkingTiger from "@assets/images/drinkingTiger.jpg";
-import elderlyCouple from "@assets/images/elderlyCouple.jpg";
-import hibiscus from "@assets/images/hibiscus.jpg";
-import impressionistLake from "@assets/images/impressionistLake.jpg";
-import lighthouse from "@assets/images/lighthouse.jpg";
 import portrait from "@assets/images/michaelJenkinsPortrait.jpg";
-import mountainRange from "@assets/images/mountainRange.jpg";
-import rainbowTanager from "@assets/images/rainbowTanager.jpg";
-import river from "@assets/images/river.jpg";
-import scarletTanager from "@assets/images/scarletTanager.jpg";
-import seaCliffs from "@assets/images/seaCliffs.jpg";
-import stinkingBenjamin from "@assets/images/stinkingBenjamin.jpg";
-import turtleBearSkull from "@assets/images/turtleBearSkull.jpg";
 import AboutSection from "@components/AboutSection.svelte";
 import ContactSection from "@components/ContactSection.svelte";
 import NavBar from "@components/NavBar.svelte";
 import PortfolioSection from "@components/PortfolioSection.svelte";
+import Spacer from "@components/Spacer.astro";
 import Layout from "@layouts/Layout.astro";
+import type { AboutPortrait } from "@lib/about";
+import { buildObfuscatedEmail } from "@lib/contact.server";
+import { portfolioPages } from "@lib/portfolio";
 import { getImage, Image } from "astro:assets";
 
-const portfolioPages = [
-  [
-    { file: "drinkingTiger", alt: "Drinking Tiger Painting", img: drinkingTiger },
-    { file: "hibiscus", alt: "Hibiscus Painting", img: hibiscus },
-    { file: "seaCliffs", alt: "Sea Cliffs Painting", img: seaCliffs },
-    { file: "lighthouse", alt: "Lighthouse Painting", img: lighthouse },
-    { file: "mountainRange", alt: "Mountain Range Painting", img: mountainRange },
-    { file: "impressionistLake", alt: "Impressionist Lake Painting", img: impressionistLake }
-  ],
-  [
-    { file: "scarletTanager", alt: "Scarlet Tanager Painting", img: scarletTanager },
-    { file: "rainbowTanager", alt: "Rainbow Tanager Painting", img: rainbowTanager },
-    { file: "river", alt: "River Painting", img: river }
-  ],
-  [
-    { file: "turtleBearSkull", alt: "Turtle Bear Skull Painting", img: turtleBearSkull },
-    { file: "elderlyCouple", alt: "Elderly Couple Pastel Painting", img: elderlyCouple },
-    { file: "stinkingBenjamin", alt: "Stinking Benjamin Painting", img: stinkingBenjamin }
-  ]
-];
-
-const optimizedPortrait = await getImage({ src: portrait, width: 600, format: "webp", quality: "high" });
+const optimizedPortrait = await getImage({ src: portrait, width: 600, format: "webp", quality: 80 });
+const portraitData: AboutPortrait = {
+  src: optimizedPortrait.src,
+  width: Number(optimizedPortrait.attributes.width),
+  height: Number(optimizedPortrait.attributes.height)
+};
+// Built server-side so the plain address never gets in the client bundle.
+const obfuscatedEmail = buildObfuscatedEmail("me@jenkinsmichpa.com");
 
 const portfolioData = await Promise.all(
-  portfolioPages.map(async (page) =>
+  portfolioPages.map((page) =>
     Promise.all(
-      page.map(async (item) => ({
-        fullSrc: item.img.src,
-        alt: item.alt,
-        thumb: await getImage({ src: item.img, width: 400, format: "webp", quality: "mid" })
-      }))
+      page.map(async (item) => {
+        const thumb = await getImage({ src: item.img, width: 400, format: "webp", quality: 60 });
+        return {
+          fullSrc: item.img.src,
+          fullWidth: item.img.width,
+          fullHeight: item.img.height,
+          alt: item.alt,
+          thumbSrc: thumb.src,
+          thumbWidth: Number(thumb.attributes.width),
+          thumbHeight: Number(thumb.attributes.height)
+        };
+      })
     )
   )
 );
 ---
 
-<Layout>
+<Layout preloadHomeBg>
   <NavBar client:load />
 
   <section
@@ -71,6 +56,7 @@ const portfolioData = await Promise.all(
         height={208}
         densities={[1, 2]}
         loading="eager"
+        fetchpriority="high"
       />
       <h1 class="mb-2 text-3xl leading-tight font-bold text-white sm:text-4xl md:text-5xl">
         Hello, I'm Michael Jenkins
@@ -79,30 +65,27 @@ const portfolioData = await Promise.all(
     </div>
   </section>
 
-  <AboutSection portraitSrc={optimizedPortrait.src} client:idle />
+  <AboutSection portrait={portraitData} client:idle />
 
-  <div class="parallax-section spacer-section">
-    <div class="spacer-blur"></div>
-  </div>
+  <Spacer />
 
   <PortfolioSection data={portfolioData} client:visible />
 
-  <div class="parallax-section spacer-section">
-    <div class="spacer-blur"></div>
-  </div>
+  <Spacer />
 
-  <ContactSection client:visible />
+  <ContactSection obfuscated={obfuscatedEmail} client:visible />
 
-  <div class="parallax-section spacer-section">
-    <div class="spacer-blur"></div>
-  </div>
+  <Spacer />
 
-  <footer class="border-t border-surface-200-800 py-8 max-md:pb-[calc(5rem+env(safe-area-inset-bottom,0))]">
+  <footer
+    class="border-t border-surface-200-800 py-8 max-md:pb-[calc(var(--bottom-nav-h)+env(safe-area-inset-bottom,0))]"
+  >
     <div class="mx-auto max-w-6xl px-4">
       <div class="flex flex-col items-center justify-between gap-4 md:flex-row">
         <p class="text-sm opacity-60">
-          Project code hosted on <a href="https://github.com/jenkinsmichpa/personal-website" class="anchor font-medium"
-            ><u>GitHub</u></a
+          Project code hosted on <a
+            href="https://github.com/jenkinsmichpa/personal-website"
+            class="anchor font-medium underline">GitHub</a
           >
         </p>
         <p class="text-sm opacity-60">&copy; {new Date().getFullYear()} Michael Jenkins</p>
