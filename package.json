@@ -13,17 +13,17 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "check": "astro check && svelte-check --tsconfig ./tsconfig.json",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist .astro node_modules"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.4",
     "@astrojs/svelte": "^9.0.1",
     "@iconify-json/fa6-brands": "^1.2.6",
-    "@lucide/svelte": "^1.39.0",
+    "@lucide/svelte": "^1.42.0",
     "@skeletonlabs/skeleton": "^5.0.1",
     "@skeletonlabs/skeleton-svelte": "^5.0.1",
     "@tailwindcss/vite": "^4.3.3",
-    "astro": "^7.2.10",
+    "astro": "^7.3.1",
     "astro-favicons": "^3.1.6",
     "astro-seo": "^1.2.0",
     "svelte": "^5.57.0",
@@ -32,7 +32,7 @@
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
     "@eslint/js": "^10.0.1",
-    "eslint": "^10.9.1",
+    "eslint": "^10.10.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-astro": "^3.1.0",
     "eslint-plugin-simple-import-sort": "^14.0.0",
@@ -45,11 +45,11 @@
     "svelte-check": "^4.7.6",
     "svelte-eslint-parser": "^1.8.1",
     "typescript": "^6.0.3",
-    "typescript-eslint": "^8.69.0",
+    "typescript-eslint": "^8.70.0",
     "unplugin-icons": "^23.0.1",
-    "wrangler": "^4.128.0"
+    "wrangler": "^4.129.1"
   },
   "engines": {
-    "bun": ">=1.4.0"
+    "bun": ">=1.4.2"
   }
 }
