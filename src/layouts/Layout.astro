@@ -1,10 +1,10 @@
 ---
 import "../styles/global.css";
 
-import portrait from "@assets/images/michaelJenkinsPortrait.jpg";
-import spacerBg from "@assets/images/poisonIvyMultiplied.jpg";
-import homeBg from "@assets/images/triliumPoisonIvyMultiplied.jpg";
-import { socialLinks } from "@lib/socials";
+import portrait from "#assets/images/michaelJenkinsPortrait.jpg";
+import spacerBg from "#assets/images/poisonIvyMultiplied.jpg";
+import homeBg from "#assets/images/triliumPoisonIvyMultiplied.jpg";
+import { socialLinks } from "#lib/socials.ts";
 import { getImage } from "astro:assets";
 import { SEO } from "astro-seo";
 
@@ -44,13 +44,12 @@ const structuredData = {
   alumniOf: { "@type": "EducationalOrganization", name: "Purdue University" },
   sameAs: socialLinks.map((link) => link.href)
 };
-// Home/spacer backgrounds are only used on the index page (hero + Spacer).
-// Skip them on other pages (e.g. 404) to avoid unused CSS.
+
 const bgCss =
   preloadHomeBg && optimizedHomeBg && optimizedSpacerBg
     ? `:root{--bg-home:url("${optimizedHomeBg.src}");--bg-spacer:url("${optimizedSpacerBg.src}")}`
     : "";
-const ldJson = JSON.stringify(structuredData).replace(/</g, "\\u003c");
+const ldJson = JSON.stringify(structuredData).replaceAll("<", "\\u003c");
 ---
 
 <!doctype html>
@@ -59,7 +58,7 @@ const ldJson = JSON.stringify(structuredData).replace(/</g, "\\u003c");
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <SEO
-      {...title === undefined ? {} : { title }}
+      {...(title === undefined ? {} : { title })}
       titleTemplate="%s | Michael Jenkins"
       titleDefault="Michael Jenkins"
       description={description}
@@ -95,12 +94,14 @@ const ldJson = JSON.stringify(structuredData).replace(/</g, "\\u003c");
         ]
       }}
     />
-    {bgCss && <style set:html={bgCss} />}
+    {bgCss && <style set:html={bgCss}></style>}
     <script is:inline src="/theme.js"></script>
-    <script is:inline type="application/ld+json" set:html={ldJson} />
+    <script is:inline type="application/ld+json" set:html={ldJson}></script>
     {preloadHomeBg && optimizedHomeBg && <link rel="preload" href={optimizedHomeBg.src} as="image" type="image/webp" />}
   </head>
   <body class="bg-surface-50-950 text-surface-900-100">
-    <main><slot /></main>
+    <main>
+      <slot />
+    </main>
   </body>
 </html>

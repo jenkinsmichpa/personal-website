@@ -1,13 +1,26 @@
 {
   "extends": "astro/tsconfigs/strictest",
   "compilerOptions": {
+    "checkJs": true,
     "paths": {
-      "@components/*": ["./src/components/*"],
-      "@layouts/*": ["./src/layouts/*"],
-      "@lib/*": ["./src/lib/*"],
-      "@assets/*": ["./src/assets/*"]
+      "#components/*": ["./src/components/*"],
+      "#layouts/*": ["./src/layouts/*"],
+      "#lib/*": ["./src/lib/*"],
+      "#assets/*": ["./src/assets/*"]
     }
   },
-  "include": [".astro/types.d.ts", "src/**/*.ts", "src/**/*.astro", "src/**/*.svelte"],
-  "exclude": ["dist"]
+  "include": [
+    ".astro/types.d.ts",
+    "src/**/*.ts",
+    "src/**/*.astro",
+    "src/**/*.svelte",
+    "tools/**/*",
+    "astro.config.mjs",
+    "eslint.config.mjs",
+    "svelte.config.js",
+    "oxlint.config.ts",
+    "oxfmt.config.ts",
+    "prettier.config.mjs",
+    "public/**/*.js"
+  ]
 }

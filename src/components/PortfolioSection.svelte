@@ -1,6 +1,7 @@
 <script lang="ts">
-  import type { PortfolioItem } from "@lib/portfolio";
   import { SegmentedControl } from "@skeletonlabs/skeleton-svelte";
+
+  import type { PortfolioItem } from "#lib/portfolio.ts";
 
   import LightboxDialog from "./LightboxDialog.svelte";
 

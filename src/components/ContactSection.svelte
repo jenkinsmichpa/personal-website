@@ -1,7 +1,8 @@
 <script lang="ts">
-  import { rot13, socials } from "@lib/contact";
   import { Mail } from "@lucide/svelte";
   import { onMount } from "svelte";
+
+  import { rot13, socials } from "#lib/contact.ts";
 
   let { obfuscated }: { obfuscated: string } = $props();
 
@@ -13,8 +14,10 @@
     displayHtml = raw;
 
     const doc = new DOMParser().parseFromString(raw, "text/html");
-    doc.querySelectorAll("span").forEach((el) => el.remove());
-    const address = [...(doc.body.textContent ?? "").trim()].reverse().join("");
+    doc.querySelectorAll("span").forEach((el) => {
+      el.remove();
+    });
+    const address = Array.from(doc.body.textContent.trim()).toReversed().join("");
     emailHref = `mailto:${address}`;
   });
 </script>

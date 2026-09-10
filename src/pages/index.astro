@@ -1,14 +1,14 @@
 ---
-import portrait from "@assets/images/michaelJenkinsPortrait.jpg";
-import AboutSection from "@components/AboutSection.svelte";
-import ContactSection from "@components/ContactSection.svelte";
-import NavBar from "@components/NavBar.svelte";
-import PortfolioSection from "@components/PortfolioSection.svelte";
-import Spacer from "@components/Spacer.astro";
-import Layout from "@layouts/Layout.astro";
-import type { AboutPortrait } from "@lib/about";
-import { buildObfuscatedEmail } from "@lib/contact.server";
-import { portfolioPages } from "@lib/portfolio";
+import portrait from "#assets/images/michaelJenkinsPortrait.jpg";
+import AboutSection from "#components/AboutSection.svelte";
+import ContactSection from "#components/ContactSection.svelte";
+import NavBar from "#components/NavBar.svelte";
+import PortfolioSection from "#components/PortfolioSection.svelte";
+import Spacer from "#components/Spacer.astro";
+import Layout from "#layouts/Layout.astro";
+import type { AboutPortrait } from "#lib/about.ts";
+import { buildObfuscatedEmail } from "#lib/contact.server.ts";
+import { portfolioPages } from "#lib/portfolio.ts";
 import { getImage, Image } from "astro:assets";
 
 const optimizedPortrait = await getImage({ src: portrait, width: 600, format: "webp", quality: 80 });
@@ -77,16 +77,14 @@ const portfolioData = await Promise.all(
 
   <Spacer />
 
-  <footer
-    class="border-t border-surface-200-800 py-8 max-md:pb-[calc(var(--bottom-nav-h)+env(safe-area-inset-bottom,0))]"
-  >
+  <footer class="border-t border-surface-200-800 py-8 max-md:pb-[calc(var(--bottom-nav-h)+env(safe-area-inset-bottom,0))]">
     <div class="mx-auto max-w-6xl px-4">
       <div class="flex flex-col items-center justify-between gap-4 md:flex-row">
         <p class="text-sm opacity-60">
-          Project code hosted on <a
-            href="https://github.com/jenkinsmichpa/personal-website"
-            class="anchor font-medium underline">GitHub</a
-          >
+          Project code hosted on{" "}
+          <a href="https://github.com/jenkinsmichpa/personal-website" class="anchor font-medium underline">
+            GitHub
+          </a>
         </p>
         <p class="text-sm opacity-60">&copy; {new Date().getFullYear()} Michael Jenkins</p>
       </div>

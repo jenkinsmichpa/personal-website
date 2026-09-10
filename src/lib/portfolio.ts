@@ -1,16 +1,17 @@
-import drinkingTiger from "@assets/images/drinkingTiger.jpg";
-import elderlyCouple from "@assets/images/elderlyCouple.jpg";
-import hibiscus from "@assets/images/hibiscus.jpg";
-import impressionistLake from "@assets/images/impressionistLake.jpg";
-import lighthouse from "@assets/images/lighthouse.jpg";
-import mountainRange from "@assets/images/mountainRange.jpg";
-import rainbowTanager from "@assets/images/rainbowTanager.jpg";
-import river from "@assets/images/river.jpg";
-import scarletTanager from "@assets/images/scarletTanager.jpg";
-import seaCliffs from "@assets/images/seaCliffs.jpg";
-import stinkingBenjamin from "@assets/images/stinkingBenjamin.jpg";
-import turtleBearSkull from "@assets/images/turtleBearSkull.jpg";
 import type { ImageMetadata } from "astro";
+
+import drinkingTiger from "#assets/images/drinkingTiger.jpg";
+import elderlyCouple from "#assets/images/elderlyCouple.jpg";
+import hibiscus from "#assets/images/hibiscus.jpg";
+import impressionistLake from "#assets/images/impressionistLake.jpg";
+import lighthouse from "#assets/images/lighthouse.jpg";
+import mountainRange from "#assets/images/mountainRange.jpg";
+import rainbowTanager from "#assets/images/rainbowTanager.jpg";
+import river from "#assets/images/river.jpg";
+import scarletTanager from "#assets/images/scarletTanager.jpg";
+import seaCliffs from "#assets/images/seaCliffs.jpg";
+import stinkingBenjamin from "#assets/images/stinkingBenjamin.jpg";
+import turtleBearSkull from "#assets/images/turtleBearSkull.jpg";
 
 export type PortfolioImageInput = {
   alt: string;

@@ -56,7 +56,7 @@
     try {
       localStorage.setItem("theme", mode);
     } catch {
-      /* storage unavailable */
+      // storage unavailable
     }
   }
 
@@ -76,7 +76,7 @@
       const updateNavbarHeight = () => {
         const height = navbarRoot.offsetHeight;
         navHeight = height;
-        document.documentElement.style.setProperty("--navbar-height", `${height}px`);
+        document.documentElement.style.setProperty("--navbar-height", `${String(height)}px`);
       };
       updateNavbarHeight();
       resizeObserver = new ResizeObserver(updateNavbarHeight);

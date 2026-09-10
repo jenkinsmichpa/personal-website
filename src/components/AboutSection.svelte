@@ -1,10 +1,10 @@
 <script lang="ts">
-  import type { AboutPortrait } from "@lib/about";
-  import { activities, awardGroups, experienceItems, knowledgeGroups } from "@lib/about";
   import { ChevronDown, ChevronRight, FileUser, Hammer, MapPin, Shield } from "@lucide/svelte";
   import { Accordion } from "@skeletonlabs/skeleton-svelte";
-
   import IconLinkedin from "~icons/fa6-brands/linkedin";
+
+  import type { AboutPortrait } from "#lib/about.ts";
+  import { activities, awardGroups, experienceItems, knowledgeGroups } from "#lib/about.ts";
 
   import AnimatedAccordionContent from "./AnimatedAccordionContent.svelte";
 

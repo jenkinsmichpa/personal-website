@@ -1,6 +1,5 @@
 import type { Component } from "svelte";
 import type { SVGAttributes } from "svelte/elements";
-
 import IconBluesky from "~icons/fa6-brands/bluesky";
 import IconGithub from "~icons/fa6-brands/github";
 import IconInstagram from "~icons/fa6-brands/instagram";
@@ -8,13 +7,13 @@ import IconLinkedin from "~icons/fa6-brands/linkedin";
 import IconMastodon from "~icons/fa6-brands/mastodon";
 import IconTwitter from "~icons/fa6-brands/twitter";
 
-import type { SocialId } from "./socials";
-import { socialLinks } from "./socials";
+import type { SocialId } from "./socials.ts";
+import { socialLinks } from "./socials.ts";
 
 const socialRel = "me noopener noreferrer";
 
 export function rot13(s: string) {
-  return s.replace(/[a-zA-Z]/g, (c) => {
+  return s.replaceAll(/[a-zA-Z]/g, (c) => {
     const base = c <= "Z" ? 65 : 97;
     return String.fromCharCode(base + ((c.charCodeAt(0) - base + 13) % 26));
   });
