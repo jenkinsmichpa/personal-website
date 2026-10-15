@@ -1,12 +1,12 @@
 ---
 import "../styles/global.css";
+import { SEO } from "astro-seo";
+import { getImage } from "astro:assets";
 
 import portrait from "#assets/images/michaelJenkinsPortrait.jpg";
 import spacerBg from "#assets/images/poisonIvyMultiplied.jpg";
 import homeBg from "#assets/images/triliumPoisonIvyMultiplied.jpg";
 import { socialLinks } from "#lib/socials.ts";
-import { getImage } from "astro:assets";
-import { SEO } from "astro-seo";
 
 type Props = {
   title?: string;

@@ -8,6 +8,9 @@ import Icons from "unplugin-icons/vite";
 export default defineConfig({
   site: "https://jenkinsmichpa.com",
   output: "static",
+  experimental: {
+    parallelPrerender: true
+  },
   // Cloudflare CSP is a clusterfuck
   // security: {
   //   csp: {

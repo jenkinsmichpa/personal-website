@@ -18,6 +18,5 @@ export const oxfmtIgnorePatterns = [
   ...sharedIgnores.map((entry) => toOxfmtPattern(entry)),
   "node_modules",
   "*.lock",
-  "*.astro", // oxfmt has no Astro support yet
   "**/target/"
 ];

@@ -6,6 +6,7 @@ export default defineConfig({
   printWidth: 120,
   trailingComma: "none",
   svelte: true,
+  astro: true,
   sortImports: true,
   sortTailwindcss: {
     stylesheet: "./src/styles/global.css"

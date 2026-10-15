@@ -15,7 +15,8 @@ export default [
     files: ["**/*.ts", "**/*.mts", "**/*.cts", "**/*.js", "**/*.mjs", "**/*.cjs", "**/*.svelte"],
     languageOptions: {
       parserOptions: {
-        projectService: true
+        projectService: true,
+        extraFileExtensions: [".svelte"]
       }
     }
   },
