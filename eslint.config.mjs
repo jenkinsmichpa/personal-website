@@ -59,7 +59,6 @@ export default [
     rules: {
       "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_", varsIgnorePattern: "^_" }],
       "@typescript-eslint/consistent-type-definitions": "off", // Owned by oxlint
-      "no-console": ["error", { allow: ["warn", "error"] }], // oxlint covers .ts, ESLint covers <script> blocks in .svelte
       "svelte/no-at-html-tags": "error",
       "svelte/require-each-key": "error",
       "svelte/no-unused-svelte-ignore": "error",

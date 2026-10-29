@@ -20,47 +20,47 @@
     "lint:fix": "bun run format; fmt_status=$?; bun run lint:oxlint:fix; oxlint_status=$?; bun run lint:eslint:fix; eslint_status=$?; exit $((fmt_status || oxlint_status || eslint_status))",
     "lint:eslint:fix": "SVELTE_ESLINT_PARSER_EXPERIMENTAL_TS_SYS_HOOK=1 eslint . --fix",
     "lint:oxlint:fix": "oxlint . --fix",
-    "validate": "bun run format:check && bun run lint && bun run check",
+    "validate": "bun run format:check && bun check && bun run lint && bun run typecheck",
     "format": "bun run format:oxfmt",
     "format:oxfmt": "oxfmt",
     "format:check": "bun run format:check:oxfmt",
     "format:check:oxfmt": "oxfmt --check",
-    "check": "astro check && svelte-check --tsconfig ./tsconfig.json",
+    "typecheck": "astro check && svelte-check --tsconfig ./tsconfig.json",
     "clean": "rm -rf dist .astro node_modules"
   },
   "dependencies": {
     "@astrojs/sitemap": "3.7.4",
-    "@astrojs/svelte": "9.1.0",
+    "@astrojs/svelte": "9.1.2",
     "@iconify-json/fa6-brands": "1.2.6",
-    "@lucide/svelte": "1.57.0",
+    "@lucide/svelte": "1.64.0",
     "@skeletonlabs/skeleton": "5.0.1",
     "@skeletonlabs/skeleton-svelte": "5.0.1",
     "@tailwindcss/vite": "4.3.3",
-    "astro": "7.4.0",
+    "astro": "7.4.4",
     "astro-favicons": "3.1.8",
     "astro-seo": "1.2.0",
-    "svelte": "5.57.2",
+    "svelte": "5.57.3",
     "tailwindcss": "4.3.3"
   },
   "devDependencies": {
-    "@astrojs/check": "0.9.10",
+    "@astrojs/check": "0.9.12",
     "@astrojs/compiler-rs": "0.5.2",
     "@eslint/js": "10.0.1",
-    "@oxlint/plugins": "1.88.0",
-    "eslint": "10.12.0",
+    "@oxlint/plugins": "1.90.0",
+    "eslint": "10.13.0",
     "eslint-plugin-astro": "3.2.1",
     "eslint-plugin-svelte": "3.23.1",
     "globals": "17.13.0",
-    "oxfmt": "0.73.0",
-    "oxlint": "1.88.0",
-    "svelte-check": "4.7.6",
-    "svelte-eslint-parser": "1.9.0",
+    "oxfmt": "0.75.0",
+    "oxlint": "1.90.0",
+    "svelte-check": "4.7.7",
+    "svelte-eslint-parser": "1.10.0",
     "typescript": "6.0.3",
-    "typescript-eslint": "8.71.2",
+    "typescript-eslint": "8.72.1",
     "unplugin-icons": "24.0.0",
-    "wrangler": "4.151.0"
+    "wrangler": "4.155.0"
   },
   "engines": {
-    "bun": ">=1.4.3"
+    "bun": ">=1.4.4"
   }
 }

@@ -3,8 +3,8 @@ import type { ESTree } from "@oxlint/plugins";
 import {
   createTypeAliasEnvironment,
   hasVisibleTypeBinding,
-  visibleTypeAlias,
-  type TypeAliasEnvironment as LexicalTypeAliasEnvironment
+  type TypeAliasEnvironment as LexicalTypeAliasEnvironment,
+  visibleTypeAlias
 } from "./type-alias-resolution.ts";
 
 const BUILT_INS = new Set(["Record", "Readonly", "Partial", "Required", "Pick", "Omit", "PropertyKey", "NonNullable"]);

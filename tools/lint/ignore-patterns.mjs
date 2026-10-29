@@ -1,8 +1,10 @@
-const sharedIgnores = ["dist", ".astro", ".wrangler", "tools/oxlint/anti-slop/**"];
+// ESLint does not honor .gitignore, so this list includes items that .gitignore already covers.
+const sharedIgnores = ["dist", ".astro", ".wrangler", "tools/oxlint/anti-slop/**", "dev", "**/.vite/"];
 
 export const eslintIgnores = [...sharedIgnores];
 
-export const oxlintIgnorePatterns = [...sharedIgnores];
+// Oxlint matches bare names at any depth, so anchor root-only entries.
+export const oxlintIgnorePatterns = sharedIgnores.map((pattern) => (pattern.includes("/") ? pattern : `/${pattern}`));
 
 /**
  * @param {string} pattern

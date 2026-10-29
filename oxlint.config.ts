@@ -63,7 +63,7 @@ export default defineConfig({
       {
         allow: ["warn", "error"]
       }
-    ], // oxlint covers .ts, ESLint covers <script> blocks in .svelte
+    ],
     "oxc/no-accumulating-spread": "error"
   }
 });
