@@ -21,3 +21,6 @@ dist
 .idea
 .vscode
 .pi-lens
+
+# development scratch area
+/dev/
