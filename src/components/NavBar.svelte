@@ -90,14 +90,14 @@
     }
 
     updateActive();
-    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => {
-      window.removeEventListener("scroll", handleScroll);
       resizeObserver?.disconnect();
       document.documentElement.style.removeProperty("--navbar-height");
     };
   });
 </script>
+
+<svelte:window onscroll={handleScroll} />
 
 <AppBar
   class="navbar-shell fixed top-0 right-0 left-0 z-50 w-full border-b transition-all duration-500 motion-reduce:transition-none {navTextClass} {scrolled

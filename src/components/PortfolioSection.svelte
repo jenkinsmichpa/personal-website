@@ -10,8 +10,9 @@
   let page = $state("1");
   let selected = $state<PortfolioItem | null>(null);
 
-  const activeIndex = $derived(Math.min(Math.max(Number.parseInt(page, 10) - 1, 0), data.length - 1));
-  const activeItems = $derived(data[activeIndex] ?? []);
+  const pages = $derived(data.map((items, index) => ({ value: String(index + 1), items })));
+  const activeIndex = $derived(Math.min(Math.max(Number.parseInt(page, 10) - 1, 0), pages.length - 1));
+  const activeItems = $derived(pages[activeIndex]?.items ?? []);
 </script>
 
 <section class="border-t border-b border-surface-200-800 py-16" id="portfolio">
@@ -48,10 +49,9 @@
         <SegmentedControl.Label class="sr-only">Page</SegmentedControl.Label>
         <SegmentedControl.Control>
           <SegmentedControl.Indicator />
-          {#each data as _page, i (i)}
-            {@const v = String(i + 1)}
-            <SegmentedControl.Item value={v}>
-              <SegmentedControl.ItemText>{v}</SegmentedControl.ItemText>
+          {#each pages as p (p.value)}
+            <SegmentedControl.Item value={p.value}>
+              <SegmentedControl.ItemText>{p.value}</SegmentedControl.ItemText>
               <SegmentedControl.ItemHiddenInput />
             </SegmentedControl.Item>
           {/each}
