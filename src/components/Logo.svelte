@@ -7,12 +7,9 @@
   width="40"
   height="40"
   viewBox="-10 -10 80 80"
-  role="img"
-  aria-labelledby="logo-title logo-desc"
+  aria-hidden="true"
   class={className}
 >
-  <title id="logo-title">Personal logo</title>
-  <desc id="logo-desc">Initials MJ combined</desc>
   <path
     class="logo-stroke"
     d="M53.333 40 L0 40 L0 0 L30 40 L60 0 L60 40 A15 20 0 0 1 30 40 L36.666 40 A8.333 13.333 0 1 0 53.333 40 L53.333 8.888"

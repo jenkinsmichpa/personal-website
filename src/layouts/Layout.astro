@@ -95,13 +95,31 @@ const ldJson = JSON.stringify(structuredData).replaceAll("<", "\\u003c");
       }}
     />
     {bgCss && <style set:html={bgCss}></style>}
-    <script is:inline src="/theme.js"></script>
+    <script is:inline>
+      (() => {
+        let stored = null;
+        try {
+          stored = localStorage.getItem("theme");
+        } catch {
+          /* storage unavailable */
+        }
+        if (stored !== "dark" && stored !== "light") {
+          stored = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+        document.documentElement.dataset.mode = stored;
+        document.documentElement.style.colorScheme = stored;
+      })();
+    </script>
     <script is:inline type="application/ld+json" set:html={ldJson}></script>
     {preloadHomeBg && optimizedHomeBg && <link rel="preload" href={optimizedHomeBg.src} as="image" type="image/webp" />}
   </head>
-  <body class="bg-surface-50-950 text-surface-900-100">
-    <main>
-      <slot />
-    </main>
+  <body>
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[100] focus:rounded-base focus:bg-surface-100-900 focus:px-4 focus:py-2 focus:text-surface-900-100 focus:shadow-lg"
+    >
+      Skip to content
+    </a>
+    <slot />
   </body>
 </html>

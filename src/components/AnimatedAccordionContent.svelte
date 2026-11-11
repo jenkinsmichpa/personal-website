@@ -5,7 +5,15 @@
 
   let { children, contentClass = "space-y-1 pt-2 text-sm" }: { children: Snippet; contentClass?: string } = $props();
 
-  const reduceMotion = typeof matchMedia !== "undefined" && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let reduceMotion = $state(false);
+
+  $effect(() => {
+    const query = matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => (reduceMotion = query.matches);
+    update();
+    query.addEventListener("change", update);
+    return () => query.removeEventListener("change", update);
+  });
 </script>
 
 <Accordion.ItemContent>

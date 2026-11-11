@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Mail } from "@lucide/svelte";
+  import Mail from "@lucide/svelte/icons/mail";
   import { onMount } from "svelte";
 
   import { rot13, socials } from "#lib/contact.ts";
@@ -10,6 +10,7 @@
   let emailHref = $state<string>();
 
   onMount(() => {
+    // This is used to marginally reduce email spam.
     const raw = atob(rot13(obfuscated));
     displayHtml = raw;
 
@@ -29,12 +30,13 @@
       <div class="w-full max-w-lg card border border-surface-200-800 preset-filled-surface-100-900 p-4">
         <ul class="space-y-4">
           <li class="flex items-center gap-3">
-            <Mail class="size-5 shrink-0 text-primary-500" aria-hidden="true" />
+            <Mail class="size-elem-xl shrink-0 text-primary-500" aria-hidden="true" />
+            <!-- This is used to marginally reduce email spam. -->
             <a
               id="email-target"
               class="email-link cursor-pointer text-sm text-inherit no-underline"
               href={emailHref}
-              aria-live="polite"
+              aria-label={emailHref ? "Email Michael Jenkins" : undefined}
             >
               {#if displayHtml}
                 <!-- eslint-disable-next-line svelte/no-at-html-tags -->
@@ -47,7 +49,7 @@
           {#each socials as social (social.href)}
             {@const Icon = social.icon}
             <li class="flex items-center gap-3">
-              <Icon class="size-5 shrink-0 text-primary-500" aria-hidden="true" />
+              <Icon class="size-elem-xl shrink-0 text-primary-500" aria-hidden="true" />
               <a href={social.href} target="_blank" rel={social.rel} class="text-sm no-underline">{social.label}</a>
             </li>
           {/each}

@@ -1,7 +1,9 @@
 import { rot13 } from "./contact.ts";
 
+// This is used to marginally reduce email spam.
 const honeypots = ["melody", "pond"];
 
+/* This is used to marginally reduce email spam. */
 export function buildObfuscatedEmail(email: string) {
   const entities = Array.from(email)
     .toReversed()

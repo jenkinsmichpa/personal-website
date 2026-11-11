@@ -1,5 +1,10 @@
 <script lang="ts">
-  import { House, LayoutGrid, Mail, Moon, Sun, User } from "@lucide/svelte";
+  import House from "@lucide/svelte/icons/house";
+  import LayoutGrid from "@lucide/svelte/icons/layout-grid";
+  import Mail from "@lucide/svelte/icons/mail";
+  import Moon from "@lucide/svelte/icons/moon";
+  import Sun from "@lucide/svelte/icons/sun";
+  import User from "@lucide/svelte/icons/user";
   import { AppBar } from "@skeletonlabs/skeleton-svelte";
 
   import Logo from "./Logo.svelte";
@@ -12,10 +17,10 @@
   ];
 
   let scrolled = $state(false);
-  // theme.js sets dataset.mode before hydration, so read it synchronously to avoid a flash.
-  let dark = $state(typeof document !== "undefined" && document.documentElement.dataset.mode === "dark");
+  // The inline theme script sets data-mode before paint. Sync after hydration to avoid mismatch.
+  let dark = $state(false);
   let currentId = $state("home");
-  let navTextClass = $derived(scrolled && !dark ? "text-surface-900" : "text-white");
+  let navTextClass = $derived(scrolled ? "text-surface-950-50" : "text-white");
 
   const SCROLLED_THRESHOLD_PX = 80;
   let ticking = false;
@@ -66,8 +71,9 @@
   }
 
   $effect(() => {
-    dark = document.documentElement.dataset.mode === "dark";
-    applyTheme(dark ? "dark" : "light", false);
+    const isDark = document.documentElement.dataset.mode === "dark";
+    dark = isDark;
+    applyTheme(isDark ? "dark" : "light", false);
     scrolled = window.scrollY > SCROLLED_THRESHOLD_PX;
 
     const navbarRoot = document.getElementById("navbar");
@@ -94,45 +100,45 @@
 </script>
 
 <AppBar
-  class="fixed top-0 right-0 left-0 z-50 w-full border-b transition-all duration-500 motion-reduce:transition-none {navTextClass} {scrolled
+  class="navbar-shell fixed top-0 right-0 left-0 z-50 w-full border-b transition-all duration-500 motion-reduce:transition-none {navTextClass} {scrolled
     ? 'navbar-glass border-surface-200-800'
     : 'border-transparent bg-transparent'}"
   id="navbar"
 >
   <AppBar.Toolbar class="flex w-full items-center justify-between px-4 md:grid md:grid-cols-[auto_1fr_auto]">
-    <AppBar.Lead>
+    <AppBar.Lead aria-label="Home">
       <a href="#home" aria-label="Home">
         <Logo class={navTextClass} />
       </a>
     </AppBar.Lead>
-    <AppBar.Headline class="hidden justify-center gap-6 md:flex">
-      {#each navItems as item (item.id)}
-        <a
-          href={`#${item.id}`}
-          class="nav-link text-sm font-medium"
-          aria-current={currentId === item.id ? "page" : undefined}>{item.label}</a
-        >
-      {/each}
+    <AppBar.Headline class="hidden justify-center md:flex">
+      <nav aria-label="Primary" class="flex justify-center gap-6">
+        {#each navItems as item (item.id)}
+          <a
+            href={`#${item.id}`}
+            class="nav-link text-sm font-medium"
+            aria-current={currentId === item.id ? "location" : undefined}>{item.label}</a
+          >
+        {/each}
+      </nav>
     </AppBar.Headline>
-    <AppBar.Trail>
+    <AppBar.Trail aria-label="Theme controls">
       <button
         type="button"
         onclick={toggleTheme}
-        class="btn-icon btn-icon-lg {scrolled ? 'hover:preset-tonal' : 'hover:bg-white/10'}"
-        aria-label="Toggle theme"
+        class="btn-icon btn-icon-lg hover:preset-tonal"
+        aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
         aria-pressed={dark}
       >
-        {#if dark}
-          <Sun />
-        {:else}
-          <Moon />
-        {/if}
+        <Moon class="dark:hidden" />
+        <Sun class="hidden dark:block" />
       </button>
     </AppBar.Trail>
   </AppBar.Toolbar>
 </AppBar>
 
 <nav
+  aria-label="Sections"
   class="fixed right-0 bottom-0 left-0 z-50 pb-[env(safe-area-inset-bottom,0px)] transition-all duration-500 motion-reduce:transition-none md:hidden {navTextClass} {scrolled
     ? 'navbar-glass border-t border-surface-200-800'
     : 'border-t border-transparent bg-transparent'}"
@@ -142,8 +148,8 @@
       {@const Icon = item.icon}
       <a
         href={`#${item.id}`}
-        class="nav-link flex flex-col items-center text-xs aria-[current=page]:text-primary-500"
-        aria-current={currentId === item.id ? "page" : undefined}><Icon class="size-5" />{item.label}</a
+        class="nav-link relative flex flex-col items-center text-xs after:absolute after:-top-2 after:left-1/2 after:h-0.5 after:w-6 after:-translate-x-1/2 after:rounded-full after:bg-current after:opacity-0 after:transition-opacity after:content-[''] aria-[current=location]:font-semibold aria-[current=location]:after:opacity-100 motion-reduce:after:transition-none"
+        aria-current={currentId === item.id ? "location" : undefined}><Icon class="size-elem-xl" />{item.label}</a
       >
     {/each}
   </div>

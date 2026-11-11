@@ -18,7 +18,7 @@ const portraitData: AboutPortrait = {
   width: Number(optimizedPortrait.attributes.width),
   height: Number(optimizedPortrait.attributes.height)
 };
-// Built server-side so the plain address never gets in the client bundle.
+// This is used to marginally reduce email spam.
 const obfuscatedEmail = buildObfuscatedEmail("me@jenkinsmichpa.com");
 
 const portfolioData = await Promise.all(
@@ -27,6 +27,7 @@ const portfolioData = await Promise.all(
       page.map(async (item) => {
         const thumb = await getImage({ src: item.img, width: 400, format: "webp", quality: 60 });
         return {
+          // The lightbox intentionally uses the original max quality image.
           fullSrc: item.img.src,
           fullWidth: item.img.width,
           fullHeight: item.img.height,
@@ -44,46 +45,48 @@ const portfolioData = await Promise.all(
 <Layout preloadHomeBg>
   <NavBar client:load />
 
-  <section
-    class="home-section parallax-section flex items-center justify-center border-b border-surface-200-800"
-    id="home"
-  >
-    <div class="relative z-10 px-4 text-center">
-      <Image
-        src={portrait}
-        alt="Michael Jenkins Portrait"
-        class="mx-auto mb-4 size-52 rounded-full border-[3px] border-white object-cover shadow-lg"
-        width={208}
-        height={208}
-        densities={[1, 2]}
-        loading="eager"
-        fetchpriority="high"
-      />
-      <h1 class="mb-2 text-3xl leading-tight font-bold text-white sm:text-4xl md:text-5xl">
-        Hello, I'm Michael Jenkins
-      </h1>
-      <p class="text-xl text-white/80 sm:text-2xl md:text-3xl">InfoSec Graduate Student</p>
-    </div>
-  </section>
+  <main id="main">
+    <section class="home-section flex items-center justify-center border-b border-surface-200-800" id="home">
+      <div class="relative z-10 px-4 text-center">
+        <Image
+          src={portrait}
+          alt="Michael Jenkins Portrait"
+          class="mx-auto mb-4 size-52 rounded-full border-[3px] border-white object-cover shadow-lg"
+          width={208}
+          height={208}
+          densities={[1, 2]}
+          loading="eager"
+          fetchpriority="high"
+        />
+        <h1 class="mb-2 h1 text-3xl leading-tight font-bold text-white sm:text-4xl md:text-5xl">
+          Hello, I'm Michael Jenkins
+        </h1>
+        <p class="text-xl text-white/80 sm:text-2xl md:text-3xl">InfoSec Graduate Student</p>
+      </div>
+    </section>
 
-  <AboutSection portrait={portraitData} client:idle />
+    <AboutSection portrait={portraitData} client:idle />
 
-  <Spacer />
+    <Spacer />
 
-  <PortfolioSection data={portfolioData} client:visible />
+    <PortfolioSection data={portfolioData} client:visible />
 
-  <Spacer />
+    <Spacer />
 
-  <ContactSection obfuscated={obfuscatedEmail} client:visible />
+    <ContactSection obfuscated={obfuscatedEmail} client:visible />
 
-  <Spacer />
+    <Spacer />
+  </main>
 
   <footer class="border-t border-surface-200-800 py-8 max-md:pb-[calc(var(--bottom-nav-h)+env(safe-area-inset-bottom,0))]">
     <div class="mx-auto max-w-6xl px-4">
       <div class="flex flex-col items-center justify-between gap-4 md:flex-row">
-        <p class="text-sm opacity-60">
-          Project code hosted on{" "}
-          <a href="https://github.com/jenkinsmichpa/personal-website" class="anchor font-medium underline">
+        <p class="text-sm">
+          <span class="opacity-60">Project code hosted on </span>
+          <a
+            href="https://github.com/jenkinsmichpa/personal-website"
+            class="font-medium text-primary-950 underline hover:no-underline dark:text-primary-500"
+          >
             GitHub
           </a>
         </p>

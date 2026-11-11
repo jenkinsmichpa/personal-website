@@ -18,6 +18,7 @@
   } = $props();
 </script>
 
+<!-- No ugly close button by design. -->
 <Dialog
   {open}
   onOpenChange={(e) => {
@@ -25,10 +26,13 @@
   }}
 >
   <Portal>
-    <Dialog.Backdrop class="fixed inset-0 z-50 bg-surface-50-950/50" />
-    <Dialog.Positioner class="fixed inset-0 z-50 flex items-center justify-center p-4">
+    <Dialog.Backdrop class="fixed inset-0 z-60 bg-surface-50-950/50" />
+    <Dialog.Positioner class="fixed inset-0 z-60 flex items-center justify-center p-4">
       <Dialog.Content class="max-h-[90dvh] max-w-4xl card bg-surface-100-900 p-3 shadow-xl">
-        <Dialog.Title class="sr-only">{alt ?? ""}</Dialog.Title>
+        <Dialog.Title class="sr-only">{alt ?? "Artwork preview"}</Dialog.Title>
+        <Dialog.Description class="sr-only">
+          {alt ? `Enlarged view of ${alt}` : "Enlarged artwork view"}
+        </Dialog.Description>
         {#if open && src}
           <img
             {src}

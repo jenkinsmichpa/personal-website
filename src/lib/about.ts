@@ -1,16 +1,14 @@
 import type { LucideIcon } from "@lucide/svelte";
-import {
-  Award,
-  BadgeCheck,
-  ChartBarBig,
-  Crosshair,
-  FileCode,
-  GraduationCap,
-  Network,
-  Palette,
-  Server,
-  ShieldCheck
-} from "@lucide/svelte";
+import Award from "@lucide/svelte/icons/award";
+import BadgeCheck from "@lucide/svelte/icons/badge-check";
+import ChartBarBig from "@lucide/svelte/icons/chart-bar-big";
+import Crosshair from "@lucide/svelte/icons/crosshair";
+import FileCode from "@lucide/svelte/icons/file-code";
+import GraduationCap from "@lucide/svelte/icons/graduation-cap";
+import Network from "@lucide/svelte/icons/network";
+import Palette from "@lucide/svelte/icons/palette";
+import Server from "@lucide/svelte/icons/server";
+import ShieldCheck from "@lucide/svelte/icons/shield-check";
 
 export type ExperienceRole = {
   title: string;

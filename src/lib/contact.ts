@@ -12,6 +12,7 @@ import { socialLinks } from "./socials.ts";
 
 const socialRel = "me noopener noreferrer";
 
+/** This is used to marginally reduce email spam. */
 export function rot13(s: string) {
   return s.replaceAll(/[a-zA-Z]/g, (c) => {
     const base = c <= "Z" ? 65 : 97;
