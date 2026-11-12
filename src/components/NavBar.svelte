@@ -148,7 +148,7 @@
       {@const Icon = item.icon}
       <a
         href={`#${item.id}`}
-        class="nav-link relative flex flex-col items-center text-xs after:absolute after:-top-2 after:left-1/2 after:h-0.5 after:w-6 after:-translate-x-1/2 after:rounded-full after:bg-current after:opacity-0 after:transition-opacity after:content-[''] aria-[current=location]:font-semibold aria-[current=location]:after:opacity-100 motion-reduce:after:transition-none"
+        class="nav-link relative flex flex-col items-center text-xs after:absolute after:-top-2 after:left-1/2 after:h-0.5 after:w-6 after:-translate-x-1/2 after:scale-x-0 after:rounded-full after:bg-current after:transition-transform after:duration-300 after:content-[''] aria-[current=location]:font-semibold aria-[current=location]:after:scale-x-100 motion-reduce:after:transition-none"
         aria-current={currentId === item.id ? "location" : undefined}><Icon class="size-elem-xl" />{item.label}</a
       >
     {/each}
