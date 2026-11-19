@@ -1,10 +1,3 @@
-// Vendored from https://github.com/dmmulroy/anti-slop @ 13909c9 (v0.1.2).
-// Deliberately not vendored: require-readable-spacing (style rule; formatting is
-// owned by the repo formatter), the optional Effect plugin (no Effect usage here),
-// and upstream *.test.ts files.
-// Local deviation: shared/dictionary-types.ts adds a ?? null guard required by
-// noUncheckedIndexedAccess (see comment there); everything else is byte-identical.
-
 import { eslintCompatPlugin } from "@oxlint/plugins";
 
 import { noArrayFilterMapRule } from "./rules/no-array-filter-map.ts";
