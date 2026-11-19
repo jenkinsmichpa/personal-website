@@ -1,24 +1,24 @@
 <script lang="ts">
-  import House from "@lucide/svelte/icons/house";
-  import LayoutGrid from "@lucide/svelte/icons/layout-grid";
-  import Mail from "@lucide/svelte/icons/mail";
-  import Moon from "@lucide/svelte/icons/moon";
-  import Sun from "@lucide/svelte/icons/sun";
-  import User from "@lucide/svelte/icons/user";
+  import HouseIcon from "@lucide/svelte/icons/house";
+  import LayoutGridIcon from "@lucide/svelte/icons/layout-grid";
+  import MailIcon from "@lucide/svelte/icons/mail";
+  import MoonIcon from "@lucide/svelte/icons/moon";
+  import SunIcon from "@lucide/svelte/icons/sun";
+  import UserIcon from "@lucide/svelte/icons/user";
   import { AppBar } from "@skeletonlabs/skeleton-svelte";
+
+  import { initTheme, theme, themeAttachment, toggleTheme } from "#lib/darkmode.svelte.ts";
 
   import Logo from "./Logo.svelte";
 
   const navItems = [
-    { id: "home", label: "Home", icon: House },
-    { id: "about", label: "About", icon: User },
-    { id: "portfolio", label: "Portfolio", icon: LayoutGrid },
-    { id: "contact", label: "Contact", icon: Mail }
+    { id: "home", label: "Home", icon: HouseIcon },
+    { id: "about", label: "About", icon: UserIcon },
+    { id: "portfolio", label: "Portfolio", icon: LayoutGridIcon },
+    { id: "contact", label: "Contact", icon: MailIcon }
   ];
 
   let scrolled = $state(false);
-  // The inline theme script sets data-mode before paint. Sync after hydration to avoid mismatch.
-  let dark = $state(false);
   let currentId = $state("home");
   let navTextClass = $derived(scrolled ? "text-surface-950-50" : "text-white");
 
@@ -54,26 +54,9 @@
     currentId = next;
   }
 
-  function applyTheme(mode: "dark" | "light", persist = true) {
-    document.documentElement.dataset.mode = mode;
-    document.documentElement.style.colorScheme = mode;
-    if (!persist) return;
-    try {
-      localStorage.setItem("theme", mode);
-    } catch {
-      // storage unavailable
-    }
-  }
-
-  function toggleTheme() {
-    dark = !dark;
-    applyTheme(dark ? "dark" : "light");
-  }
+  initTheme();
 
   $effect(() => {
-    const isDark = document.documentElement.dataset.mode === "dark";
-    dark = isDark;
-    applyTheme(isDark ? "dark" : "light", false);
     scrolled = window.scrollY > SCROLLED_THRESHOLD_PX;
 
     const navbarRoot = document.getElementById("navbar");
@@ -99,10 +82,14 @@
 
 <svelte:window onscroll={handleScroll} />
 
+<div class="hidden" {@attach themeAttachment(theme.isDark)}></div>
+
 <AppBar
-  class="navbar-shell fixed top-0 right-0 left-0 z-50 w-full border-b transition-all duration-500 motion-reduce:transition-none {navTextClass} {scrolled
-    ? 'navbar-glass border-surface-200-800'
-    : 'border-transparent bg-transparent'}"
+  class={[
+    "navbar-shell fixed top-0 right-0 left-0 z-50 w-full border-b transition-all duration-500 motion-reduce:transition-none",
+    navTextClass,
+    scrolled ? "navbar-glass border-surface-200-800" : "border-transparent bg-transparent"
+  ]}
   id="navbar"
 >
   <AppBar.Toolbar class="flex w-full items-center justify-between px-4 md:grid md:grid-cols-[auto_1fr_auto]">
@@ -126,12 +113,12 @@
       <button
         type="button"
         onclick={toggleTheme}
-        class="btn-icon btn-icon-lg hover:preset-tonal"
-        aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
-        aria-pressed={dark}
+        class={["theme-toggle btn-icon btn-icon-lg", scrolled ? "text-surface-950-50" : "text-white"]}
+        aria-label={theme.isDark ? "Switch to light mode" : "Switch to dark mode"}
+        aria-pressed={theme.isDark}
       >
-        <Moon class="dark:hidden" />
-        <Sun class="hidden dark:block" />
+        <MoonIcon class="dark:hidden" />
+        <SunIcon class="hidden dark:block" />
       </button>
     </AppBar.Trail>
   </AppBar.Toolbar>
@@ -139,9 +126,11 @@
 
 <nav
   aria-label="Sections"
-  class="fixed right-0 bottom-0 left-0 z-50 pb-[env(safe-area-inset-bottom,0px)] transition-all duration-500 motion-reduce:transition-none md:hidden {navTextClass} {scrolled
-    ? 'navbar-glass border-t border-surface-200-800'
-    : 'border-t border-transparent bg-transparent'}"
+  class={[
+    "fixed right-0 bottom-0 left-0 z-50 pb-[env(safe-area-inset-bottom,0px)] transition-all duration-500 motion-reduce:transition-none md:hidden",
+    navTextClass,
+    scrolled ? "navbar-glass border-t border-surface-200-800" : "border-t border-transparent bg-transparent"
+  ]}
 >
   <div class="flex justify-around py-2">
     {#each navItems as item (item.id)}

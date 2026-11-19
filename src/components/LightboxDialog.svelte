@@ -1,21 +1,16 @@
 <script lang="ts">
   import { Dialog, Portal } from "@skeletonlabs/skeleton-svelte";
 
-  let {
-    src,
-    alt,
-    width,
-    height,
-    open,
-    onClose
-  }: {
+  type Props = {
     src?: string | undefined;
     alt?: string | undefined;
     width?: number | undefined;
     height?: number | undefined;
     open: boolean;
     onClose: () => void;
-  } = $props();
+  };
+
+  let { src, alt, width, height, open, onClose }: Props = $props();
 </script>
 
 <!-- No ugly close button by design. -->
@@ -39,7 +34,7 @@
             alt={alt ?? ""}
             {width}
             {height}
-            class="mx-auto h-auto max-h-[calc(90dvh-1.5rem)] w-auto max-w-full rounded-container"
+            class="mx-auto h-auto max-h-[calc(90dvh-1.5rem)] w-auto max-w-full rounded-container corner-shape-container"
           />
         {/if}
       </Dialog.Content>

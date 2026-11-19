@@ -1,10 +1,12 @@
 <script lang="ts">
-  import Mail from "@lucide/svelte/icons/mail";
+  import MailIcon from "@lucide/svelte/icons/mail";
   import { onMount } from "svelte";
 
   import { rot13, socials } from "#lib/contact.ts";
 
-  let { obfuscated }: { obfuscated: string } = $props();
+  type Props = { obfuscated: string };
+
+  let { obfuscated }: Props = $props();
 
   let displayHtml = $state("");
   let emailHref = $state<string>();
@@ -30,7 +32,7 @@
       <div class="w-full max-w-lg card border border-surface-200-800 preset-filled-surface-100-900 p-4">
         <ul class="space-y-4">
           <li class="flex items-center gap-3">
-            <Mail class="size-elem-xl shrink-0 text-primary-500" aria-hidden="true" />
+            <MailIcon class="size-elem-xl shrink-0 text-primary-500" aria-hidden="true" />
             <!-- This is used to marginally reduce email spam. -->
             <a
               id="email-target"

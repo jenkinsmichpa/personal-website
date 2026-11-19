@@ -6,6 +6,21 @@
 
 @custom-variant dark (&:where([data-mode="dark"], [data-mode="dark"] *));
 
+@layer components {
+  .btn,
+  .btn-icon,
+  .chip,
+  .chip-icon,
+  .badge,
+  .badge-icon {
+    corner-shape: var(--corner-shape-base);
+  }
+
+  .card {
+    corner-shape: var(--corner-shape-container);
+  }
+}
+
 html {
   scroll-behavior: smooth;
   scroll-padding-top: var(--navbar-height, 57px);
@@ -39,6 +54,17 @@ body {
   background: color-mix(in oklab, var(--color-surface-50) 50%, transparent);
   box-shadow: inset 0 0 30px color-mix(in oklab, var(--color-surface-50) 30%, transparent);
   backdrop-filter: blur(16px);
+}
+
+/* This avoids a flicker in Chromium. */
+.theme-toggle {
+  transition:
+    color 150ms ease,
+    background-color 150ms ease;
+}
+
+.theme-toggle:hover {
+  background-color: color-mix(in oklab, var(--color-surface-50) 12%, transparent);
 }
 
 @variant dark {
@@ -224,6 +250,9 @@ body {
   }
   .portfolio-img:hover {
     transform: none;
+  }
+  .theme-toggle {
+    transition: none;
   }
 }
 

@@ -1,14 +1,14 @@
 import type { LucideIcon } from "@lucide/svelte";
-import Award from "@lucide/svelte/icons/award";
-import BadgeCheck from "@lucide/svelte/icons/badge-check";
-import ChartBarBig from "@lucide/svelte/icons/chart-bar-big";
-import Crosshair from "@lucide/svelte/icons/crosshair";
-import FileCode from "@lucide/svelte/icons/file-code";
-import GraduationCap from "@lucide/svelte/icons/graduation-cap";
-import Network from "@lucide/svelte/icons/network";
-import Palette from "@lucide/svelte/icons/palette";
-import Server from "@lucide/svelte/icons/server";
-import ShieldCheck from "@lucide/svelte/icons/shield-check";
+import AwardIcon from "@lucide/svelte/icons/award";
+import BadgeCheckIcon from "@lucide/svelte/icons/badge-check";
+import ChartBarBigIcon from "@lucide/svelte/icons/chart-bar-big";
+import CrosshairIcon from "@lucide/svelte/icons/crosshair";
+import FileCodeIcon from "@lucide/svelte/icons/file-code";
+import GraduationCapIcon from "@lucide/svelte/icons/graduation-cap";
+import NetworkIcon from "@lucide/svelte/icons/network";
+import PaletteIcon from "@lucide/svelte/icons/palette";
+import ServerIcon from "@lucide/svelte/icons/server";
+import ShieldCheckIcon from "@lucide/svelte/icons/shield-check";
 
 export type ExperienceRole = {
   title: string;
@@ -117,49 +117,49 @@ export const knowledgeGroups: KnowledgeGroup[] = [
   {
     id: "certifications",
     title: "Certifications",
-    icon: BadgeCheck,
+    icon: BadgeCheckIcon,
     items: ["CompTIA Pentest+", "CompTIA Security+", "CompTIA Network+", "Purdue Entry-Level Programming in Python"]
   },
   {
     id: "pentesting",
     title: "Pentesting",
-    icon: Crosshair,
+    icon: CrosshairIcon,
     items: ["Nmap", "Nessus", "OpenVAS", "Metasploit", "Burp Suite", "Invicti"]
   },
   {
     id: "security-assessment",
     title: "Security Assessment",
-    icon: ShieldCheck,
+    icon: ShieldCheckIcon,
     items: ["NIST CSF", "NIST SP 800-53", "ISO 27000", "HIPAA", "OpenScap"]
   },
   {
     id: "networking",
     title: "Networking",
-    icon: Network,
+    icon: NetworkIcon,
     items: ["Cisco IOS", "Ubiquiti", "pfSense", "VyOS"]
   },
   {
     id: "programming",
     title: "Programming",
-    icon: FileCode,
+    icon: FileCodeIcon,
     items: ["Python", "Bash", "C", "Chef", "Java", "Rust"]
   },
   {
     id: "administration",
     title: "Administration",
-    icon: Server,
+    icon: ServerIcon,
     items: ["RHEL", "Ubuntu", "Windows Server", "VMware", "Proxmox"]
   },
   {
     id: "project-management",
     title: "Project Management",
-    icon: ChartBarBig,
+    icon: ChartBarBigIcon,
     items: ["Note Taking", "Microsoft Project", "Visual Paradigm", "Agile"]
   },
   {
     id: "art",
     title: "Art",
-    icon: Palette,
+    icon: PaletteIcon,
     items: ["Painting", "Adobe Photoshop", "Adobe Illustrator"]
   }
 ];
@@ -182,7 +182,7 @@ export const awardGroups: AwardGroup[] = [
   {
     id: "competitions",
     title: "Competitions",
-    icon: Award,
+    icon: AwardIcon,
     items: [
       "Ranked 1st in BSides Fort Wayne CTF 2025",
       "Ranked 1st in BSides Chicago CTF 2025",
@@ -195,7 +195,7 @@ export const awardGroups: AwardGroup[] = [
   {
     id: "academics",
     title: "Academics",
-    icon: GraduationCap,
+    icon: GraduationCapIcon,
     items: ["Purdue Marquis Scholarship", "Purdue AITP Scholarship", "Purdue Polytechnic Dean's List"]
   }
 ];

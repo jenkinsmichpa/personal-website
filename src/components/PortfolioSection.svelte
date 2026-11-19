@@ -5,7 +5,9 @@
 
   import LightboxDialog from "./LightboxDialog.svelte";
 
-  let { data }: { data: PortfolioItem[][] } = $props();
+  type Props = { data: PortfolioItem[][] };
+
+  let { data }: Props = $props();
 
   let page = $state("1");
   let selected = $state<PortfolioItem | null>(null);
@@ -25,7 +27,9 @@
         {#each activeItems as item (item.fullSrc)}
           <button
             type="button"
-            onclick={() => (selected = item)}
+            onclick={() => {
+              selected = item;
+            }}
             class="w-full cursor-pointer"
             aria-haspopup="dialog"
             aria-label={`View ${item.alt}`}
@@ -37,7 +41,7 @@
               alt={item.alt}
               loading="lazy"
               decoding="async"
-              class="portfolio-img w-full rounded-container"
+              class="portfolio-img w-full rounded-base corner-shape-base"
             />
           </button>
         {/each}
@@ -45,7 +49,12 @@
     </div>
 
     <div class="mt-4 flex justify-center">
-      <SegmentedControl value={page} onValueChange={(d) => (page = d.value ?? page)}>
+      <SegmentedControl
+        value={page}
+        onValueChange={(d) => {
+          page = d.value ?? page;
+        }}
+      >
         <SegmentedControl.Label class="sr-only">Page</SegmentedControl.Label>
         <SegmentedControl.Control>
           <SegmentedControl.Indicator />
@@ -67,5 +76,7 @@
   width={selected?.fullWidth}
   height={selected?.fullHeight}
   open={selected !== null}
-  onClose={() => (selected = null)}
+  onClose={() => {
+    selected = null;
+  }}
 />

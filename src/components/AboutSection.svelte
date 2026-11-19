@@ -1,10 +1,10 @@
 <script lang="ts">
-  import ChevronDown from "@lucide/svelte/icons/chevron-down";
-  import ChevronRight from "@lucide/svelte/icons/chevron-right";
-  import FileUser from "@lucide/svelte/icons/file-user";
-  import Hammer from "@lucide/svelte/icons/hammer";
-  import MapPin from "@lucide/svelte/icons/map-pin";
-  import Shield from "@lucide/svelte/icons/shield";
+  import ChevronDownIcon from "@lucide/svelte/icons/chevron-down";
+  import ChevronRightIcon from "@lucide/svelte/icons/chevron-right";
+  import FileUserIcon from "@lucide/svelte/icons/file-user";
+  import HammerIcon from "@lucide/svelte/icons/hammer";
+  import MapPinIcon from "@lucide/svelte/icons/map-pin";
+  import ShieldIcon from "@lucide/svelte/icons/shield";
   import { Accordion } from "@skeletonlabs/skeleton-svelte";
   import IconLinkedin from "~icons/fa6-brands/linkedin";
 
@@ -13,12 +13,14 @@
 
   import AnimatedAccordionContent from "./AnimatedAccordionContent.svelte";
 
-  let { portrait }: { portrait: AboutPortrait } = $props();
+  type Props = { portrait: AboutPortrait };
+
+  let { portrait }: Props = $props();
 
   const cardClass = "break-inside-avoid card border border-surface-200-800 preset-filled-surface-100-900 p-4";
 </script>
 
-{#snippet bullet()}<ChevronRight class="inline size-elem-xs text-primary-500" aria-hidden="true" />{/snippet}
+{#snippet bullet()}<ChevronRightIcon class="inline size-elem-xs text-primary-500" aria-hidden="true" />{/snippet}
 
 <section class="border-t border-b border-surface-200-800 py-16" id="about">
   <div class="mx-auto max-w-6xl px-4">
@@ -29,7 +31,7 @@
           width={portrait.width}
           height={portrait.height}
           alt="Michael Jenkins Portrait"
-          class="w-full rounded-container border border-surface-200-800"
+          class="w-full rounded-container border border-surface-200-800 corner-shape-container"
           loading="lazy"
           decoding="async"
         />
@@ -58,7 +60,7 @@
               rel="noopener noreferrer"
               class="btn preset-filled-brand"
             >
-              <FileUser />
+              <FileUserIcon />
               <span>Resume</span>
             </a>
             <a
@@ -80,7 +82,7 @@
           <li>
             <div class="flex flex-col sm:flex-row sm:justify-between">
               <span class="purdue-gold flex items-center gap-1"
-                ><Hammer class="size-elem-base" aria-hidden="true" /> Purdue University</span
+                ><HammerIcon class="size-elem-base" aria-hidden="true" /> Purdue University</span
               >
               <em class="text-sm opacity-60">GPA 4.0/4.0</em>
             </div>
@@ -103,7 +105,7 @@
           <li>
             <div class="flex flex-col sm:flex-row sm:justify-between">
               <span class="flex items-center gap-1 font-bold"
-                ><MapPin class="size-elem-base text-primary-500" aria-hidden="true" /> Czech Technical University</span
+                ><MapPinIcon class="size-elem-base text-primary-500" aria-hidden="true" /> Czech Technical University</span
               >
               <em class="text-sm opacity-60">Study Abroad Spring 2020</em>
             </div>
@@ -116,7 +118,7 @@
         {#each activities as activity (activity.org)}
           <div>
             <h3 class="mb-1 flex items-center gap-1 font-bold">
-              <Shield class="size-elem-base text-primary-500" aria-hidden="true" />
+              <ShieldIcon class="size-elem-base text-primary-500" aria-hidden="true" />
               {activity.org}
             </h3>
             {#each activity.roles as role (role.title)}
@@ -146,7 +148,7 @@
                 <Accordion.ItemTrigger class="flex w-full items-center justify-between gap-2 font-bold">
                   <span>{item.company}</span>
                   <Accordion.ItemIndicator class="group">
-                    <ChevronDown class="size-elem-base transition group-data-[state=open]:rotate-180" />
+                    <ChevronDownIcon class="size-elem-base transition group-data-[state=open]:rotate-180" />
                   </Accordion.ItemIndicator>
                 </Accordion.ItemTrigger>
               </h3>
@@ -203,7 +205,7 @@
                   <Icon class="mr-1 size-elem-base text-primary-500" aria-hidden="true" />
                   <span class="flex-1 text-left">{group.title}</span>
                   <Accordion.ItemIndicator class="group">
-                    <ChevronDown class="size-elem-base transition group-data-[state=open]:rotate-180" />
+                    <ChevronDownIcon class="size-elem-base transition group-data-[state=open]:rotate-180" />
                   </Accordion.ItemIndicator>
                 </Accordion.ItemTrigger>
               </h3>
