@@ -1,39 +1,39 @@
-import js from "@eslint/js";
 import { configs as astroConfigs } from "eslint-plugin-astro";
 import sveltePlugin from "eslint-plugin-svelte";
 import globals from "globals";
 import svelteParser from "svelte-eslint-parser";
 import ts from "typescript-eslint";
 
-import { eslintIgnores } from "./tools/lint/ignore-patterns.mjs";
+const noMixedAbsence = [
+  "error",
+  {
+    selector: "TSUnionType:has(> TSNullKeyword):has(> TSUndefinedKeyword)",
+    message:
+      "Do not mix null and undefined in one union. Pick a single absence value (prefer undefined; null is the storage/wire boundary value)."
+  }
+];
 
+// eslint is only for Svelte and Astro template rules
+// oxlint will fully replace it once it supports them (oxc-project/oxc#15761)
 export default [
   {
-    ignores: eslintIgnores
+    ignores: [".astro", ".wrangler", "dist", "dev", "**/.vite/"]
   },
-  {
-    files: ["**/*.ts", "**/*.mts", "**/*.cts", "**/*.js", "**/*.mjs", "**/*.cjs", "**/*.svelte"],
-    languageOptions: {
-      parserOptions: {
-        projectService: true,
-        extraFileExtensions: [".svelte"]
-      }
-    }
-  },
-  js.configs.recommended,
-  ...ts.configs.strictTypeChecked,
-  ...ts.configs.stylisticTypeChecked,
   ...sveltePlugin.configs.recommended,
-  ...sveltePlugin.configs.prettier,
   ...astroConfigs.recommended,
   {
-    files: ["**/*.astro"],
-    ...ts.configs.disableTypeChecked
+    files: ["**/*.ts", "**/*.svelte"],
+    languageOptions: {
+      parser: ts.parser
+    },
+    rules: {
+      "no-restricted-syntax": noMixedAbsence
+    }
   },
   {
-    files: ["**/*.svelte"],
+    files: ["**/*.astro"],
     rules: {
-      "@typescript-eslint/no-confusing-void-expression": "off"
+      "no-restricted-syntax": noMixedAbsence
     }
   },
   {
@@ -41,34 +41,25 @@ export default [
     languageOptions: {
       parser: svelteParser,
       parserOptions: {
-        projectService: true,
-        extraFileExtensions: [".svelte"],
         parser: ts.parser
       },
       globals: { ...globals.browser }
     }
   },
   {
-    languageOptions: {
-      globals: {
-        ...globals.browser
-      }
-    }
-  },
-  {
+    files: ["**/*.svelte"],
     rules: {
-      "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_", varsIgnorePattern: "^_" }],
-      "@typescript-eslint/consistent-type-definitions": "off", // Owned by oxlint
-      "svelte/no-at-html-tags": "error",
-      "svelte/require-each-key": "error",
-      "svelte/no-unused-svelte-ignore": "error",
-      "no-restricted-syntax": [
-        "error",
-        {
-          selector: "TSUnionType:has(> TSNullKeyword):has(> TSUndefinedKeyword)",
-          message: "Do not mix null and undefined in one union. Pick a single absence value (prefer null)."
-        }
-      ]
+      "svelte/block-lang": ["error", { script: "ts" }],
+      "svelte/button-has-type": "error",
+      "svelte/derived-has-same-inputs-outputs": "error",
+      "svelte/no-add-event-listener": "error",
+      "svelte/no-at-const-tags": "error",
+      "svelte/no-bind-value-on-checkable-inputs": "error",
+      "svelte/no-extra-reactive-curlies": "error",
+      "svelte/no-inline-styles": "error",
+      "svelte/no-target-blank": "error",
+      "svelte/prefer-class-directive": "error",
+      "svelte/prefer-style-directive": "error"
     }
   }
 ];

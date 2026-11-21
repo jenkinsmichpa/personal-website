@@ -18,21 +18,21 @@ export type ExperienceRole = {
 export type ExperienceItem = {
   id: string;
   company: string;
-  roles: ExperienceRole[];
-  details: string[];
+  roles: Array<ExperienceRole>;
+  details: Array<string>;
 };
 
 export type IconGroup = {
   id: string;
   title: string;
   icon: LucideIcon;
-  items: string[];
+  items: Array<string>;
 };
 
 export type Activity = {
   org: string;
-  roles: ExperienceRole[];
-  details: string[];
+  roles: Array<ExperienceRole>;
+  details: Array<string>;
 };
 
 export type AboutPortrait = {
@@ -45,7 +45,7 @@ export type AwardGroup = IconGroup;
 
 export type KnowledgeGroup = IconGroup;
 
-export const experienceItems: ExperienceItem[] = [
+export const experienceItems: Array<ExperienceItem> = [
   {
     id: "crowe",
     company: "Crowe LLP",
@@ -113,7 +113,7 @@ export const experienceItems: ExperienceItem[] = [
   }
 ];
 
-export const knowledgeGroups: KnowledgeGroup[] = [
+export const knowledgeGroups: Array<KnowledgeGroup> = [
   {
     id: "certifications",
     title: "Certifications",
@@ -164,7 +164,7 @@ export const knowledgeGroups: KnowledgeGroup[] = [
   }
 ];
 
-export const activities: Activity[] = [
+export const activities: Array<Activity> = [
   {
     org: "Purdue Cyber Forensics",
     roles: [
@@ -178,7 +178,7 @@ export const activities: Activity[] = [
   }
 ];
 
-export const awardGroups: AwardGroup[] = [
+export const awardGroups: Array<AwardGroup> = [
   {
     id: "competitions",
     title: "Competitions",

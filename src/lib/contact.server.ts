@@ -7,12 +7,12 @@ const honeypots = ["melody", "pond"];
 export function buildObfuscatedEmail(email: string) {
   const entities = Array.from(email)
     .toReversed()
-    .map((c) => `&#x${c.charCodeAt(0).toString(16)};`);
+    .map((c) => `&#x${(c.codePointAt(0) ?? 0).toString(16)};`);
   const chunkCount = honeypots.length + 1;
-  const parts = Array.from({ length: chunkCount }, (): string[] => []);
-  entities.forEach((entity, i) => {
+  const parts = Array.from({ length: chunkCount }, (): Array<string> => []);
+  for (const [i, entity] of entities.entries()) {
     parts[Math.floor((i * chunkCount) / entities.length)]?.push(entity);
-  });
+  }
   const raw = parts
     .map((chunk) => chunk.join(""))
     .map((chunk, i) => (i === 0 ? chunk : `<span>${honeypots[i - 1] ?? ""}</span>${chunk}`))

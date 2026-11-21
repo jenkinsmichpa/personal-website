@@ -10,13 +10,11 @@ import IconTwitter from "~icons/fa6-brands/twitter";
 import type { SocialId } from "./socials.ts";
 import { socialLinks } from "./socials.ts";
 
-const socialRel = "me noopener noreferrer";
-
 /** This is used to marginally reduce email spam. */
 export function rot13(s: string) {
-  return s.replaceAll(/[a-zA-Z]/g, (c) => {
+  return s.replaceAll(/[a-zA-Z]/gu, (c) => {
     const base = c <= "Z" ? 65 : 97;
-    return String.fromCharCode(base + ((c.charCodeAt(0) - base + 13) % 26));
+    return String.fromCodePoint(base + (((c.codePointAt(0) ?? 0) - base + 13) % 26));
   });
 }
 
@@ -26,7 +24,6 @@ export type Social = {
   icon: BrandIcon;
   href: string;
   label: string;
-  rel: string;
 };
 
 const socialIcons: Record<SocialId, BrandIcon> = {
@@ -38,9 +35,8 @@ const socialIcons: Record<SocialId, BrandIcon> = {
   instagram: IconInstagram
 };
 
-export const socials: Social[] = socialLinks.map((link) => ({
+export const socials: Array<Social> = socialLinks.map((link) => ({
   icon: socialIcons[link.id],
   href: link.href,
-  label: link.label,
-  rel: socialRel
+  label: link.label
 }));

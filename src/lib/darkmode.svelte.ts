@@ -4,8 +4,8 @@ import { createSubscriber } from "svelte/reactivity";
 export type ThemeMode = "dark" | "light";
 
 class MediaQuery {
-  #query: MediaQueryList;
-  #subscribe: () => void;
+  readonly #query: MediaQueryList;
+  readonly #subscribe: () => void;
 
   constructor(query: string) {
     this.#query = window.matchMedia(query);
@@ -29,7 +29,9 @@ class MediaQuery {
 let systemDark: MediaQuery | undefined;
 
 function systemPrefersDark(): boolean {
-  if (typeof window === "undefined") return false;
+  if (typeof window === "undefined") {
+    return false;
+  }
   systemDark ??= new MediaQuery("(prefers-color-scheme: dark)");
   return systemDark.current;
 }
@@ -38,7 +40,9 @@ class ThemeStore {
   stored = $state<ThemeMode | null>(null);
 
   get isDark(): boolean {
-    if (this.stored) return this.stored === "dark";
+    if (this.stored) {
+      return this.stored === "dark";
+    }
     return systemPrefersDark();
   }
 }
@@ -48,7 +52,9 @@ export const theme = new ThemeStore();
 function readStoredTheme(): ThemeMode | null {
   try {
     const stored = localStorage.getItem("theme");
-    if (stored === "dark" || stored === "light") return stored;
+    if (stored === "dark" || stored === "light") {
+      return stored;
+    }
     return null;
   } catch {
     return null;
@@ -64,13 +70,17 @@ function writeStoredTheme(value: ThemeMode): void {
 }
 
 export function initTheme(): void {
-  if (typeof window === "undefined") return;
+  if (typeof window === "undefined") {
+    return;
+  }
   theme.stored = readStoredTheme();
   applyTheme(theme.isDark);
 }
 
 export function applyTheme(dark: boolean): void {
-  if (typeof document === "undefined") return;
+  if (typeof document === "undefined") {
+    return;
+  }
   const mode: ThemeMode = dark ? "dark" : "light";
   document.documentElement.dataset.mode = mode;
   document.documentElement.style.colorScheme = mode;

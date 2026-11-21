@@ -17,9 +17,9 @@
     displayHtml = raw;
 
     const doc = new DOMParser().parseFromString(raw, "text/html");
-    doc.querySelectorAll("span").forEach((el) => {
+    for (const el of doc.querySelectorAll("span")) {
       el.remove();
-    });
+    }
     const address = Array.from(doc.body.textContent.trim()).toReversed().join("");
     emailHref = `mailto:${address}`;
   });
@@ -49,10 +49,12 @@
             </a>
           </li>
           {#each socials as social (social.href)}
-            {@const Icon = social.icon}
+            {const Icon = $derived(social.icon)}
             <li class="flex items-center gap-3">
               <Icon class="size-elem-xl shrink-0 text-primary-500" aria-hidden="true" />
-              <a href={social.href} target="_blank" rel={social.rel} class="text-sm no-underline">{social.label}</a>
+              <a href={social.href} target="_blank" rel="me noopener noreferrer" class="text-sm no-underline"
+                >{social.label}</a
+              >
             </li>
           {/each}
         </ul>

@@ -6,7 +6,7 @@ export type SocialLink = {
   label: string;
 };
 
-export const socialLinks: SocialLink[] = [
+export const socialLinks: Array<SocialLink> = [
   {
     id: "linkedin",
     href: "https://www.linkedin.com/in/jenkinsmichpa",

@@ -28,7 +28,7 @@ export type PortfolioItem = {
   thumbHeight: number;
 };
 
-export const portfolioImages: PortfolioImageInput[] = [
+export const portfolioImages: Array<PortfolioImageInput> = [
   { alt: "Drinking Tiger Painting", img: drinkingTiger },
   { alt: "Hibiscus Painting", img: hibiscus },
   { alt: "Sea Cliffs Painting", img: seaCliffs },
@@ -45,7 +45,7 @@ export const portfolioImages: PortfolioImageInput[] = [
 
 export const PORTFOLIO_PAGE_SIZE = 6;
 
-export const portfolioPages: PortfolioImageInput[][] = Array.from(
+export const portfolioPages: Array<Array<PortfolioImageInput>> = Array.from(
   { length: Math.ceil(portfolioImages.length / PORTFOLIO_PAGE_SIZE) },
   (_, i) => portfolioImages.slice(i * PORTFOLIO_PAGE_SIZE, (i + 1) * PORTFOLIO_PAGE_SIZE)
 );

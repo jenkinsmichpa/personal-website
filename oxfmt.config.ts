@@ -1,7 +1,5 @@
 import { defineConfig } from "oxfmt";
 
-import { oxfmtIgnorePatterns } from "./tools/lint/ignore-patterns.mjs";
-
 export default defineConfig({
   printWidth: 120,
   trailingComma: "none",
@@ -11,5 +9,5 @@ export default defineConfig({
   sortTailwindcss: {
     stylesheet: "./src/styles/global.css"
   },
-  ignorePatterns: oxfmtIgnorePatterns
+  ignorePatterns: ["/.astro/", "/dist/", "/.wrangler/", "/dev/", "**/.vite/", "node_modules", "*.lock", "**/target/"]
 });

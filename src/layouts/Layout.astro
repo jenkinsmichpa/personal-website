@@ -46,10 +46,10 @@ const structuredData = {
 };
 
 const bgCss =
-  preloadHomeBg && optimizedHomeBg && optimizedSpacerBg
+  optimizedHomeBg !== null && optimizedSpacerBg !== null
     ? `:root{--bg-home:url("${optimizedHomeBg.src}");--bg-spacer:url("${optimizedSpacerBg.src}")}`
     : "";
-const ldJson = JSON.stringify(structuredData).replaceAll("<", "\\u003c");
+const ldJson = JSON.stringify(structuredData).replaceAll("<", String.raw`\u003c`);
 ---
 
 <!doctype html>

@@ -5,7 +5,7 @@
 
   import LightboxDialog from "./LightboxDialog.svelte";
 
-  type Props = { data: PortfolioItem[][] };
+  type Props = { data: Array<Array<PortfolioItem>> };
 
   let { data }: Props = $props();
 
@@ -13,7 +13,7 @@
   let selected = $state<PortfolioItem | null>(null);
 
   const pages = $derived(data.map((items, index) => ({ value: String(index + 1), items })));
-  const activeIndex = $derived(Math.min(Math.max(Number.parseInt(page, 10) - 1, 0), pages.length - 1));
+  const activeIndex = $derived(Math.min(Math.max(Math.trunc(Number(page)) - 1, 0), pages.length - 1));
   const activeItems = $derived(pages[activeIndex]?.items ?? []);
 </script>
 

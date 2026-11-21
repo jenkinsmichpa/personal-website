@@ -25,7 +25,9 @@
   const SCROLLED_THRESHOLD_PX = 80;
   let ticking = false;
   function handleScroll() {
-    if (ticking) return;
+    if (ticking) {
+      return;
+    }
     ticking = true;
     requestAnimationFrame(() => {
       ticking = false;
@@ -44,12 +46,16 @@
     const offset = navHeight + SCROLLSPY_MARGIN_PX;
     let next = navItems[0]?.id ?? "home";
     for (const item of navItems) {
-      const el = document.getElementById(item.id);
-      if (!el) continue;
-      if (el.getBoundingClientRect().top <= offset) next = item.id;
+      const el = document.querySelector(`#${item.id}`);
+      if (!el) {
+        continue;
+      }
+      if (el.getBoundingClientRect().top <= offset) {
+        next = item.id;
+      }
     }
     if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - BOTTOM_TOLERANCE_PX) {
-      next = navItems[navItems.length - 1]?.id ?? next;
+      next = navItems.at(-1)?.id ?? next;
     }
     currentId = next;
   }
@@ -59,7 +65,7 @@
   $effect(() => {
     scrolled = window.scrollY > SCROLLED_THRESHOLD_PX;
 
-    const navbarRoot = document.getElementById("navbar");
+    const navbarRoot = document.querySelector<HTMLElement>("#navbar");
     let resizeObserver: ResizeObserver | undefined;
     if (navbarRoot) {
       const updateNavbarHeight = () => {
@@ -134,7 +140,7 @@
 >
   <div class="flex justify-around py-2">
     {#each navItems as item (item.id)}
-      {@const Icon = item.icon}
+      {const Icon = $derived(item.icon)}
       <a
         href={`#${item.id}`}
         class="nav-link relative flex flex-col items-center text-xs after:absolute after:-top-2 after:left-1/2 after:h-0.5 after:w-6 after:-translate-x-1/2 after:scale-x-0 after:rounded-full after:bg-current after:transition-transform after:duration-300 after:content-[''] aria-[current=location]:font-semibold aria-[current=location]:after:scale-x-100 motion-reduce:after:transition-none"
