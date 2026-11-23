@@ -10,14 +10,6 @@ import IconTwitter from "~icons/fa6-brands/twitter";
 import type { SocialId } from "./socials.ts";
 import { socialLinks } from "./socials.ts";
 
-/** This is used to marginally reduce email spam. */
-export function rot13(s: string) {
-  return s.replaceAll(/[a-zA-Z]/gu, (c) => {
-    const base = c <= "Z" ? 65 : 97;
-    return String.fromCodePoint(base + (((c.codePointAt(0) ?? 0) - base + 13) % 26));
-  });
-}
-
 type BrandIcon = Component<SVGAttributes<SVGSVGElement>>;
 
 type Social = {
@@ -34,6 +26,14 @@ const socialIcons: Record<SocialId, BrandIcon> = {
   twitter: IconTwitter,
   instagram: IconInstagram
 };
+
+/** This is used to marginally reduce email spam. */
+export function rot13(s: string) {
+  return s.replaceAll(/[a-zA-Z]/gu, (c) => {
+    const base = c <= "Z" ? 65 : 97;
+    return String.fromCodePoint(base + (((c.codePointAt(0) ?? 0) - base + 13) % 26));
+  });
+}
 
 export const socials: Array<Social> = socialLinks.map((link) => ({
   icon: socialIcons[link.id],

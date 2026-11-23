@@ -13,19 +13,6 @@ function systemPrefersDark(): boolean {
   return systemDark.current;
 }
 
-class ThemeStore {
-  stored = $state<ThemeMode | null>(null);
-
-  get isDark(): boolean {
-    if (this.stored) {
-      return this.stored === "dark";
-    }
-    return systemPrefersDark();
-  }
-}
-
-export const theme = new ThemeStore();
-
 function readStoredTheme(): ThemeMode | null {
   try {
     const stored = localStorage.getItem("theme");
@@ -46,14 +33,6 @@ function writeStoredTheme(value: ThemeMode): void {
   }
 }
 
-export function initTheme(): void {
-  if (typeof window === "undefined") {
-    return;
-  }
-  theme.stored = readStoredTheme();
-  applyTheme(theme.isDark);
-}
-
 function applyTheme(dark: boolean): void {
   if (typeof document === "undefined") {
     return;
@@ -61,6 +40,27 @@ function applyTheme(dark: boolean): void {
   const mode: ThemeMode = dark ? "dark" : "light";
   document.documentElement.dataset.mode = mode;
   document.documentElement.style.colorScheme = mode;
+}
+
+class ThemeStore {
+  stored = $state<ThemeMode | null>(null);
+
+  get isDark(): boolean {
+    if (this.stored) {
+      return this.stored === "dark";
+    }
+    return systemPrefersDark();
+  }
+}
+
+export const theme = new ThemeStore();
+
+export function initTheme(): void {
+  if (typeof window === "undefined") {
+    return;
+  }
+  theme.stored = readStoredTheme();
+  applyTheme(theme.isDark);
 }
 
 export function themeAttachment(dark: boolean): Attachment {

@@ -19,16 +19,23 @@
     { id: "contact", label: "Contact", icon: MailIcon }
   ];
 
+  const SCROLLED_THRESHOLD_PX = 80;
+  const SCROLLSPY_MARGIN_PX = 53;
+  // 2px tolerance so rounding can't prevent the last section from activating.
+  const BOTTOM_TOLERANCE_PX = 2;
+
   let scrolled = $state(false);
   let currentId = $state("home");
-  let navTextClass = $derived(scrolled ? "text-surface-950-50" : "text-white");
-
   let mounted = $state(false);
-  const isDark = $derived(mounted && theme.isDark);
-
-  const SCROLLED_THRESHOLD_PX = 80;
   let ticking = false;
   let frame: number | undefined;
+  // Keep in sync with --navbar-height (see scroll-padding-top in global.css).
+  // Measured at runtime. 57px matches the CSS fallback until then.
+  let navHeight = 57;
+
+  let navTextClass = $derived(scrolled ? "text-surface-950-50" : "text-white");
+  const isDark = $derived(mounted && theme.isDark);
+
   function handleScroll() {
     if (ticking) {
       return;
@@ -42,12 +49,6 @@
     });
   }
 
-  // Keep in sync with --navbar-height (see scroll-padding-top in global.css).
-  // Measured at runtime. 57px matches the CSS fallback until then.
-  let navHeight = 57;
-  const SCROLLSPY_MARGIN_PX = 53;
-  // 2px tolerance so rounding can't prevent the last section from activating.
-  const BOTTOM_TOLERANCE_PX = 2;
   function updateActive() {
     const offset = navHeight + SCROLLSPY_MARGIN_PX;
     let next = navItems[0]?.id ?? "home";
