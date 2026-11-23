@@ -6,6 +6,7 @@
   import SunIcon from "@lucide/svelte/icons/sun";
   import UserIcon from "@lucide/svelte/icons/user";
   import { AppBar } from "@skeletonlabs/skeleton-svelte";
+  import { onMount } from "svelte";
 
   import { initTheme, theme, themeAttachment, toggleTheme } from "#lib/darkmode.svelte.ts";
 
@@ -22,15 +23,20 @@
   let currentId = $state("home");
   let navTextClass = $derived(scrolled ? "text-surface-950-50" : "text-white");
 
+  let mounted = $state(false);
+  const isDark = $derived(mounted && theme.isDark);
+
   const SCROLLED_THRESHOLD_PX = 80;
   let ticking = false;
+  let frame: number | undefined;
   function handleScroll() {
     if (ticking) {
       return;
     }
     ticking = true;
-    requestAnimationFrame(() => {
+    frame = requestAnimationFrame(() => {
       ticking = false;
+      frame = undefined;
       scrolled = window.scrollY > SCROLLED_THRESHOLD_PX;
       updateActive();
     });
@@ -62,7 +68,8 @@
 
   initTheme();
 
-  $effect(() => {
+  onMount(() => {
+    mounted = true;
     scrolled = window.scrollY > SCROLLED_THRESHOLD_PX;
 
     const navbarRoot = document.querySelector<HTMLElement>("#navbar");
@@ -80,6 +87,10 @@
 
     updateActive();
     return () => {
+      if (frame !== undefined) {
+        cancelAnimationFrame(frame);
+        frame = undefined;
+      }
       resizeObserver?.disconnect();
       document.documentElement.style.removeProperty("--navbar-height");
     };
@@ -116,16 +127,20 @@
       </nav>
     </AppBar.Headline>
     <AppBar.Trail aria-label="Theme controls">
-      <button
-        type="button"
-        onclick={toggleTheme}
-        class={["theme-toggle btn-icon btn-icon-lg", scrolled ? "text-surface-950-50" : "text-white"]}
-        aria-label={theme.isDark ? "Switch to light mode" : "Switch to dark mode"}
-        aria-pressed={theme.isDark}
-      >
-        <MoonIcon class="dark:hidden" />
-        <SunIcon class="hidden dark:block" />
-      </button>
+      {#snippet element(attributes)}
+        <div {...attributes}>
+          <button
+            type="button"
+            onclick={toggleTheme}
+            class={["theme-toggle btn-icon btn-icon-lg", scrolled ? "text-surface-950-50" : "text-white"]}
+            aria-label="Dark mode"
+            aria-pressed={isDark}
+          >
+            <MoonIcon class="dark:hidden" />
+            <SunIcon class="hidden dark:block" />
+          </button>
+        </div>
+      {/snippet}
     </AppBar.Trail>
   </AppBar.Toolbar>
 </AppBar>
@@ -140,7 +155,7 @@
 >
   <div class="flex justify-around py-2">
     {#each navItems as item (item.id)}
-      {const Icon = $derived(item.icon)}
+      {const Icon = item.icon}
       <a
         href={`#${item.id}`}
         class="nav-link relative flex flex-col items-center text-xs after:absolute after:-top-2 after:left-1/2 after:h-0.5 after:w-6 after:-translate-x-1/2 after:scale-x-0 after:rounded-full after:bg-current after:transition-transform after:duration-300 after:content-[''] aria-[current=location]:font-semibold aria-[current=location]:after:scale-x-100 motion-reduce:after:transition-none"

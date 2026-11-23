@@ -49,7 +49,7 @@
             </a>
           </li>
           {#each socials as social (social.href)}
-            {const Icon = $derived(social.icon)}
+            {const Icon = social.icon}
             <li class="flex items-center gap-3">
               <Icon class="size-elem-xl shrink-0 text-primary-500" aria-hidden="true" />
               <a href={social.href} target="_blank" rel="me noopener noreferrer" class="text-sm no-underline"

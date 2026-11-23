@@ -18,9 +18,9 @@ export function rot13(s: string) {
   });
 }
 
-export type BrandIcon = Component<SVGAttributes<SVGSVGElement>>;
+type BrandIcon = Component<SVGAttributes<SVGSVGElement>>;
 
-export type Social = {
+type Social = {
   icon: BrandIcon;
   href: string;
   label: string;

@@ -10,26 +10,26 @@ import PaletteIcon from "@lucide/svelte/icons/palette";
 import ServerIcon from "@lucide/svelte/icons/server";
 import ShieldCheckIcon from "@lucide/svelte/icons/shield-check";
 
-export type ExperienceRole = {
+type ExperienceRole = {
   title: string;
   period: string;
 };
 
-export type ExperienceItem = {
+type ExperienceItem = {
   id: string;
   company: string;
   roles: Array<ExperienceRole>;
   details: Array<string>;
 };
 
-export type IconGroup = {
+type IconGroup = {
   id: string;
   title: string;
   icon: LucideIcon;
   items: Array<string>;
 };
 
-export type Activity = {
+type Activity = {
   org: string;
   roles: Array<ExperienceRole>;
   details: Array<string>;
@@ -40,10 +40,6 @@ export type AboutPortrait = {
   width: number;
   height: number;
 };
-
-export type AwardGroup = IconGroup;
-
-export type KnowledgeGroup = IconGroup;
 
 export const experienceItems: Array<ExperienceItem> = [
   {
@@ -113,7 +109,7 @@ export const experienceItems: Array<ExperienceItem> = [
   }
 ];
 
-export const knowledgeGroups: Array<KnowledgeGroup> = [
+export const knowledgeGroups: Array<IconGroup> = [
   {
     id: "certifications",
     title: "Certifications",
@@ -178,7 +174,7 @@ export const activities: Array<Activity> = [
   }
 ];
 
-export const awardGroups: Array<AwardGroup> = [
+export const awardGroups: Array<IconGroup> = [
   {
     id: "competitions",
     title: "Competitions",

@@ -1,30 +1,7 @@
 import type { Attachment } from "svelte/attachments";
-import { createSubscriber } from "svelte/reactivity";
+import { MediaQuery } from "svelte/reactivity";
 
-export type ThemeMode = "dark" | "light";
-
-class MediaQuery {
-  readonly #query: MediaQueryList;
-  readonly #subscribe: () => void;
-
-  constructor(query: string) {
-    this.#query = window.matchMedia(query);
-    this.#subscribe = createSubscriber((update) => {
-      const handler = () => {
-        update();
-      };
-      this.#query.addEventListener("change", handler);
-      return () => {
-        this.#query.removeEventListener("change", handler);
-      };
-    });
-  }
-
-  get current(): boolean {
-    this.#subscribe();
-    return this.#query.matches;
-  }
-}
+type ThemeMode = "dark" | "light";
 
 let systemDark: MediaQuery | undefined;
 
@@ -77,7 +54,7 @@ export function initTheme(): void {
   applyTheme(theme.isDark);
 }
 
-export function applyTheme(dark: boolean): void {
+function applyTheme(dark: boolean): void {
   if (typeof document === "undefined") {
     return;
   }

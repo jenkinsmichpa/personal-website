@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jenkinsmichpa.com/sitemap-index.xml

@@ -1,6 +1,6 @@
 export type SocialId = "linkedin" | "github" | "mastodon" | "bluesky" | "twitter" | "instagram";
 
-export type SocialLink = {
+type SocialLink = {
   id: SocialId;
   href: string;
   label: string;

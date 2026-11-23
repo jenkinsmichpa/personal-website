@@ -69,7 +69,7 @@
               rel="noopener noreferrer"
               class="btn preset-filled-brand"
             >
-              <IconLinkedin />
+              <IconLinkedin aria-hidden="true" />
               <span>LinkedIn</span>
             </a>
           </div>
@@ -175,7 +175,7 @@
         <h2 class="mb-3 h3">Awards</h2>
         <div class="space-y-3">
           {#each awardGroups as group (group.id)}
-            {const Icon = $derived(group.icon)}
+            {const Icon = group.icon}
             <div>
               <h3 class="mb-1 flex items-center gap-1 font-bold">
                 <Icon class="size-elem-base text-primary-500" aria-hidden="true" />
@@ -201,7 +201,7 @@
             <Accordion.Item value={group.id}>
               <h3>
                 <Accordion.ItemTrigger class="flex w-full items-center justify-between gap-2 font-bold">
-                  {const Icon = $derived(group.icon)}
+                  {const Icon = group.icon}
                   <Icon class="mr-1 size-elem-base text-primary-500" aria-hidden="true" />
                   <span class="flex-1 text-left">{group.title}</span>
                   <Accordion.ItemIndicator class="group">

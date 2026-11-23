@@ -13,7 +13,7 @@ import seaCliffs from "#assets/images/seaCliffs.jpg";
 import stinkingBenjamin from "#assets/images/stinkingBenjamin.jpg";
 import turtleBearSkull from "#assets/images/turtleBearSkull.jpg";
 
-export type PortfolioImageInput = {
+type PortfolioImageInput = {
   alt: string;
   img: ImageMetadata;
 };
@@ -28,7 +28,7 @@ export type PortfolioItem = {
   thumbHeight: number;
 };
 
-export const portfolioImages: Array<PortfolioImageInput> = [
+const portfolioImages: Array<PortfolioImageInput> = [
   { alt: "Drinking Tiger Painting", img: drinkingTiger },
   { alt: "Hibiscus Painting", img: hibiscus },
   { alt: "Sea Cliffs Painting", img: seaCliffs },
@@ -43,7 +43,7 @@ export const portfolioImages: Array<PortfolioImageInput> = [
   { alt: "Stinking Benjamin Painting", img: stinkingBenjamin }
 ];
 
-export const PORTFOLIO_PAGE_SIZE = 6;
+const PORTFOLIO_PAGE_SIZE = 6;
 
 export const portfolioPages: Array<Array<PortfolioImageInput>> = Array.from(
   { length: Math.ceil(portfolioImages.length / PORTFOLIO_PAGE_SIZE) },

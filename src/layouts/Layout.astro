@@ -12,11 +12,13 @@ type Props = {
   title?: string;
   description?: string;
   preloadHomeBg?: boolean;
+  noindex?: boolean;
 };
 const {
   title,
   description = "Michael Jenkins is a graduate student at Purdue University, pursuing a Masters degree in Computer and Information Technology with a focus on Cybersecurity.",
-  preloadHomeBg = false
+  preloadHomeBg = false,
+  noindex = false
 }: Props = Astro.props;
 const [optimizedHomeBg, optimizedSpacerBg, ogImage] = await Promise.all([
   preloadHomeBg ? getImage({ src: homeBg, format: "webp", width: 1920 }) : null,
@@ -31,7 +33,7 @@ const [optimizedHomeBg, optimizedSpacerBg, ogImage] = await Promise.all([
     quality: 80
   })
 ]);
-const siteUrl = Astro.site ?? new URL("https://jenkinsmichpa.com/");
+const siteUrl = new URL(import.meta.env.SITE);
 const image = new URL(ogImage.src, siteUrl).href;
 const pageTitle = title ?? "Michael Jenkins";
 const structuredData = {
@@ -62,7 +64,7 @@ const ldJson = JSON.stringify(structuredData).replaceAll("<", String.raw`\u003c`
       titleTemplate="%s | Michael Jenkins"
       titleDefault="Michael Jenkins"
       description={description}
-      removeTrailingSlashForRoot
+      noindex={noindex}
       openGraph={{
         basic: {
           title: pageTitle,
@@ -116,7 +118,7 @@ const ldJson = JSON.stringify(structuredData).replaceAll("<", String.raw`\u003c`
   <body>
     <a
       href="#main"
-      class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[100] focus:rounded-base focus:bg-surface-100-900 focus:px-4 focus:py-2 focus:text-surface-900-100 focus:shadow-lg"
+      class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-100 focus:rounded-base focus:bg-surface-100-900 focus:px-4 focus:py-2 focus:text-surface-900-100 focus:shadow-lg"
     >
       Skip to content
     </a>
