@@ -34,13 +34,13 @@
   "dependencies": {
     "@astrojs/sitemap": "3.7.6",
     "@astrojs/svelte": "9.1.6",
-    "@lucide/svelte": "1.75.0",
+    "@lucide/svelte": "1.81.0",
     "@tailwindcss/vite": "4.3.5",
     "astro": "7.4.13",
     "astro-favicons": "3.1.8",
     "astro-seo": "1.2.0",
     "mode-watcher": "1.1.0",
-    "svelte": "5.58.0",
+    "svelte": "5.59.2",
     "tailwindcss": "4.3.5"
   },
   "devDependencies": {
@@ -48,24 +48,24 @@
     "@astrojs/compiler-rs": "0.5.3",
     "@iconify-json/fa6-brands": "1.2.6",
     "@nkzw/oxlint-config": "3.0.1",
-    "@skeletonlabs/skeleton": "5.0.5",
-    "@skeletonlabs/skeleton-svelte": "5.0.5",
+    "@skeletonlabs/skeleton": "5.0.6",
+    "@skeletonlabs/skeleton-svelte": "5.0.6",
     "eslint": "10.15.0",
-    "eslint-plugin-astro": "3.2.1",
+    "eslint-plugin-astro": "3.2.2",
     "eslint-plugin-svelte": "3.24.1",
     "globals": "17.14.0",
-    "oxfmt": "0.79.0",
+    "oxfmt": "0.80.0",
     "oxlint": "1.94.0",
     "skills": "1.9.0",
     "svelte-check": "4.7.8",
-    "svelte-eslint-parser": "1.10.1",
+    "svelte-eslint-parser": "1.12.0",
     "typescript": "6.0.3",
-    "typescript-eslint": "8.73.0",
+    "typescript-eslint": "8.74.0",
     "unplugin-icons": "24.0.0",
-    "wrangler": "4.165.0"
+    "wrangler": "4.168.0"
   },
   "engines": {
-    "bun": ">=1.4.4"
+    "bun": ">=1.4.5"
   },
   "skills": [
     {

@@ -57,6 +57,11 @@ export default defineConfig({
     sitemap()
   ],
   vite: {
+    // server: {
+    //   fs: {
+    //     strict: "extended"
+    //   }
+    // },
     plugins: [
       tailwindcss(),
       Icons({
