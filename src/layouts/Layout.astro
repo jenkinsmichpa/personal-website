@@ -98,18 +98,20 @@ const ldJson = JSON.stringify(structuredData).replaceAll("<", String.raw`\u003c`
     />
     {bgCss && <style set:html={bgCss}></style>}
     <script is:inline>
-      (() => {
-        let stored = null;
+      (function applyInitialMode() {
         try {
-          stored = localStorage.getItem("theme");
+          const mode = localStorage.getItem("theme");
+          const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+          const isDark = mode === "dark" || (mode !== "light" && prefersDark);
+          if (isDark) {
+            document.documentElement.classList.add("dark");
+            document.documentElement.style.colorScheme = "dark";
+          } else {
+            document.documentElement.style.colorScheme = "light";
+          }
         } catch {
           /* storage unavailable */
         }
-        if (stored !== "dark" && stored !== "light") {
-          stored = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-        }
-        document.documentElement.dataset.mode = stored;
-        document.documentElement.style.colorScheme = stored;
       })();
     </script>
     <script is:inline type="application/ld+json" set:html={ldJson}></script>

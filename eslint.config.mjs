@@ -17,7 +17,7 @@ const noMixedAbsence = [
 // oxlint will fully replace it once it supports them (oxc-project/oxc#15761)
 export default [
   {
-    ignores: [".astro", ".wrangler", "dist", "dev", "**/.vite/"]
+    ignores: [".agents", ".astro", ".wrangler", "dist", "dev", "**/.vite/"]
   },
   ...sveltePlugin.configs.recommended,
   ...astroConfigs.recommended,

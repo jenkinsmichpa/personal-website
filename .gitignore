@@ -16,6 +16,9 @@ dist
 .astro
 .wrangler
 
+# agent skills
+.agents/skills/
+
 # OS / IDEs
 .DS_Store
 .idea

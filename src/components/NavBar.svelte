@@ -6,9 +6,8 @@
   import SunIcon from "@lucide/svelte/icons/sun";
   import UserIcon from "@lucide/svelte/icons/user";
   import { AppBar } from "@skeletonlabs/skeleton-svelte";
+  import { ModeWatcher, mode, toggleMode } from "mode-watcher";
   import { onMount } from "svelte";
-
-  import { initTheme, theme, themeAttachment, toggleTheme } from "#lib/darkmode.svelte.ts";
 
   import Logo from "./Logo.svelte";
 
@@ -34,7 +33,7 @@
   let navHeight = 57;
 
   let navTextClass = $derived(scrolled ? "text-surface-950-50" : "text-white");
-  const isDark = $derived(mounted && theme.isDark);
+  const isDark = $derived(mounted && mode.current === "dark");
 
   function handleScroll() {
     if (ticking) {
@@ -67,8 +66,6 @@
     currentId = next;
   }
 
-  initTheme();
-
   onMount(() => {
     mounted = true;
     scrolled = window.scrollY > SCROLLED_THRESHOLD_PX;
@@ -100,7 +97,7 @@
 
 <svelte:window onscroll={handleScroll} />
 
-<div class="hidden" {@attach themeAttachment(theme.isDark)}></div>
+<ModeWatcher modeStorageKey="theme" defaultTheme="fennec" disableHeadScriptInjection />
 
 <AppBar
   class={[
@@ -132,7 +129,7 @@
         <div {...attributes}>
           <button
             type="button"
-            onclick={toggleTheme}
+            onclick={toggleMode}
             class={["theme-toggle btn-icon btn-icon-lg", scrolled ? "text-surface-950-50" : "text-white"]}
             aria-label="Dark mode"
             aria-pressed={isDark}

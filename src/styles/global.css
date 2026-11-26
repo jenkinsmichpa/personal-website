@@ -4,7 +4,7 @@
 @import "@skeletonlabs/skeleton/themes/fennec";
 @import "@skeletonlabs/skeleton-svelte";
 
-@custom-variant dark (&:where([data-mode="dark"], [data-mode="dark"] *));
+@custom-variant dark (&:where(.dark, .dark *));
 
 @layer components {
   .btn,

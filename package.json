@@ -27,7 +27,9 @@
     "format:check": "bun run format:check:oxfmt",
     "format:check:oxfmt": "oxfmt --check",
     "typecheck": "astro check && svelte-check --tsconfig ./tsconfig.json",
-    "clean": "rm -rf dist .astro node_modules"
+    "clean": "rm -rf dist .astro node_modules",
+    "skills:sync": "skills experimental_sync -y -a opencode",
+    "skills:install": "skills experimental_install -y -a opencode"
   },
   "dependencies": {
     "@astrojs/sitemap": "3.7.6",
@@ -37,6 +39,7 @@
     "astro": "7.4.13",
     "astro-favicons": "3.1.8",
     "astro-seo": "1.2.0",
+    "mode-watcher": "1.1.0",
     "svelte": "5.58.0",
     "tailwindcss": "4.3.5"
   },
@@ -53,6 +56,7 @@
     "globals": "17.14.0",
     "oxfmt": "0.79.0",
     "oxlint": "1.94.0",
+    "skills": "1.9.0",
     "svelte-check": "4.7.8",
     "svelte-eslint-parser": "1.10.1",
     "typescript": "6.0.3",
@@ -62,5 +66,14 @@
   },
   "engines": {
     "bun": ">=1.4.4"
-  }
+  },
+  "skills": [
+    {
+      "source": "sveltejs/ai-tools/tools/skills",
+      "skills": [
+        "svelte-core-bestpractices",
+        "svelte-code-writer"
+      ]
+    }
+  ]
 }
