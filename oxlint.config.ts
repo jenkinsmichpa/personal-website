@@ -3,10 +3,7 @@ import { defineConfig } from "oxlint";
 import type { DummyRuleMap, OxlintOverride } from "oxlint";
 
 const isDeadRule = (id: string) =>
-  id.startsWith("react/") ||
-  id.startsWith("jsx-a11y/") ||
-  id === "@nkzw/ensure-relay-types" ||
-  id === "@nkzw/require-use-effect-arguments";
+  id.startsWith("react/") || id.startsWith("jsx-a11y/") || id === "@nkzw/require-use-effect-arguments";
 
 const filterRules = (source: DummyRuleMap | undefined): DummyRuleMap => {
   const filtered: DummyRuleMap = {};
